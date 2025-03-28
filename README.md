@@ -3,11 +3,11 @@
 ```
                       G
                 +-3--  -+
-                |     ^ |
+                |       |
                 |--~~~--|
                 |       |
         +-1-----+-2-  --+-4-----+
-    +p1-|  @&&  |       |       +p2-+
+    +p1-|  @&   |       |       +p2-+
     |k1U|    S          D       | k2|
     +---|  V    |       |       +---+
 +-------+-6-----+-5-  --+-7-----+        +-11----+
@@ -27,21 +27,20 @@
 
 ## Legenda
 - S ... Startovní pozice
-- & ... Řetěz
-- @ ... Zámek
+- & ... Okovy
+- @ ... Zámek Okovů
 - V ... Žalářníkovo tělo
 - k ... Klíč
   1. .. k celám
-  2. .. k řetězu
+  2. .. k okovům
   3. .. k bráně
-- d? .. Diář  // pouze hinty
+- d? .. Diář  // vícero, pouze hinty
 - U ... Žalářníkovo blečení
 - ~ ... Nestabilní stěna
 - D ... Dveře
 - C ... Sýr
 - P ... Palice
 - G ... Východ
-- ^ ... Železný sloupek
 - Č ... Šaškova čepice
 - S ... Stráž
 - K ... Král
@@ -85,43 +84,41 @@
 - sundej si <Věc>
 
 ## Extra
-Na počátku hry si připoutaný řetězem ke stěně ve své cele a nemůžeš se od ní vzdálit na více jak 3 místnosti
+Na počátku hry si připoutaný okovy ke stěně ve své cele a nemůžeš se od ní vzdálit na více jak 3 místnosti
 
-## gameplay
- 1. Search V
- 2. Pick up k1
- 4. Go to 1
- 5. Go to 2
- 6. Go to 5
- 7. Use k1 on D7
- 8. Go 7
- 9. Pick up C
-10. Go to 5
-11. Go to 2
-12. Use k1 on D4
-13. Go to 4
-14. Drop C
-15. Go to 2
-16. Go to 4
-17. Pick up k2
-18. Go to 2
-19. Go to 1
-20. Use k2 on @
-21. Pick up &
-22. Go to 2
-23. Go to 5
-24. Go to 8
-25. Use k1 on D9
-26. Go to 9
-27. Pick up P
-28. Go to 8
-29. Go to 5
-30. Go to 2
-31. Go to 3
-32. Equip P
-33. Hit ~
-34. Use & on ^
-35. Go to G
+## Minimální Herní Plán
+ 1. Prohledej žalářníka
+ 2. Seber klíč od okovů
+ 3. Jdi zpět na pozici své celi
+ 4. Jdi do severního koridoru žaláře
+ 5. Jdi do středního koridoru žaláře
+ 6. Jdi do žlářnikovi staince
+ 7. Seber sýr
+ 8. Jdi do středního koridoru žaláře 
+ 9. Jdi do severního koridoru žaláře
+10. Použij klíč od cel na dveře celi 1
+11. Jdi do celi 1
+12. Polož sýr
+13. Jdi do severního koridoru žaláře
+14. Jdi do celi 1
+15. Seber klíč od okovů
+16. Jdi do severního koridoru žaláře
+17. Jdi do své celi
+18. Použij klíč od okovů na zámek od okovů
+19. Sundej si okovy
+20. Jdi do severního koridoru žaláře
+21. Jdi do středního koridoru žaláře
+22. Jdi do jížního koridoru žaláře
+23. Použij klíč od cel na celu 3
+24. Jdi do celi 3
+25. Seber palici
+26. Jdi do jižního koridoru žaláře
+27. Jdi do středního koridoru žaláře
+28. Jdi do severního koridoru žaláře
+29. Jdi do oubliette
+30. Udeř nestabilní stěnu
+31. Použij okovy na díru ve stěně
+32. Jdi slanit se po okovech na straně hradu ~ FIN
 
 
 
