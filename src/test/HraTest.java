@@ -167,13 +167,13 @@ public class HraTest {
         // 18. krok hry použij klíč_od_okovů NA zámek_okovů
         assertEquals(hra.zpracujPrikaz("použij klíč_od_okovů na zámek_okovů"),
                 "Jsi ve své cele\n" +
-                        "Máš na sobě:\n" +
+                        "Máš na sobě: okovy\n" +
                         "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů\n" +
-                        "Seznam věcí v místnosti: tělo_žalářníka, okovy\n" +
+                        "Seznam věcí v místnosti: tělo_žalářníka\n" +
                         "Východy: severní_koridor_žaláře");
 
-        // 19. krok hry SEBER okovy
-        assertEquals(hra.zpracujPrikaz("seber okovy"),
+        // 19. krok hry SUNDEJ SI okovy
+        assertEquals(hra.zpracujPrikaz("sundej si okovy"),
                 "Jsi ve své cele\n" +
                         "Máš na sobě:\n" +
                         "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy\n" +
