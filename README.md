@@ -10,7 +10,7 @@
     +p1-|  @&   |       |       +p2-+
     |k1U|    S          D       | k2|
     +---|  V    |       |       +---+
-+-------+-6-----+-5-  --+-7-----+        +-11----+
++-14----+-6-----+-5-  --+-7-----+        +-11----+
 |       |       |       |       +p3-+    |       +p4-+
 |   Č           D          d1   |   |    |  K    |Wk3|
 |       |       |       |    C  +---+    |       +---+
@@ -67,21 +67,22 @@
  12. Stanice hradní stráže
  13. Kráova komnata
     p5. králův diář
+ 14. Skrytá místnost se stylovou čapkou 
 
 
 ## Příkazy
-- jdi
-- konec
-- pomoc
-- nápověda
-- seber
-- polož
-- prozkoumej <Věc v prostoru> //Vytvoří pseudo místnost která umožní nové interakce
-- použíj <Věc v batohu> na <Věc v prostoru>
-- řekni <String>
-- udeř
-- nasaď si <Věc>
-- sundej si <Věc>
+- `jdi <Prostor>`
+- `konec`
+- `pomoc`
+- `nápověda`
+- `seber <Věc v prostoru>`
+- `polož <Věc v batohu>`
+- `prozkoumej <Věc v prostoru>` //Vytvoří pseudo místnost která umožní nové interakce
+- `použij <Věc v batohu> na <Věc v prostoru>`
+- `řekni <String>`
+- `udeř <Věc / Člověka (Záleží budeli Stráž/Král vastní objek či pouze Věc)>`
+- `nasaď si <Věc>`
+- `sundej si <Věc>`
 
 ## Extra
 Na počátku hry si připoutaný okovy ke stěně ve své cele a nemůžeš se od ní vzdálit na více jak 3 místnosti
