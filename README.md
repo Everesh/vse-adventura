@@ -78,7 +78,7 @@
 - seber
 - polož
 - prozkoumej <Věc v prostoru> //Vytvoří pseudo místnost která umožní nové interakce
-- použí <Věc v batohu> na <Věc v prostoru>
+- použíj <Věc v batohu> na <Věc v prostoru>
 - řekni <String>
 - udeř
 - nasaď si <Věc>

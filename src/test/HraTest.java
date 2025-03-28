@@ -19,8 +19,8 @@ public class HraTest {
         assertEquals(hra.vratUvitani(),
                 "Tělo žálářníka se přestalo vzpírat a nehybné se svalilo z tvých rukou k zemi.\n" +
                        "Panika. Pot. Chlad. Chuť grepu na spodním rtu. Okovy kolem nohou.\n" +
-                       "To je stav ve kterém si přišel ke svému vědomí. Ať už se ma situace jakkoli\n" +
-                       "tvé další kroky jsou instiktivně jasné: Dostat se pryč!\n" +
+                       "To je stav ve kterém jsi přišel ke svému vědomí. Ať už se má situace jakkoli\n" +
+                       "tvé další kroky jsou instinktivně jasné: Dostaň se ven!\n" +
                        "Máš na sobě: okovy\n" +
                        "Seznam věcí v batohu:\n" +
                        "Seznam věcí v místnosti: tělo_žalářníka, zámek_okovů\n" +
@@ -60,8 +60,8 @@ public class HraTest {
                         "Seznam věcí v místnosti: dveře_celi_1\n" +
                         "Východy: moje_cela, oubliette, střední_koridor_žaláře");
 
-        // 5. krok hry POUŽÍ klíč_od_cel NA dveře_od_celi_1
-        assertEquals(hra.zpracujPrikaz("použí klíč_od_cel na dveře_celi_1"),
+        // 5. krok hry použij klíč_od_cel NA dveře_celi_1
+        assertEquals(hra.zpracujPrikaz("použij klíč_od_cel na dveře_celi_1"),
                 "Jsi v severním koridoru žaláře\n" +
                         "Máš na sobě: okovy\n" +
                         "Seznam věcí v batohu: klíč_od_cel\n" +
@@ -74,7 +74,7 @@ public class HraTest {
                         "Máš na sobě: okovy\n" +
                         "Seznam věcí v batohu: klíč_od_cel\n" +
                         "Seznam věcí v místnosti: dveře_celi_2\n" +
-                        "Východy: severní_koridor_žaláře, jížní_koridor_žaláře, žalářníkova_stanice");
+                        "Východy: severní_koridor_žaláře, jižní_koridor_žaláře, žalářníkova_stanice");
 
         // 7. krok hry JDI žalářníkova_stanice
         assertEquals(hra.zpracujPrikaz("jdi žalářníkova_stanice"),
@@ -98,7 +98,7 @@ public class HraTest {
                         "Máš na sobě: okovy\n" +
                         "Seznam věcí v batohu: klíč_od_cel, sýr\n" +
                         "Seznam věcí v místnosti: dveře_celi_2\n" +
-                        "Východy: severní_koridor_žaláře, jížní_koridor_žaláře, žalářníkova_stanice");
+                        "Východy: severní_koridor_žaláře, jižní_koridor_žaláře, žalářníkova_stanice");
 
         // 10. krok hry JDI severní_koridor_žaláře
         assertEquals(hra.zpracujPrikaz("jdi severní_koridor_žaláře"),
@@ -133,7 +133,7 @@ public class HraTest {
                         "Východy: moje_cela, oubliette, střední_koridor_žaláře, cela_1");
 
         // 14. krok hry JDI cela_1
-        assertEquals(hra.zpracujPrikaz("jdi severní_koridor_žaláře"),
+        assertEquals(hra.zpracujPrikaz("jdi cela_1"),
                 "Jsi v první cele\n" +
                         "Máš na sobě: okovy\n" +
                         "Seznam věcí v batohu: klíč_od_cel\n" +
@@ -164,8 +164,8 @@ public class HraTest {
                         "Seznam věcí v místnosti: tělo_žalářníka, zámek_okovů\n" +
                         "Východy: severní_koridor_žaláře");
 
-        // 18. krok hry POUŽÍ klíč_od_okovů NA zámek_okovů
-        assertEquals(hra.zpracujPrikaz("použí klíč_od_okovů na zámek_okovů"),
+        // 18. krok hry použij klíč_od_okovů NA zámek_okovů
+        assertEquals(hra.zpracujPrikaz("použij klíč_od_okovů na zámek_okovů"),
                 "Jsi ve své cele\n" +
                         "Máš na sobě:\n" +
                         "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů\n" +
@@ -194,9 +194,9 @@ public class HraTest {
                         "Máš na sobě:\n" +
                         "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy\n" +
                         "Seznam věcí v místnosti: dveře_celi_2\n" +
-                        "Východy: severní_koridor_žaláře, jížní_koridor_žaláře, žalářníkova_stanice");
+                        "Východy: severní_koridor_žaláře, jižní_koridor_žaláře, žalářníkova_stanice");
 
-        // 22. krok hry JDI jížní_koridor_žaláře
+        // 22. krok hry JDI jižní_koridor_žaláře
         assertEquals(hra.zpracujPrikaz("jdi jižní_koridor_žaláře"),
                 "Jsi v jižním koridoru žaláře\n" +
                         "Máš na sobě:\n" +
@@ -204,8 +204,8 @@ public class HraTest {
                         "Seznam věcí v místnosti: dveře_celi_3\n" +
                         "Východy: střední_koridor_žaláře, hlavní_koridor_hradu");
 
-        // 23. krok hry POUŽÍ klíč_od_cel NA dveře_celi_3
-        assertEquals(hra.zpracujPrikaz("použí klíč_od_cel na dveře_celi_3"),
+        // 23. krok hry použij klíč_od_cel NA dveře_celi_3
+        assertEquals(hra.zpracujPrikaz("použij klíč_od_cel na dveře_celi_3"),
                 "Jsi v jižním koridoru žaláře\n" +
                         "Máš na sobě:\n" +
                         "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy\n" +
@@ -218,7 +218,7 @@ public class HraTest {
                         "Máš na sobě:\n" +
                         "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy\n" +
                         "Seznam věcí v místnosti: palice\n" +
-                        "Východy: jížní_koridor_žaláře");
+                        "Východy: jižní_koridor_žaláře");
 
         // 25. krok hry SEBER palice
         assertEquals(hra.zpracujPrikaz("seber palice"),
@@ -226,9 +226,9 @@ public class HraTest {
                         "Máš na sobě:\n" +
                         "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy, palice\n" +
                         "Seznam věcí v místnosti:\n" +
-                        "Východy: jížní_koridor_žaláře");
+                        "Východy: jižní_koridor_žaláře");
 
-        // 26. krok hry JDI jížní_koridor_žaláře
+        // 26. krok hry JDI jižní_koridor_žaláře
         assertEquals(hra.zpracujPrikaz("jdi jižní_koridor_žaláře"),
                 "Jsi v jižním koridoru žaláře\n" +
                         "Máš na sobě:\n" +
@@ -242,7 +242,7 @@ public class HraTest {
                         "Máš na sobě:\n" +
                         "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy, palice\n" +
                         "Seznam věcí v místnosti: dveře_celi_2\n" +
-                        "Východy: severní_koridor_žaláře, jížní_koridor_žaláře, žalářníkova_stanice");
+                        "Východy: severní_koridor_žaláře, jižní_koridor_žaláře, žalářníkova_stanice");
 
         // 28. krok hry JDI severní_koridor_žaláře
         assertEquals(hra.zpracujPrikaz("jdi severní_koridor_žaláře"),
@@ -268,8 +268,8 @@ public class HraTest {
                         "Seznam věcí v místnosti: díra_ve_stěně\n" +
                         "Východy: severní_koridor_žaláře");
 
-        // 31. krok hry POUŽÍ okovy NA díra_ve_stěně
-        assertEquals(hra.zpracujPrikaz("použí palice na nestabilní_stěna"),
+        // 31. krok hry použij okovy NA díra_ve_stěně
+        assertEquals(hra.zpracujPrikaz("použij okovy na díra_ve_stěně"),
                 "Jsi v oubliette\n" +
                         "Máš na sobě:\n" +
                         "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, palice\n" +
@@ -278,6 +278,6 @@ public class HraTest {
 
         // 32. krok hry JDI slanit_se_po_okovech_na_straně_hradu
         assertEquals(hra.zpracujPrikaz("jdi slanit_se_po_okovech_na_straně_hradu"),
-                     hra.vratEpilog("slanění");
+                     hra.vratEpilog("slanění"));
     }
 }
