@@ -37,6 +37,7 @@ public class Batoh {
     public Vec odeberZBatohu(String nazev) {
         for (Vec vec : seznamVeci) {
             if (vec.getNazev().equals(nazev)) {
+                seznamVeci.remove(vec);
                 return vec;
             }
         }

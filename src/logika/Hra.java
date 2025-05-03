@@ -28,6 +28,7 @@ public class Hra implements IHra {
         platnePrikazy.vlozPrikaz(new PrikazJdi(this));
         platnePrikazy.vlozPrikaz(new PrikazKonec(this));
         platnePrikazy.vlozPrikaz(new PrikazSeber(herniPlan));
+        platnePrikazy.vlozPrikaz(new PrikazPoloz(herniPlan));
     }
 
     /**
@@ -49,6 +50,10 @@ public class Hra implements IHra {
         return epilog;
     }
 
+
+    public String vratEpilog(String type) {
+        return epilog + "\n" + type;
+    }
     /**
      * Moznost upravit epilog hry
      * @param epilog

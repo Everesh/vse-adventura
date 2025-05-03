@@ -28,7 +28,10 @@ public class PrikazPoloz implements IPrikaz {
             return nazevVeci + " nemáš v batohu!";
         }
 
-        //TODO
+        Vec pozadovanaVec = batoh.odeberZBatohu(nazevVeci);
+        Prostor aktualniProstor = herniPlan.getAktualniProstor();
+        aktualniProstor.vlozVec(pozadovanaVec);
+        return "Položil(a) jsi " + nazevVeci + ".";
     }
 
     @Override
