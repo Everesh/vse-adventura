@@ -2,7 +2,7 @@ package logika;
 
 public class PrikazPoloz implements IPrikaz {
 
-    private static final String NAZEV = "Poloz";
+    private static final String NAZEV = "polož";
     private HerniPlan herniPlan;
     private Batoh batoh;
 
