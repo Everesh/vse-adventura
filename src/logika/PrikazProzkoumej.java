@@ -24,7 +24,7 @@ public class PrikazProzkoumej implements IPrikaz {
             Vec pozadovanaVec = aktualniProstor.vyberVec(nazevVeci);
 
             // TODO
-
+            return "Prozkoumej jsi " + nazevVeci + ".";
         } else {
             return nazevVeci + " není v tomto prostoru!";
         }
