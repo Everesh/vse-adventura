@@ -46,9 +46,11 @@ public class PrikazJdi implements IPrikaz {
         Prostor sousedniProstor = plan.getAktualniProstor().vratSousedniProstor(smer);
 
         if (sousedniProstor == null) {
-            return "Tam se odsud jít nedá!";
-        }
-        else {
+            return "Tam se odsud jít nedá!\n";
+        } else if ((smer.equals("cell_3") || smer.equals("hlavní_koridor_hradu") || smer.equals("?"))
+                   && plan.getProstor("moje_cela").obsahujeVec("zámek_okovů"))  {
+            return "Pokusil jsi se přejít do " + smer + ", nicméně tvé okovy ti nedovolí vzdálit se ze své celi na více jak 3 místnosti\n";
+        } else {
             if (Objects.equals(smer, "severní_koridor_žaláře") && Objects.equals(plan.getAktualniProstor().getNazev(), "cela_1")) {
                 Prostor cela1 = plan.getProstor("cela_1");
                 if (cela1.obsahujeVec("sýr")) {

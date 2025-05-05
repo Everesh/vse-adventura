@@ -17,7 +17,9 @@ public class PrikazNasadSi implements IPrikaz {
         if (!herniPlan.getBatoh().obsahujeVec(parametry[0])) {
             return parametry[0] + " nemáš v batohu!\n";
         }
-        herniPlan.getBatoh().vlozDoBatohu(herniPlan.getVybava().sundejSi(parametry[0]));
+
+        Vec vec = herniPlan.getBatoh().odeberZBatohu(parametry[0]);
+        herniPlan.getVybava().nasadSi(vec);
         return "";
     }
 

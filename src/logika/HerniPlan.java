@@ -119,6 +119,7 @@ public class HerniPlan {
         oubliette.setVychod(severniKoridorZalare);
         zalarnikovaStanice.setVychod(stredniKoridorZalare);
         cela2.setVychod(stredniKoridorZalare);
+        cela2.setVychod(skrytaCapkaMistnost);
         cela3.setVychod(jizniKoridorZalare);
         skrytaCapkaMistnost.setVychod(cela2);
         koridorHradu.setVychod(jizniKoridorZalare);

@@ -18,7 +18,7 @@ public class Vybava {
     private String vypisVybavy() {
         String vyis = "";
         for (Vec vec : seznamVeci) {
-            vyis += " " + vec.getNazev();
+            vyis += (vyis.length() > 0 ? ", " : " ") + vec.getNazev();
         }
         return vyis;
     }
