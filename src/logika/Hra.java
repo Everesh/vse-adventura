@@ -1,5 +1,7 @@
 package logika;
 
+import java.util.Arrays;
+
 /**
  *  Třída Hra - třída představující logiku adventury.
  * 
@@ -86,11 +88,21 @@ public class Hra implements IHra {
      public String zpracujPrikaz(String radek) {
         String [] slova = radek.split("[ \t]+");
         String slovoPrikazu = slova[0];
-        if (slovoPrikazu.equals("pomoc")) { slovoPrikazu = "nápověda";} // Alias pro nápovědu
+
+        // Alias pro nápovědu
+        if (slovoPrikazu.equals("pomoc")) { slovoPrikazu = "nápověda";}
+
         String []parametry = new String[slova.length-1];
         for(int i=0 ;i<parametry.length;i++){
-           	parametry[i]= slova[i+1];  	
+           	parametry[i]= slova[i+1];
         }
+
+        // Extrakce zvratného 'si'
+        if (parametry.length > 0 && parametry[0].equals("si")) {
+            slovoPrikazu += " si";
+            parametry = Arrays.copyOfRange(parametry, 1, parametry.length);
+        }
+
         String textKVypsani=" .... ";
         if (platnePrikazy.jePlatnyPrikaz(slovoPrikazu)) {
             IPrikaz prikaz = platnePrikazy.vratPrikaz(slovoPrikazu);
