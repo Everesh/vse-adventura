@@ -73,7 +73,7 @@ public class SeznamPrikazu {
     public String vratNazvyPrikazu() {
         String seznam = "";
         for (String slovoPrikazu : mapaSPrikazy.keySet()){
-            seznam += slovoPrikazu + " ";
+            seznam += (seznam.length() > 0 ? ", " : " " ) + slovoPrikazu;
         }
         return seznam;
     }
