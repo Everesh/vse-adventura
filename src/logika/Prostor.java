@@ -19,7 +19,7 @@ public class Prostor {
 
     private String nazev;
     private String popis;
-    private Set<Prostor> vychody;   // obsahuje sousední místnosti
+    private ArrayList<Prostor> vychody;   // obsahuje sousední místnosti
     private List<Vec> seznamVeci;
 
     /**
@@ -33,7 +33,7 @@ public class Prostor {
     public Prostor(String nazev, String popis) {
         this.nazev = nazev;
         this.popis = popis;
-        vychody = new HashSet<>();
+        vychody = new ArrayList<>();
         seznamVeci = new ArrayList<>();
     }
 
@@ -106,6 +106,8 @@ public class Prostor {
     public String getNazev() {
         return nazev;       
     }
+
+    public String getPopis() { return popis; }
 
     /**
      * Vrací textový řetězec, který popisuje sousední východy, například:
@@ -203,6 +205,15 @@ public class Prostor {
         }
 
         return vybranaVec;
+    }
+
+    public void odeberVec(String nazev) {
+        for (Vec vec : seznamVeci) {
+            if (vec.getNazev().equals(nazev)) {
+                seznamVeci.remove(vec);
+                return;
+            }
+        }
     }
 
     public Vec peekVec(String nazev) {

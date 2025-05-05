@@ -1,21 +1,25 @@
 package logika;
 
+import java.util.Objects;
+
 public class Vec {
     private String nazev;
     private boolean prenositelnost;
     private boolean nositelnost;
     private Prostor prozkoumej;
+    private HerniPlan herniPlan;
 
     /**
      * Vytvoří předmět se zadaným názvem a přenositelnostní
      * @param nazev Jméno věci jednoznačný identifikátor
      * @param prenositelnost Určuje zda se dá věc odnést z místnosti
      */
-    public Vec(String nazev, boolean prenositelnost, boolean nositelnost, Prostor prozkoumej) {
+    public Vec(String nazev, boolean prenositelnost, boolean nositelnost, Prostor prozkoumej, HerniPlan herniPlan) {
         this.nazev = nazev;
         this.prenositelnost = prenositelnost;
         this.nositelnost = nositelnost;
         this.prozkoumej = prozkoumej;
+        this.herniPlan = herniPlan;
     }
 
     public String getNazev() {
@@ -36,5 +40,45 @@ public class Vec {
 
     public Prostor getProstor() {
         return prozkoumej;
+    }
+
+    // Best practices be damned, Im hard coding this
+    public String pouzij(Vec vec) {
+        switch (nazev) {
+            case "dveře_celi_1":
+                if (Objects.equals(vec.getNazev(), "klíč_od_cel")) {
+                    herniPlan.getAktualniProstor().odeberVec("dveře_celi_1");
+                    Prostor cela1 = herniPlan.getProstor("cela_1");
+                    herniPlan.getAktualniProstor().setVychod(cela1);
+                    break;
+                }
+            case "dveře_celi_2":
+                if (Objects.equals(vec.getNazev(), "klíč_od_cel")) {
+                    herniPlan.getAktualniProstor().odeberVec("dveře_celi_2");
+                    Prostor cela2 = herniPlan.getProstor("cela_2");
+                    herniPlan.getAktualniProstor().setVychod(cela2);
+                    break;
+                }
+            case "dveře_celi_3":
+                if (Objects.equals(vec.getNazev(), "klíč_od_cel")) {
+                    herniPlan.getAktualniProstor().odeberVec("dveře_celi_3");
+                    Prostor cela3 = herniPlan.getProstor("cela_3");
+                    herniPlan.getAktualniProstor().setVychod(cela3);
+                    break;
+                }
+            case "zámek_okovů":
+                if (Objects.equals(vec.getNazev(), "klíč_od_okovů")) {
+                    //TODO
+                    break;
+                }
+            case "díra_ve_stěně":
+                if (Objects.equals(vec.getNazev(), "okovy")) {
+                    //TODO
+                    break;
+                }
+            default:
+                return vec.getNazev() + " se nedá použít na " + nazev;
+        }
+        return "";
     }
 }

@@ -44,6 +44,15 @@ public class Batoh {
         return null;
     }
 
+    public Vec peekDoBatohu(String nazev) {
+        for (Vec vec : seznamVeci) {
+            if (vec.getNazev().equals(nazev)) {
+                return vec;
+            }
+        }
+        return null;
+    }
+
     public boolean obsahujeVec(String nazev) {
         for(Vec vec : seznamVeci) {
             if (vec.getNazev().equals(nazev)) {

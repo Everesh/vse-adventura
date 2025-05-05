@@ -10,7 +10,24 @@ public class PrikazPouzij implements IPrikaz{
 
     @Override
     public String provedPrikaz(String... parametry) {
-        return "TODO";
+        if (parametry.length != 3) {
+            return "Příkaz 'použij' potřebuje 2 parametry spojené slovem 'na'";
+        }
+
+        Vec vec1 = herniPlan.getAktualniProstor().peekVec(parametry[0]);
+        if (vec1 == null) {
+            vec1 = herniPlan.getBatoh().peekDoBatohu(parametry[0]);
+        }
+        if (vec1 == null) {
+            return "První věc není v tvém batohu ani aktuální místnosti!";
+        }
+
+        Vec vec2 = herniPlan.getAktualniProstor().peekVec(parametry[2]);
+        if (vec2 == null) {
+            return "Druhá věc není v aktuální místnosti!";
+        }
+
+        return vec2.pouzij(vec1);
     }
 
 

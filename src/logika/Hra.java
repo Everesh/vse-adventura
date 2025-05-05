@@ -109,7 +109,16 @@ public class Hra implements IHra {
         if (platnePrikazy.jePlatnyPrikaz(slovoPrikazu)) {
             IPrikaz prikaz = platnePrikazy.vratPrikaz(slovoPrikazu);
             textKVypsani = prikaz.provedPrikaz(parametry);
-            textKVypsani += "\n" + herniPlan.getBatoh().dlouhyPopis();
+            textKVypsani += herniPlan.getAktualniProstor().getPopis() + "\n";
+            textKVypsani += herniPlan.getVybava().dlouhyPopis() + "\n";
+            textKVypsani += herniPlan.getBatoh().dlouhyPopis() + "\n";
+            if (herniPlan.getAktualniProstor().getNazev().isEmpty()) {
+                textKVypsani += "Poznatky:" + "\n"; //TODO
+                textKVypsani += "Obsahuje:" + herniPlan.getAktualniProstor().seznamVeci() + "\n";
+            } else {
+                textKVypsani += herniPlan.getAktualniProstor().seznamVeciDlouhy() + "\n";
+            }
+            textKVypsani += herniPlan.getAktualniProstor().seznamVychodyDlouhy();
         }
         else {
             textKVypsani="Nevím co tím myslíš? Tento příkaz neznám. ";
