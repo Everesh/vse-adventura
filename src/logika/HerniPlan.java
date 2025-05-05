@@ -34,11 +34,23 @@ public class HerniPlan {
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor domecek = new Prostor("domeček","domeček, ve kterém bydlí Karkulka");
-        Prostor chaloupka = new Prostor("chaloupka", "chaloupka, ve které bydlí babička Karkulky");
-        Prostor jeskyne = new Prostor("jeskyně","stará plesnivá jeskyně");
-        Prostor les = new Prostor("les","les s jahodami, malinami a pramenem vody");
-        Prostor hlubokyLes = new Prostor("hluboký_les","temný les, ve kterém lze potkat vlka");
+        Prostor moje_cela = new Prostor("moje_cela", "jsi ve své cele");
+        Prostor severniKoridorZalare = new Prostor("severní_koridor_žaláře",
+                                                    "Jsi v severním koridoru žaláře");
+        Prostor oubliette = new Prostor("oubliette", "Jsi v oubliette");
+        Prostor cela1 = new Prostor("cela_1", "Jsi v první cele");
+        Prostor stredniKoridorZalare = new Prostor("střední_koridor_žaláře",
+                                                    "Jsi ve středním koridoru žaláře");
+        Prostor cela2 = new Prostor("cela_2", "Jsi ve druhé cele");
+        Prostor zalarnikovaStanice = new Prostor("žalářníkova_stanice", "Jsi v žalářníkově stanici");
+        Prostor jizniKoridorZalare = new Prostor("jižní_koridor_žaláře", "Jsi v jižním koridoru žaláře");
+        Prostor cela3 = new Prostor("cela_3", "Jsi ve třetí cele");
+        Prostor koridorHradu = new Prostor("hlavní_koridor_hradu", "Jsi v hlavním koridoru hradu");
+        Prostor koruniSal = new Prostor("koruní_sál", "Jsi v koruním sálu");
+        Prostor staniceStraze = new Prostor( "strážní_stanice", "Jsi ve strážní stanici");
+        Prostor kralovaKomnata = new Prostor("králova_komnata", "Jsi v Králově komnatě");
+        Prostor skrytaCapkaMistnost = new Prostor("?", "ʆรเ √є รкгץтє ςคקкค ๓เรтภ๏รтเ");
+
 
         Vec hamburger = new Vec("Hamburger", true, false);
         domecek.vlozVec(hamburger);
