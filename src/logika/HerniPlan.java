@@ -55,7 +55,6 @@ public class HerniPlan {
         Prostor staniceStraze = new Prostor( "strážní_stanice", "Jsi ve strážní stanici");
         Prostor kralovaKomnata = new Prostor("králova_komnata", "Jsi v Králově komnatě");
         Prostor skrytaCapkaMistnost = new Prostor("?", "ʆรเ √є รкгץтє ςคקкค ๓เรтภ๏รтเ");
-        Prostor vychod1 = new Prostor("slanit_se_po_okovech_na_straně_hradu", "");
 
         //Pseudo Prostory pro Pruzkum Veci
         Prostor prostorTeloZalarnika = new Prostor("", "Prozkoumáváš tělo_žalářníka");
@@ -94,6 +93,9 @@ public class HerniPlan {
         // cela 3
         Vec palice = new Vec("palice", true, false, null, this);
         cela3.vlozVec(palice);
+        // oubliette
+        Vec nestabilniStena = new Vec("nestabilní_stěna", false, false, null, this);
+        oubliette.vlozVec(nestabilniStena);
 
         // Veci v pseudo prostorech
         // zalarnikovo telo
@@ -146,12 +148,11 @@ public class HerniPlan {
         prostory.add(staniceStraze);
         prostory.add(kralovaKomnata);
         prostory.add(skrytaCapkaMistnost);
-        prostory.add(vychod1);
         prostory.add(prostorTeloZalarnika);
         prostory.add(prostorZalarnikuvDiar);
 
         aktualniProstor = moje_cela;  // hra začíná v domečku
-        vyherniProstor = vychod1;
+        vyherniProstor = null;
     }
     
     /**

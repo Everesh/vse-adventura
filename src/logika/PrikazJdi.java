@@ -59,7 +59,7 @@ public class PrikazJdi implements IPrikaz {
             
             plan.setAktualniProstor(sousedniProstor);
             
-            if (sousedniProstor.equals(plan.getVyherniProstor())) {
+            if (sousedniProstor.getNazev().equals("slanit_se_po_okovech_na_straně_hradu")) {
                 hra.setEpilog( "Dosel jsi do vyherniho prostoru. Hra konci. Diky!" );
                 hra.setKonecHry(true);
             }

@@ -73,7 +73,8 @@ public class Vec {
                 }
             case "díra_ve_stěně":
                 if (Objects.equals(vec.getNazev(), "okovy")) {
-                    //TODO
+                    herniPlan.getBatoh().odeberZBatohu("okovy");
+                    herniPlan.getAktualniProstor().setVychod(new Prostor("slanit_se_po_okovech_na_straně_hradu", ""));
                     break;
                 }
             default:

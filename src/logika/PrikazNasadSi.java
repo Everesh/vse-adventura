@@ -11,7 +11,14 @@ public class PrikazNasadSi implements IPrikaz {
 
     @Override
     public String provedPrikaz(String... parametry) {
-        return "TODO";
+        if (parametry.length != 1) {
+            return "Příkaz 'nandej si' přijímá pouze jeden parametr\n";
+        }
+        if (!herniPlan.getBatoh().obsahujeVec(parametry[0])) {
+            return parametry[0] + " nemáš v batohu!\n";
+        }
+        herniPlan.getBatoh().vlozDoBatohu(herniPlan.getVybava().sundejSi(parametry[0]));
+        return "";
     }
 
 

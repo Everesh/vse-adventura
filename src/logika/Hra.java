@@ -61,8 +61,8 @@ public class Hra implements IHra {
     }
 
 
-    public String vratEpilog(String type) {
-        return epilog + "\n" + type;
+    public String vratEpilog(String _epilog) {
+        return epilog + "\n";
     }
     /**
      * Moznost upravit epilog hry
@@ -109,11 +109,17 @@ public class Hra implements IHra {
         if (platnePrikazy.jePlatnyPrikaz(slovoPrikazu)) {
             IPrikaz prikaz = platnePrikazy.vratPrikaz(slovoPrikazu);
             textKVypsani = prikaz.provedPrikaz(parametry);
+
+            if (prikaz instanceof PrikazJdi && konecHry) {
+                textKVypsani += vratEpilog() + "\n";
+                return textKVypsani;
+            }
+
             textKVypsani += herniPlan.getAktualniProstor().getPopis() + "\n";
             textKVypsani += herniPlan.getVybava().dlouhyPopis() + "\n";
             textKVypsani += herniPlan.getBatoh().dlouhyPopis() + "\n";
             if (herniPlan.getAktualniProstor().getNazev().equals("")) {
-                textKVypsani += "Poznatky:" + "\n"; //TODO
+                textKVypsani += "Poznatky:" + "\n"; //TODO (Or not, its not part of the main plot)
                 textKVypsani += "Obsahuje:" + herniPlan.getAktualniProstor().seznamVeci() + "\n";
             } else {
                 textKVypsani += herniPlan.getAktualniProstor().seznamVeciDlouhy() + "\n";
