@@ -52,35 +52,38 @@ public class HerniPlan {
         Prostor skrytaCapkaMistnost = new Prostor("?", "ʆรเ √є รкгץтє ςคקкค ๓เรтภ๏รтเ");
         Prostor vychod1 = new Prostor("slanit_se_po_okovech_na_straně_hradu", "");
 
+        //Pseudo Prostory pro Pruzkum Veci
+        Prostor prostorTeloZalarnika = new Prostor("", "Prozkoumáváš tělo_žalářníka");
+        Prostor prostorZalarnikuvDiar = new Prostor("", "Prozkoumáváš žalářníkův_diář");
 
         // VECI woooo hoooo https://www.youtube.com/watch?v=f8mL0_4GeV0
         // startovni vybava
-        Vec okovy = new Vec("okovy", true, true);
+        Vec okovy = new Vec("okovy", true, true, null);
         vybava.nasadSi(okovy);
         // moje cela
-        Vec teloZalarnika = new Vec("tělo_žalářníka", false, false);
+        Vec teloZalarnika = new Vec("tělo_žalářníka", false, false, prostorTeloZalarnika);
         moje_cela.vlozVec(teloZalarnika);
-        Vec zamekOkovu = new Vec("zámek_okovů", false, false);
+        Vec zamekOkovu = new Vec("zámek_okovů", false, false, null);
         moje_cela.vlozVec(zamekOkovu);
         // severni koridor zalare
-        Vec dvereCeli1 = new Vec("dveře_celi_1", false, false);
+        Vec dvereCeli1 = new Vec("dveře_celi_1", false, false, null);
         severniKoridorZalare.vlozVec(dvereCeli1);
         // stredni koridor zalare
-        Vec dvereCeli2 = new Vec("dveře_celi_2", false, false);
+        Vec dvereCeli2 = new Vec("dveře_celi_2", false, false, null);
         stredniKoridorZalare.vlozVec(dvereCeli2);
         // jizni koridor zalare
-        Vec dvereCeli3 = new Vec("dveře_celi_3", false, false);
+        Vec dvereCeli3 = new Vec("dveře_celi_3", false, false, null);
         jizniKoridorZalare.vlozVec(dvereCeli3);
         // zalarnikova stanice
-        Vec syr = new Vec("sýr", true, false);
+        Vec syr = new Vec("sýr", true, false, null);
         zalarnikovaStanice.vlozVec(syr);
-        Vec zalarnikuvDiar = new Vec("žalářníkův_diář", false, false);
+        Vec zalarnikuvDiar = new Vec("žalářníkův_diář", false, false, prostorZalarnikuvDiar);
         zalarnikovaStanice.vlozVec(zalarnikuvDiar);
         // capka mistnost
-        Vec capka = new Vec("čapka", true, true);
+        Vec capka = new Vec("čapka", true, true, null);
         skrytaCapkaMistnost.vlozVec(capka);
         // cela 3
-        Vec palice = new Vec("palice", true, false);
+        Vec palice = new Vec("palice", true, false, null);
 
 
         
@@ -107,6 +110,10 @@ public class HerniPlan {
         koruniSal.setVychod(koridorHradu);
         kralovaKomnata.setVychod(koridorHradu);
         staniceStraze.setVychod(koridorHradu);
+
+        // přechody pseudo mistností
+        prostorTeloZalarnika.setVychod(moje_cela);
+        prostorZalarnikuvDiar.setVychod(zalarnikovaStanice);
                 
         aktualniProstor = moje_cela;  // hra začíná v domečku
         vyherniProstor = vychod1;

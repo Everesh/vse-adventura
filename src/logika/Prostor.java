@@ -205,6 +205,16 @@ public class Prostor {
         return vybranaVec;
     }
 
+    public Vec peekVec(String nazev) {
+        Vec vybranaVec = null;
+        for (Vec vec : seznamVeci) {
+            if (vec.getNazev().equals(nazev)) {
+                vybranaVec = vec;
+            }
+        }
+        return vybranaVec;
+    }
+
     public String seznamVeciDlouhy() {
         return "Seznam věcí v místnosti:" + seznamVeci();
     }

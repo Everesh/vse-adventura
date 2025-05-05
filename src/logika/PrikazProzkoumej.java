@@ -21,10 +21,13 @@ public class PrikazProzkoumej implements IPrikaz {
         Prostor aktualniProstor = herniPlan.getAktualniProstor();
 
         if (aktualniProstor.obsahujeVec(nazevVeci)) {
-            Vec pozadovanaVec = aktualniProstor.vyberVec(nazevVeci);
-
-            // TODO
-            return "Prozkoumej jsi " + nazevVeci + ".";
+            Vec pozadovanaVec = aktualniProstor.peekVec(nazevVeci);
+            if (pozadovanaVec.maProstor()) {
+                herniPlan.setAktualniProstor( pozadovanaVec.getProstor() );
+                return "";
+            } else {
+                return nazevVeci + " nelze prozkoumat!";
+            }
         } else {
             return nazevVeci + " není v tomto prostoru!";
         }
