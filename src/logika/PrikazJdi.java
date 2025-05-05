@@ -1,5 +1,7 @@
 package logika;
 
+import java.util.Objects;
+
 /**
  *  Třída PrikazJdi implementuje pro hru příkaz jdi.
  *  Tato třída je součástí jednoduché textové hry.
@@ -47,7 +49,16 @@ public class PrikazJdi implements IPrikaz {
             return "Tam se odsud jít nedá!";
         }
         else {
+            if (Objects.equals(smer, "severní_koridor_žaláře") && Objects.equals(plan.getAktualniProstor().getNazev(), "cela_1")) {
+                Prostor cela1 = plan.getProstor("cela_1");
+                if (cela1.obsahujeVec("sýr")) {
+                    cela1.odeberVec("sýr");
+                    cela1.vlozVec(new Vec("klíč_od_okovů", true, false, null, plan));
+                }
+            }
+            
             plan.setAktualniProstor(sousedniProstor);
+            
             if (sousedniProstor.equals(plan.getVyherniProstor())) {
                 hra.setEpilog( "Dosel jsi do vyherniho prostoru. Hra konci. Diky!" );
                 hra.setKonecHry(true);

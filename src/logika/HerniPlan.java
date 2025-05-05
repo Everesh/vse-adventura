@@ -60,6 +60,7 @@ public class HerniPlan {
         //Pseudo Prostory pro Pruzkum Veci
         Prostor prostorTeloZalarnika = new Prostor("", "Prozkoumáváš tělo_žalářníka");
         Prostor prostorZalarnikuvDiar = new Prostor("", "Prozkoumáváš žalářníkův_diář");
+        Prostor prostorMysiDira = new Prostor("", "Prozkoumáváš myší_díra");
 
         // VECI woooo hoooo https://www.youtube.com/watch?v=f8mL0_4GeV0
         // startovni vybava
@@ -84,6 +85,9 @@ public class HerniPlan {
         zalarnikovaStanice.vlozVec(zalarnikuvDiar);
         Vec syr = new Vec("sýr", true, false, null, this);
         zalarnikovaStanice.vlozVec(syr);
+        // cela 1
+        Vec mysiDira = new Vec("myší_díra", false, false, prostorMysiDira, this);
+        cela1.vlozVec(mysiDira);
         // capka mistnost
         Vec capka = new Vec("čapka", true, true, null, this);
         skrytaCapkaMistnost.vlozVec(capka);

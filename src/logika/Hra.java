@@ -112,7 +112,7 @@ public class Hra implements IHra {
             textKVypsani += herniPlan.getAktualniProstor().getPopis() + "\n";
             textKVypsani += herniPlan.getVybava().dlouhyPopis() + "\n";
             textKVypsani += herniPlan.getBatoh().dlouhyPopis() + "\n";
-            if (herniPlan.getAktualniProstor().getNazev().isEmpty()) {
+            if (herniPlan.getAktualniProstor().getNazev().equals("")) {
                 textKVypsani += "Poznatky:" + "\n"; //TODO
                 textKVypsani += "Obsahuje:" + herniPlan.getAktualniProstor().seznamVeci() + "\n";
             } else {

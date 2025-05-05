@@ -15,23 +15,23 @@ public class PrikazPoloz implements IPrikaz {
     public String provedPrikaz(String... parametry) {
         this.batoh = herniPlan.getBatoh();
         if (parametry.length == 0) {
-            return "Co mám položit, dej mi název věci!";
+            return "Co mám položit, dej mi název věci!\n";
         }
 
         if (parametry.length > 1) {
-            return "Každá věc má jednoslovný název a musí se položit zvlášť!";
+            return "Každá věc má jednoslovný název a musí se položit zvlášť!\n";
         }
 
         String nazevVeci = parametry[0];
 
         if (!batoh.obsahujeVec(nazevVeci)) {
-            return nazevVeci + " nemáš v batohu!";
+            return nazevVeci + " nemáš v batohu!\n";
         }
 
         Vec pozadovanaVec = batoh.odeberZBatohu(nazevVeci);
         Prostor aktualniProstor = herniPlan.getAktualniProstor();
         aktualniProstor.vlozVec(pozadovanaVec);
-        return "Položil(a) jsi " + nazevVeci + ".";
+        return "";
     }
 
     @Override
