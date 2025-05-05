@@ -89,4 +89,6 @@ public class HerniPlan {
         return batoh;
     }
 
+    public Vybava getVybava() {return vybava;}
+
 }

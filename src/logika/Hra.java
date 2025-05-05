@@ -43,12 +43,14 @@ public class Hra implements IHra {
      *  Vrátí úvodní zprávu pro hráče.
      */
     public String vratUvitani() {
-        return "Vítejte!\n" +
-               "Toto je příběh o Červené Karkulce, babičce a vlkovi.\n" +
-               "Napište 'nápověda', pokud si nevíte rady, jak hrát dál.\n" +
-               "\n" +
-               herniPlan.getAktualniProstor().dlouhyPopis() + "\n" +
-               herniPlan.getBatoh().dlouhyPopis();
+        return "Tělo žálářníka se přestalo vzpírat a nehybné se svalilo z tvých rukou k zemi.\n" +
+                "Panika. Pot. Chlad. Chuť grepu na spodním rtu. Okovy kolem nohou.\n" +
+                "To je stav ve kterém jsi přišel ke svému vědomí. Ať už se má situace jakkoli\n" +
+                "tvé další kroky jsou instinktivně jasné: Dostaň se ven!\n" +
+                herniPlan.getVybava().dlouhyPopis() + "\n" +
+                herniPlan.getBatoh().dlouhyPopis() + "\n" +
+                herniPlan.getAktualniProstor().seznamVeciDlouhy() + "\n" +
+                herniPlan.getAktualniProstor().seznamVychodyDlouhy();
     }
     
     /**

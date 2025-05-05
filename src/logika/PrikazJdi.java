@@ -52,7 +52,7 @@ public class PrikazJdi implements IPrikaz {
                 hra.setEpilog( "Dosel jsi do vyherniho prostoru. Hra konci. Diky!" );
                 hra.setKonecHry(true);
             }
-            return sousedniProstor.dlouhyPopis();
+            return sousedniProstor.seznamVychody();
         }
     }
     

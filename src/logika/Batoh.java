@@ -14,14 +14,14 @@ public class Batoh {
     }
 
     public String dlouhyPopis() {
-        return "Mas v batohu: " + vypisBatohu();
+        return "Seznam věcí v batohu:" + vypisBatohu();
 
     }
 
     private String vypisBatohu() {
         String vyis = "";
         for (Vec vec : seznamVeci) {
-            vyis += vec.getNazev() + " ";
+            vyis += " " + vec.getNazev();
         }
         return vyis;
     }

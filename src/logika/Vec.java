@@ -20,7 +20,7 @@ public class Vec {
         return nazev;
     }
 
-    public boolean jePrenositelnost() {
+    public boolean jePrenositelna() {
         return prenositelnost;
     }
 

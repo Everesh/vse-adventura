@@ -108,26 +108,17 @@ public class Prostor {
     }
 
     /**
-     * Vrací "dlouhý" popis prostoru, který může vypadat následovně: Jsi v
-     * mistnosti/prostoru vstupni hala budovy VSE na Jiznim meste. vychody:
-     * chodba bufet ucebna
-     *
-     * @return Dlouhý popis prostoru
-     */
-    public String dlouhyPopis() {
-        return "Jsi v mistnosti/prostoru " + popis + ".\n"
-                + popisVychodu() + "\n"
-                + seznamVeci();
-    }
-
-    /**
      * Vrací textový řetězec, který popisuje sousední východy, například:
      * "vychody: hala ".
      *
      * @return Popis východů - názvů sousedních prostorů
      */
-    private String popisVychodu() {
-        String vracenyText = "východy:";
+    public String seznamVychodyDlouhy() {
+        return "Východy:" + seznamVychody();
+    }
+
+    public String seznamVychody() {
+        String vracenyText = "";
         for (Prostor sousedni : vychody) {
             vracenyText += " " + sousedni.getNazev();
         }
@@ -205,7 +196,7 @@ public class Prostor {
             }
         }
 
-        if (vybranaVec != null && vybranaVec.isPrenositelnost()) {
+        if (vybranaVec != null && vybranaVec.jePrenositelna()) {
             seznamVeci.remove(vybranaVec);
         } else {
             vybranaVec = null;
@@ -214,14 +205,18 @@ public class Prostor {
         return vybranaVec;
     }
 
+    public String seznamVeciDlouhy() {
+        return "Seznam věcí v místnosti:" + seznamVeci();
+    }
+
     /**
      * Vrati seznam veci ze seznamVeci
      * @return
      */
-    private String seznamVeci() {
-        String seznam = "Seznam Veci: ";
+    public String seznamVeci() {
+        String seznam = "";
         for (Vec vec : seznamVeci) {
-            seznam += vec.getNazev() + " ";
+            seznam += " " + vec.getNazev();
         }
         return seznam;
     }
