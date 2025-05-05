@@ -19,11 +19,11 @@ public class Batoh {
     }
 
     private String vypisBatohu() {
-        String vyis = "";
+        String vypis = "";
         for (Vec vec : seznamVeci) {
-            vyis += " " + vec.getNazev();
+            vypis += (vypis.isEmpty() ? " " : ", ") + vec.getNazev();
         }
-        return vyis;
+        return vypis;
     }
 
     public boolean vlozDoBatohu(Vec vec) {

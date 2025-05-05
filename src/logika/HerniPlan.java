@@ -24,9 +24,9 @@ public class HerniPlan {
      *  Jako výchozí aktuální prostor nastaví halu.
      */
     public HerniPlan() {
-        zalozProstoryHry();
         this.batoh = new Batoh(4);
         this.vybava = new Vybava();
+        zalozProstoryHry();
     }
     /**
      *  Vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -50,23 +50,66 @@ public class HerniPlan {
         Prostor staniceStraze = new Prostor( "strážní_stanice", "Jsi ve strážní stanici");
         Prostor kralovaKomnata = new Prostor("králova_komnata", "Jsi v Králově komnatě");
         Prostor skrytaCapkaMistnost = new Prostor("?", "ʆรเ √є รкгץтє ςคקкค ๓เรтภ๏รтเ");
+        Prostor vychod1 = new Prostor("slanit_se_po_okovech_na_straně_hradu", "");
 
 
-        Vec hamburger = new Vec("Hamburger", true, false);
-        domecek.vlozVec(hamburger);
+        // VECI woooo hoooo https://www.youtube.com/watch?v=f8mL0_4GeV0
+        // startovni vybava
+        Vec okovy = new Vec("okovy", true, true);
+        vybava.nasadSi(okovy);
+        // moje cela
+        Vec teloZalarnika = new Vec("tělo_žaláříka", false, false);
+        moje_cela.vlozVec(teloZalarnika);
+        Vec zamekOkovu = new Vec("zámek_okovů", false, false);
+        moje_cela.vlozVec(zamekOkovu);
+        // severni koridor zalare
+        Vec dvereCeli1 = new Vec("dveře_celi_1", false, false);
+        severniKoridorZalare.vlozVec(dvereCeli1);
+        // stredni koridor zalare
+        Vec dvereCeli2 = new Vec("dveře_celi_2", false, false);
+        stredniKoridorZalare.vlozVec(dvereCeli2);
+        // jizni koridor zalare
+        Vec dvereCeli3 = new Vec("dveře_celi_3", false, false);
+        jizniKoridorZalare.vlozVec(dvereCeli3);
+        // zalarnikova stanice
+        Vec syr = new Vec("sýr", true, false);
+        zalarnikovaStanice.vlozVec(syr);
+        Vec zalarnikuvDiar = new Vec("žalářníkův_diář", false, false);
+        zalarnikovaStanice.vlozVec(zalarnikuvDiar);
+        // capka mistnost
+        Vec capka = new Vec("čapka", true, true);
+        skrytaCapkaMistnost.vlozVec(capka);
+        // cela 3
+        Vec palice = new Vec("palice", true, false);
+
+
         
         // přiřazují se průchody mezi prostory (sousedící prostory)
-        domecek.setVychod(les);
-        les.setVychod(domecek);
-        les.setVychod(hlubokyLes);
-        hlubokyLes.setVychod(les);
-        hlubokyLes.setVychod(jeskyne);
-        hlubokyLes.setVychod(chaloupka);
-        jeskyne.setVychod(hlubokyLes);
-        chaloupka.setVychod(hlubokyLes);
+        moje_cela.setVychod(severniKoridorZalare);
+        severniKoridorZalare.setVychod(moje_cela);
+        severniKoridorZalare.setVychod(oubliette);
+        severniKoridorZalare.setVychod(stredniKoridorZalare);
+        stredniKoridorZalare.setVychod(severniKoridorZalare);
+        stredniKoridorZalare.setVychod(staniceStraze);
+        stredniKoridorZalare.setVychod(jizniKoridorZalare);
+        jizniKoridorZalare.setVychod(stredniKoridorZalare);
+        jizniKoridorZalare.setVychod(koridorHradu);
+        cela1.setVychod(severniKoridorZalare);
+        oubliette.setVychod(severniKoridorZalare);
+        staniceStraze.setVychod(stredniKoridorZalare);
+        cela2.setVychod(stredniKoridorZalare);
+        cela3.setVychod(jizniKoridorZalare);
+        skrytaCapkaMistnost.setVychod(cela2);
+        koridorHradu.setVychod(jizniKoridorZalare);
+        koridorHradu.setVychod(koruniSal);
+        koridorHradu.setVychod(kralovaKomnata);
+        koridorHradu.setVychod(staniceStraze);
+        koruniSal.setVychod(koridorHradu);
+        kralovaKomnata.setVychod(koridorHradu);
+        staniceStraze.setVychod(koridorHradu);
                 
-        aktualniProstor = domecek;  // hra začíná v domečku
-        vyherniProstor = jeskyne;
+        aktualniProstor = moje_cela;  // hra začíná v domečku
+        vyherniProstor = vychod1;
     }
     
     /**

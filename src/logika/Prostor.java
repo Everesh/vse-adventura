@@ -120,7 +120,7 @@ public class Prostor {
     public String seznamVychody() {
         String vracenyText = "";
         for (Prostor sousedni : vychody) {
-            vracenyText += " " + sousedni.getNazev();
+            vracenyText += (vracenyText.isEmpty() ? " " : ", ") + sousedni.getNazev();
         }
         return vracenyText;
     }
@@ -216,7 +216,7 @@ public class Prostor {
     public String seznamVeci() {
         String seznam = "";
         for (Vec vec : seznamVeci) {
-            seznam += " " + vec.getNazev();
+            seznam += (seznam.isEmpty() ? " " : ", ") + vec.getNazev();
         }
         return seznam;
     }
