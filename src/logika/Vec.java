@@ -68,7 +68,7 @@ public class Vec {
                 }
             case "zámek_okovů":
                 if (Objects.equals(vec.getNazev(), "klíč_od_okovů")) {
-                    //TODO
+                    herniPlan.getAktualniProstor().odeberVec("zámek_okovů");
                     break;
                 }
             case "díra_ve_stěně":

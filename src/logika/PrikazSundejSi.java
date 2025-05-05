@@ -10,7 +10,14 @@ public class PrikazSundejSi implements IPrikaz {
 
     @Override
     public String provedPrikaz(String... parametry) {
-        return "TODO";
+        if (parametry.length != 1) {
+            return "Příkaz 'sundej si' přijímá pouze jeden parametr\n";
+        }
+        if (!herniPlan.getVybava().masNaSobe(parametry[0])) {
+            return parametry[0] + " nemáš na sobě\n";
+        }
+        herniPlan.getBatoh().vlozDoBatohu(herniPlan.getVybava().sundejSi(parametry[0]));
+        return "";
     }
 
 
