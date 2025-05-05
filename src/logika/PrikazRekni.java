@@ -9,6 +9,11 @@ public class PrikazRekni implements IPrikaz {
     }
 
     @Override
+    public String provedPrikaz(String... parametry) {
+        return "TODO";
+    }
+
+    @Override
     public String getNazev() {
         return NAZEV;
     }
