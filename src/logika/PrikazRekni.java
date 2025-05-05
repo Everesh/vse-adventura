@@ -4,7 +4,7 @@ public class PrikazRekni implements IPrikaz {
     private static final String NAZEV = "řekni";
     private HerniPlan herniPlan;
 
-    public PrikazPoloz(HerniPlan herniPlan) {
+    public PrikazRekni(HerniPlan herniPlan) {
         this.herniPlan = herniPlan;
     }
 
