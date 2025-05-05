@@ -58,7 +58,7 @@ public class HerniPlan {
         Vec okovy = new Vec("okovy", true, true);
         vybava.nasadSi(okovy);
         // moje cela
-        Vec teloZalarnika = new Vec("tělo_žaláříka", false, false);
+        Vec teloZalarnika = new Vec("tělo_žalářníka", false, false);
         moje_cela.vlozVec(teloZalarnika);
         Vec zamekOkovu = new Vec("zámek_okovů", false, false);
         moje_cela.vlozVec(zamekOkovu);

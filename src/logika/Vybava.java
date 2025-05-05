@@ -12,13 +12,13 @@ public class Vybava {
     }
 
     public String dlouhyPopis() {
-        return "Máš na sobě: " + vypisVybavy();
+        return "Máš na sobě:" + vypisVybavy();
     }
 
     private String vypisVybavy() {
         String vyis = "";
         for (Vec vec : seznamVeci) {
-            vyis += vec.getNazev() + " ";
+            vyis += " " + vec.getNazev();
         }
         return vyis;
     }
