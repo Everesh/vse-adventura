@@ -17,6 +17,7 @@ public class HerniPlan {
     private Prostor aktualniProstor;
     private Prostor vyherniProstor;
     private Batoh batoh;
+    private Vybava vybava;
     
      /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -25,6 +26,7 @@ public class HerniPlan {
     public HerniPlan() {
         zalozProstoryHry();
         this.batoh = new Batoh(4);
+        this.vybava = new Vybava();
     }
     /**
      *  Vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -38,7 +40,7 @@ public class HerniPlan {
         Prostor les = new Prostor("les","les s jahodami, malinami a pramenem vody");
         Prostor hlubokyLes = new Prostor("hluboký_les","temný les, ve kterém lze potkat vlka");
 
-        Vec hamburger = new Vec("Hamburger", true);
+        Vec hamburger = new Vec("Hamburger", true, false);
         domecek.vlozVec(hamburger);
         
         // přiřazují se průchody mezi prostory (sousedící prostory)
