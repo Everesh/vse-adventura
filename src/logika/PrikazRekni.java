@@ -10,7 +10,10 @@ public class PrikazRekni implements IPrikaz {
 
     @Override
     public String provedPrikaz(String... parametry) {
-        return "TODO";
+        if (parametry == null) {
+            return "\"\"\n";
+        }
+        return "\"" + String.join(" ", parametry) + "\"\n";
     }
 
     @Override

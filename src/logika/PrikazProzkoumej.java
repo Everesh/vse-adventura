@@ -10,11 +10,11 @@ public class PrikazProzkoumej implements IPrikaz {
 
     public String provedPrikaz(String... parametry) {
         if (parametry.length == 0) {
-            return "Co mám prozkoumat? Musíš zadat jméno věci!";
+            return "Co mám prozkoumat? Musíš zadat jméno věci!\n";
         }
 
         if (parametry.length > 1) {
-            return "Každá věc je jednoslovná a musí se zkoumat zvlášť!";
+            return "Každá věc je jednoslovná a musí se zkoumat zvlášť!\n";
         }
 
         String nazevVeci = parametry[0];
@@ -26,10 +26,10 @@ public class PrikazProzkoumej implements IPrikaz {
                 herniPlan.setAktualniProstor( pozadovanaVec.getProstor() );
                 return "";
             } else {
-                return nazevVeci + " nelze prozkoumat!";
+                return nazevVeci + " nelze prozkoumat!\n";
             }
         } else {
-            return nazevVeci + " není v tomto prostoru!";
+            return nazevVeci + " není v tomto prostoru!\n";
         }
     }
 

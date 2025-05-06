@@ -64,6 +64,10 @@ public class PrikazJdi implements IPrikaz {
             if (sousedniProstor.getNazev().equals("slanit_se_po_okovech_na_straně_hradu")) {
                 hra.setEpilog( "Dosel jsi do vyherniho prostoru. Hra konci. Diky!" );
                 hra.setKonecHry(true);
+            } else if (sousedniProstor.getNazev().equals("hlavní_koridor_hradu") &&
+                    (plan.getVybava().masNaSobe("okovy") || !plan.getVybava().masNaSobe("žalářníkův_úbor"))) {
+                hra.setEpilog("Narazil jsi na hradní stráž. Podle tvého vzhledu v tobě okamžitě rozpoznali uprchlého vězně. Prohrál jsi. Více štěstí příště!");
+                hra.setKonecHry(true);
             }
             return "";
         }

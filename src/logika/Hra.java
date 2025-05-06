@@ -34,7 +34,7 @@ public class Hra implements IHra {
         platnePrikazy.vlozPrikaz(new PrikazProzkoumej(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazPouzij(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazRekni(herniPlan));
-        platnePrikazy.vlozPrikaz(new PrikazUder(herniPlan));
+        platnePrikazy.vlozPrikaz(new PrikazUder(herniPlan, this));
         platnePrikazy.vlozPrikaz(new PrikazNasadSi(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazSundejSi(herniPlan));
     }
@@ -110,7 +110,7 @@ public class Hra implements IHra {
             IPrikaz prikaz = platnePrikazy.vratPrikaz(slovoPrikazu);
             textKVypsani = prikaz.provedPrikaz(parametry);
 
-            if (prikaz instanceof PrikazJdi && konecHry) {
+            if ((prikaz instanceof PrikazJdi || prikaz instanceof PrikazUder) && konecHry) {
                 textKVypsani += vratEpilog() + "\n";
                 return textKVypsani;
             }
@@ -119,8 +119,19 @@ public class Hra implements IHra {
             textKVypsani += herniPlan.getVybava().dlouhyPopis() + "\n";
             textKVypsani += herniPlan.getBatoh().dlouhyPopis() + "\n";
             if (herniPlan.getAktualniProstor().getNazev().equals("")) {
-                textKVypsani += "Poznatky:" + "\n"; //TODO (Or not, its not part of the main plot)
-                textKVypsani += "Obsahuje:" + herniPlan.getAktualniProstor().seznamVeci() + "\n";
+                textKVypsani += "Poznatky:";
+                switch (herniPlan.getAktualniProstor().getPopis()) {
+                    case "myší_díra":
+                        textKVypsani += " - Uvnitř vidíš hromádku různých kovových objektů, nicméně jsou příliš daleko, než aby si je mohl zdvihnout";
+                        break;
+                    case "žalářníkův_diář":
+                        textKVypsani += " - Soužití žalářníka a myší v žaláři se nedávno zhoršilo kvůli jejich nově vznikající tendenci krást drobné kovové předměty\n";
+                        textKVypsani += "          - Před dvěma dny král z paranoie odvolal většinu členů stráže, nová stráž se stále seznamuje s poddanými sloužícími v prostorech hradu";
+                        break;
+                    default:
+                        textKVypsani += "";
+                }
+                textKVypsani += "\nObsahuje:" + herniPlan.getAktualniProstor().seznamVeci() + "\n";
             } else {
                 textKVypsani += herniPlan.getAktualniProstor().seznamVeciDlouhy() + "\n";
             }
@@ -154,4 +165,3 @@ public class Hra implements IHra {
      }
     
 }
-

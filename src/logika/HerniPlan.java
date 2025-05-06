@@ -96,6 +96,9 @@ public class HerniPlan {
         // oubliette
         Vec nestabilniStena = new Vec("nestabilní_stěna", false, false, null, this);
         oubliette.vlozVec(nestabilniStena);
+        // hlavní_koridor_hradu
+        Vec straz = new Vec("stráž", false, false, null, this);
+        koridorHradu.vlozVec(straz);
 
         // Veci v pseudo prostorech
         // zalarnikovo telo
@@ -133,6 +136,7 @@ public class HerniPlan {
         // přechody pseudo mistností
         prostorTeloZalarnika.setVychod(moje_cela);
         prostorZalarnikuvDiar.setVychod(zalarnikovaStanice);
+        prostorMysiDira.setVychod(cela1);
         
         // index prostorů
         prostory.add(moje_cela);
