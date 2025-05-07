@@ -14,10 +14,23 @@ public class PrikazProzkoumej implements IPrikaz {
     private static final String NAZEV = "prozkoumej";
     private HerniPlan herniPlan;
 
+    /**
+     * Konstruktor třídy
+     * @param herniPlan
+     * @return this
+     */
     public PrikazProzkoumej(HerniPlan herniPlan) {
         this.herniPlan = herniPlan;
     }
 
+    /**
+     * Provede příkaz prozkoumej
+     *
+     * Pokusí se přejít do pseudoProstoru ve věci, existujeli
+     *
+     * @param parametry název věci.
+     * @return Error message ("" pokud vše proběhne v pořádku)
+     */
     public String provedPrikaz(String... parametry) {
         if (parametry.length == 0) {
             return "Co mám prozkoumat? Musíš zadat jméno věci!\n";
@@ -43,6 +56,11 @@ public class PrikazProzkoumej implements IPrikaz {
         }
     }
 
+    /**
+     *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     *
+     *  @ return nazev prikazu
+     */
     @Override
     public String getNazev() {
         return NAZEV;
