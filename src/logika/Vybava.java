@@ -14,14 +14,26 @@ public class Vybava {
 
     private List<Vec> seznamVeci;
 
+    /**
+     *  Vytvoří novou výbavu s definovanou velikostí
+     * @return this
+     */
     public Vybava() {
         seznamVeci = new ArrayList<>();
     }
 
+    /**
+     * Vrati seznam veci ze seznamVeci předepsaný stringem "Máš na sobě:"
+     * @return seznam vybavených věcé
+     */
     public String dlouhyPopis() {
         return "Máš na sobě:" + vypisVybavy();
     }
 
+    /**
+     * Vrati seznam veci ze seznamVeci
+     * @return seznam vybavených věcé
+     */
     private String vypisVybavy() {
         String vyis = "";
         for (Vec vec : seznamVeci) {
@@ -30,6 +42,11 @@ public class Vybava {
         return vyis;
     }
 
+    /**
+     * Pokusí se vybavit věc jeli nositelná
+     * @param vec věc kterou se metoda pokusí vybavit
+     * @return bool zda se nasazení povedlo
+     */
     public boolean nasadSi(Vec vec) {
         if (vec.jeNositelna()) {
             seznamVeci.add(vec);
@@ -38,6 +55,11 @@ public class Vybava {
         return false;
     }
 
+    /**
+     * Pokusí se sundat věc z vybavebí
+     * @param nazev nazev věci kterou se pokusí metoda sundat
+     * @return bool zda se sundání povedlo
+     */
     public Vec sundejSi(String nazev) {
         for (Vec vec : seznamVeci) {
             if (vec.getNazev().equals(nazev)) {
@@ -48,6 +70,11 @@ public class Vybava {
         return null;
     }
 
+    /**
+     * Vrátí informaci zda je věc vybavená
+     * @param nazev nazev věci jejíž nasazenost se testuje
+     * @return bool
+     */
     public boolean masNaSobe(String nazev) {
         for (Vec vec : seznamVeci) {
             if (vec.getNazev().equals(nazev)) {

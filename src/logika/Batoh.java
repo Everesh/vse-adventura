@@ -27,7 +27,7 @@ public class Batoh {
 
     /**
      * Vrati seznam veci ze seznamVeci předepsaný stringem "Seznam věcí v batohu:"
-     * @return
+     * @return seznam věcí v batohu
      */
     public String dlouhyPopis() {
         return "Seznam věcí v batohu:" + vypisBatohu();
@@ -36,7 +36,7 @@ public class Batoh {
 
     /**
      * Vrati seznam veci ze seznamVeci
-     * @return
+     * @return seznam věcí v batohu
      */
     private String vypisBatohu() {
         String vypis = "";
