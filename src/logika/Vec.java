@@ -22,6 +22,9 @@ public class Vec {
      * Vytvoří předmět se zadaným názvem a přenositelnostní
      * @param nazev Jméno věci jednoznačný identifikátor
      * @param prenositelnost Určuje zda se dá věc odnést z místnosti
+     * @param nositelnost Určuje zda se dá věc bléct
+     * @param prozkoumej pseudoProstor předmětu (většinou null)
+     * @param herniPlan reference na herniPlan
      */
     public Vec(String nazev, boolean prenositelnost, boolean nositelnost, Prostor prozkoumej, HerniPlan herniPlan) {
         this.nazev = nazev;
@@ -31,27 +34,52 @@ public class Vec {
         this.herniPlan = herniPlan;
     }
 
+    /**
+     * Vrátí název předmětu
+     * @return název
+     */
     public String getNazev() {
         return nazev;
     }
 
+    /**
+     * Vrátí boolean s informací o přenositelnosti
+     * @return bool
+     */
     public boolean jePrenositelna() {
         return prenositelnost;
     }
 
+    /**
+     * Vrátí boolean s informací o nositelnosti
+     * @return bool
+     */
     public boolean jeNositelna() {
         return nositelnost;
     }
 
+    /**
+     * Vrátí boolean s informací o existenci pseudoProstoru
+     * @return bool
+     */
     public boolean maProstor() {
         return prozkoumej != null;
     }
 
+    /**
+     * Vrátí pseudoProstor věci
+     * @return Prostor
+     */
     public Prostor getProstor() {
         return prozkoumej;
     }
 
-    // Best practices be damned, Im hard coding this
+    /**
+     * Realizuje logiku příkazu použij
+     *
+     * @param vec vec se kterou tato vec bude interagovat.
+     * @return Error message ("" pokud vše proběhne v pořádku)
+     */
     public String pouzij(Vec vec) {
         switch (nazev) {
             case "dveře_celi_1":
