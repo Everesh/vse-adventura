@@ -1,5 +1,7 @@
 package logika;
 
+import java.util.Arrays;
+
 public class PrikazRekni implements IPrikaz {
     private static final String NAZEV = "řekni";
     private HerniPlan herniPlan;
@@ -11,9 +13,24 @@ public class PrikazRekni implements IPrikaz {
     @Override
     public String provedPrikaz(String... parametry) {
         if (parametry == null) {
-            return "\"\"\n";
+            return "Řekl si: \"\"\n";
+        } else if (herniPlan.getAktualniProstor().getNazev().equals("koruní_sál") &&
+                Arrays.stream(parametry).anyMatch(str -> str.toLowerCase().equals("ashbourne"))) {
+            herniPlan.getAktualniProstor().odeberVec("král");
+            Prostor prostorKralovoTelo = new Prostor("", "Prozkoumáváš královo_tělo");
+            herniPlan.getAktualniProstor().vlozVec(new Vec("královo_tělo", false, false, prostorKralovoTelo, herniPlan));
+            prostorKralovoTelo.setVychod(herniPlan.getAktualniProstor());
+            Vec klicOdBrany = new Vec("klíč_od_hlavní_brány", true, false, null, herniPlan);
+            prostorKralovoTelo.vlozVec(klicOdBrany);
+            Vec koruna = new Vec("koruna", true, true, null, herniPlan);
+            prostorKralovoTelo.vlozVec(koruna);
+            return "Řekl jsi: \"" + String.join(" ", parametry) + "\"\n" +
+                    "Král zbledl, jako by ho zasáhl blesk.\n" +
+                    "\"Ashbourne... ne... ne znovu...\"\n" +
+                    "Otřásl se, oči se mu zaleskly hrůzou a vzápětí se bezvládně sesunul na trůn.\n" +
+                    "Král omdlel!\n";
         }
-        return "\"" + String.join(" ", parametry) + "\"\n";
+        return "Řekl si: \"" + String.join(" ", parametry) + "\"\n";
     }
 
     @Override

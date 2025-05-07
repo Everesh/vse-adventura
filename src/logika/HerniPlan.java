@@ -34,8 +34,8 @@ public class HerniPlan {
         zalozProstoryHry();
     }
     /**
-     *  Vytváří jednotlivé prostory a propojuje je pomocí východů.
-     *  Jako výchozí aktuální prostor nastaví domeček.
+     *  Vytváří jednotlivé prostory, propojuje je pomocí východů
+     *  a vkládá do nich věci. Jako výchozí aktuální prostor nastaví `moje_cela`.
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
@@ -60,6 +60,7 @@ public class HerniPlan {
         Prostor prostorTeloZalarnika = new Prostor("", "Prozkoumáváš tělo_žalářníka");
         Prostor prostorZalarnikuvDiar = new Prostor("", "Prozkoumáváš žalářníkův_diář");
         Prostor prostorMysiDira = new Prostor("", "Prozkoumáváš myší_díra");
+        Prostor prostorKraluvDiar = new Prostor("", "Prozkoumáváš králův_diář");
 
         // VECI woooo hoooo https://www.youtube.com/watch?v=f8mL0_4GeV0
         // startovni vybava
@@ -99,6 +100,14 @@ public class HerniPlan {
         // hlavní_koridor_hradu
         Vec straz = new Vec("stráž", false, false, null, this);
         koridorHradu.vlozVec(straz);
+        Vec hlavniBrana = new Vec("hlavní_brána", false, false, null, this);
+        koridorHradu.vlozVec(hlavniBrana);
+        // kralova_komnata
+        Vec kraluvDiar = new Vec("králův_diář", false, false, prostorKraluvDiar, this);
+        kralovaKomnata.vlozVec(kraluvDiar);
+        // koruni_sal
+        Vec kral = new Vec("král", false, false, null, this);
+        koruniSal.vlozVec(kral);
 
         // Veci v pseudo prostorech
         // zalarnikovo telo
@@ -137,6 +146,7 @@ public class HerniPlan {
         prostorTeloZalarnika.setVychod(moje_cela);
         prostorZalarnikuvDiar.setVychod(zalarnikovaStanice);
         prostorMysiDira.setVychod(cela1);
+        prostorKraluvDiar.setVychod(kralovaKomnata);
         
         // index prostorů
         prostory.add(moje_cela);

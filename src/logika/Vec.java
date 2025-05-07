@@ -77,6 +77,13 @@ public class Vec {
                     herniPlan.getAktualniProstor().setVychod(new Prostor("slanit_se_po_okovech_na_straně_hradu", ""));
                     break;
                 }
+            case "hlavní_brána":
+                if (Objects.equals(vec.getNazev(), "klíč_od_hlavní_brány")) {
+                    herniPlan.getBatoh().odeberZBatohu("klíč_od_hlavní_brány");
+                    herniPlan.getAktualniProstor().odeberVec("hlavní_brána");
+                    herniPlan.getAktualniProstor().setVychod(new Prostor("nádvoří", ""));
+                    break;
+                }
             default:
                 return vec.getNazev() + " se nedá použít na " + nazev;
         }

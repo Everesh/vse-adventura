@@ -62,11 +62,17 @@ public class PrikazJdi implements IPrikaz {
             plan.setAktualniProstor(sousedniProstor);
             
             if (sousedniProstor.getNazev().equals("slanit_se_po_okovech_na_straně_hradu")) {
-                hra.setEpilog( "Dosel jsi do vyherniho prostoru. Hra konci. Diky!" );
+                hra.setEpilog( "Slanil si se po řetězech na straně hradu. Srdce ti buší, ruce krvácí, ale jsi na svobodě. Podařilo se ti uniknout! Gratulace!" );
+                hra.setKonecHry(true);
+            } else if (sousedniProstor.getNazev().equals("nádvoří")) {
+                hra.setEpilog("Proklouzl jsi hlavní bránou. Za zády se zvedá chaos – možná kvůli prázdné cele, možná kvůli králi. Ty už ale mizíš v dálce. Utekl jsi. Gratulace!");
                 hra.setKonecHry(true);
             } else if (sousedniProstor.getNazev().equals("hlavní_koridor_hradu") &&
                     (plan.getVybava().masNaSobe("okovy") || !plan.getVybava().masNaSobe("žalářníkův_úbor"))) {
                 hra.setEpilog("Narazil jsi na hradní stráž. Podle tvého vzhledu v tobě okamžitě rozpoznali uprchlého vězně. Prohrál jsi. Více štěstí příště!");
+                hra.setKonecHry(true);
+            } else if (sousedniProstor.getNazev().equals("strážní_stanice")) {
+                hra.setEpilog("Ve strážní stanici jsi narazil na strážného, který tě ihned rozpoznal jako uprchlého vězně. Prohrál jsi. Hodně štěstí příště!");
                 hra.setKonecHry(true);
             }
             return "";
