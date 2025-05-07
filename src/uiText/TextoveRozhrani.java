@@ -41,8 +41,6 @@ public class TextoveRozhrani {
             String radek = prectiString();
             System.out.println(hra.zpracujPrikaz(radek));
         }
-
-        System.out.println(hra.vratEpilog());
     }
 
     /**

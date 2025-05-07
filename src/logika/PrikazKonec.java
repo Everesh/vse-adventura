@@ -38,7 +38,8 @@ public class PrikazKonec implements IPrikaz {
         }
         else {
             hra.setKonecHry(true);
-            return "hra ukončena příkazem konec";
+            hra.setEpilog("hra ukončena příkazem konec");
+            return "";
         }
     }
 
