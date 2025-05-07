@@ -31,7 +31,7 @@ public class PrikazRekni implements IPrikaz {
      * Vrátí parametry předepsané stringem "Řekl si: "
      *  Vyslovení konkrétního slova v konkrétním prostoru může mít další následky
      *
-     * @param parametry název věci.
+     * @param parametry string co hráč pronese.
      * @return Error message ("" pokud vše proběhne v pořádku)
      */
     @Override

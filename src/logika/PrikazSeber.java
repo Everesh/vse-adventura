@@ -15,10 +15,23 @@ public class PrikazSeber implements IPrikaz {
 
     private HerniPlan herniPlan;
 
+    /**
+     * Konstruktor třídy
+     * @param herniPlan
+     * @return this
+     */
     public PrikazSeber(HerniPlan herniPlan) {
         this.herniPlan = herniPlan;
     }
 
+    /**
+     * Provede příkaz seber
+     *
+     * Přesune předmět z prostoru do batohu
+     *
+     * @param parametry název věci.
+     * @return Error message ("" pokud vše proběhne v pořádku)
+     */
     @Override
     public String provedPrikaz(String... parametry) {
         if (parametry.length == 0) {
@@ -50,6 +63,11 @@ public class PrikazSeber implements IPrikaz {
         }
     }
 
+    /**
+     *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     *
+     *  @ return nazev prikazu
+     */
     @Override
     public String getNazev() {
         return NAZEV;
