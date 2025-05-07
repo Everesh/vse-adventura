@@ -16,7 +16,7 @@ public class PrikazNasadSi implements IPrikaz {
 
 
     /**
-     * Vytvoří novou výbavu
+     * Konstruktor třídy
      * @param herniPlan
      * @return this
      */
