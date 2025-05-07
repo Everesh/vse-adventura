@@ -16,10 +16,24 @@ public class PrikazRekni implements IPrikaz {
     private static final String NAZEV = "řekni";
     private HerniPlan herniPlan;
 
+    /**
+     * Konstruktor třídy
+     * @param herniPlan
+     * @return this
+     */
     public PrikazRekni(HerniPlan herniPlan) {
         this.herniPlan = herniPlan;
     }
 
+    /**
+     * Provede příkaz rekni
+     *
+     * Vrátí parametry předepsané stringem "Řekl si: "
+     *  Vyslovení konkrétního slova v konkrétním prostoru může mít další následky
+     *
+     * @param parametry název věci.
+     * @return Error message ("" pokud vše proběhne v pořádku)
+     */
     @Override
     public String provedPrikaz(String... parametry) {
         if (parametry == null) {
@@ -43,6 +57,11 @@ public class PrikazRekni implements IPrikaz {
         return "Řekl si: \"" + String.join(" ", parametry) + "\"\n";
     }
 
+    /**
+     *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     *
+     *  @ return nazev prikazu
+     */
     @Override
     public String getNazev() {
         return NAZEV;
