@@ -14,10 +14,24 @@ public class PrikazNasadSi implements IPrikaz {
     private static final String NAZEV = "nasaď si";
     private HerniPlan herniPlan;
 
+
+    /**
+     * Vytvoří novou výbavu
+     * @param herniPlan
+     * @return this
+     */
     public PrikazNasadSi(HerniPlan herniPlan) {
         this.herniPlan = herniPlan;
     }
 
+    /**
+     * Provede příkaz nasaď si
+     *
+     * Přesune věc z batohu do výbavy
+     *
+     * @param parametry název předmětu v batohu.
+     * @return Error message ("" pokud vše proběhne v pořádku)
+     */
     @Override
     public String provedPrikaz(String... parametry) {
         if (parametry.length != 1) {
@@ -32,7 +46,11 @@ public class PrikazNasadSi implements IPrikaz {
         return "";
     }
 
-
+    /**
+     *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     *
+     *  @ return nazev prikazu
+     */
     @Override
     public String getNazev() {
         return NAZEV;
