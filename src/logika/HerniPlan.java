@@ -18,14 +18,12 @@ import java.util.List;
 public class HerniPlan {
     
     private Prostor aktualniProstor;
-    private Prostor vyherniProstor;
     private List<Prostor> prostory;
     private Batoh batoh;
     private Vybava vybava;
     
      /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
-     *  Jako výchozí aktuální prostor nastaví halu.
      */
     public HerniPlan() {
         this.batoh = new Batoh(4);
@@ -56,7 +54,7 @@ public class HerniPlan {
         Prostor kralovaKomnata = new Prostor("králova_komnata", "Jsi v Králově komnatě");
         Prostor skrytaCapkaMistnost = new Prostor("?", "ʆรเ √є รкгץтє ςคקкค ๓เรтภ๏รтเ");
 
-        //Pseudo Prostory pro Pruzkum Veci
+        // PseudoProstory pro Pruzkum Veci
         Prostor prostorTeloZalarnika = new Prostor("", "Prozkoumáváš tělo_žalářníka");
         Prostor prostorZalarnikuvDiar = new Prostor("", "Prozkoumáváš žalářníkův_diář");
         Prostor prostorMysiDira = new Prostor("", "Prozkoumáváš myší_díra");
@@ -166,8 +164,7 @@ public class HerniPlan {
         prostory.add(prostorTeloZalarnika);
         prostory.add(prostorZalarnikuvDiar);
 
-        aktualniProstor = moje_cela;  // hra začíná v domečku
-        vyherniProstor = null;
+        aktualniProstor = moje_cela;  // hra začíná v mojí cele
     }
     
     /**
@@ -182,14 +179,6 @@ public class HerniPlan {
 
 
     /**
-     * Vraci vyherni prostor
-     * @return
-     */
-    public Prostor getVyherniProstor() {
-        return vyherniProstor;
-    }
-
-    /**
      *  Metoda nastaví aktuální prostor, používá se nejčastěji při přechodu mezi prostory
      *
      *@param  prostor nový aktuální prostor
@@ -198,12 +187,29 @@ public class HerniPlan {
        aktualniProstor = prostor;
     }
 
+
+    /**
+     *  Metoda vrátí instanci batohu spojenou s tímto herním plánem
+     * @return Batoh
+     */
     public Batoh getBatoh() {
         return batoh;
     }
 
+    /**
+     *  Metoda vrátí instanci výbavy spojenou s tímto herním plánem
+     * @return Vybava
+     */
     public Vybava getVybava() {return vybava;}
 
+    /**
+     *  Metoda vrátí instanci prostoru s požadovaným názvem
+     *
+     *  Používá se, potřebujeli metoda přístup do jiného prostoru
+     *  nežli je prostor aktuální
+     *
+     * @return Prostor
+     */
     public Prostor getProstor(String nazevProstoru) {
         for (Prostor prostor : prostory) {
             if (prostor.getNazev().equals(nazevProstoru)) {
