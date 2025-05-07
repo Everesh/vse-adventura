@@ -15,11 +15,25 @@ public class PrikazUder implements IPrikaz {
     private HerniPlan herniPlan;
     private Hra hra;
 
+    /**
+     * Konstruktor třídy
+     * @param herniPlan
+     * @param hra
+     * @return this
+     */
     public PrikazUder(HerniPlan herniPlan, Hra hra) {
         this.herniPlan = herniPlan;
         this.hra = hra;
     }
 
+    /**
+     * Provede příkaz udeř
+     *
+     * Udeří předmět
+     *
+     * @param parametry název věci.
+     * @return Error message ("" pokud vše proběhne v pořádku)
+     */
     @Override
     public String provedPrikaz(String... parametry) {
         if (parametry.length != 1) {
@@ -52,7 +66,11 @@ public class PrikazUder implements IPrikaz {
         return "";
     }
 
-
+    /**
+     *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     *
+     *  @ return nazev prikazu
+     */
     @Override
     public String getNazev() {
         return NAZEV;
