@@ -19,7 +19,7 @@ public class Prostor {
 
     private String nazev;
     private String popis;
-    private ArrayList<Prostor> vychody;   // obsahuje sousední místnosti
+    private List<Prostor> vychody;   // obsahuje sousední místnosti
     private List<Vec> seznamVeci;
 
     /**

@@ -994,7 +994,7 @@ public class HraTest {
     }
 
     @Nested
-    class hlavniKoridorHradu {
+    class HlavniKoridorHradu {
         @BeforeEach
         public void utekZZalare() {
             // Uvitani - zapnuti hry
