@@ -32,6 +32,10 @@ public class PrikazUder implements IPrikaz {
                 hra.setEpilog("Tvůj neuvážený útok na stráž se ukázal být osudovou chybou. Strážný tě snadno přemohl a okamžitě v tobě rozpoznal uprchlého vězně. Byl jsi odvlečen zpět do cely, kde budeš trávit zbytek svých dní. Prohrál jsi, snad budeš mít příště více štěstí.");
                 hra.setKonecHry(true);
                 return "";
+            case "král":
+                hra.setEpilog("Tvůj útok na krále byl neuvěřitelně pošetilý. Dřív než jsi stačil zasadit ránu, král si všiml tvé řeči těla a zavolal stráž. Byl jsi okamžitě zpacifikován a odvlečen na popraviště. Tvůj osud byl zpečetěn. Prohrál jsi, snad příště zvolíš moudřeji.");
+                hra.setKonecHry(true);
+                return "";
             default:
                 return parametry[0] + " je odolný úderům\n";
         }

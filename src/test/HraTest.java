@@ -660,6 +660,41 @@ public class HraTest {
         }
 
         @Test
+        public void agreseVuciKrali() {
+            // 24. krok hry NASAD SI žalářníkův_úbor
+            assertEquals(hra.zpracujPrikaz("nasaď si žalářníkův_úbor"),
+                    "Jsi v jižním koridoru žaláře\n" +
+                            "Máš na sobě: žalářníkův_úbor\n" +
+                            "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy\n" +
+                            "Seznam věcí v místnosti: dveře_celi_3\n" +
+                            "Východy: střední_koridor_žaláře, hlavní_koridor_hradu");
+
+            // 25. krok hry JDI hlavní_koridor_hradu
+            assertEquals(hra.zpracujPrikaz("jdi hlavní_koridor_hradu"),
+                    "Jsi v hlavním koridoru hradu\n" +
+                            "Máš na sobě: žalářníkův_úbor\n" +
+                            "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy\n" +
+                            "Seznam věcí v místnosti: stráž, hlavní_brána\n" +
+                            "Východy: jižní_koridor_žaláře, koruní_sál, králova_komnata, strážní_stanice");
+
+            // 26. krok hry JDI koruní_sál
+            assertEquals(hra.zpracujPrikaz("jdi koruní_sál"),
+                    "Jsi v koruním sálu\n" +
+                            "Máš na sobě: žalářníkův_úbor\n" +
+                            "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy\n" +
+                            "Seznam věcí v místnosti: král\n" +
+                            "Východy: hlavní_koridor_hradu");
+
+            // 27. krok hry UDER král
+            assertEquals(hra.zpracujPrikaz("udeř král"),
+                    "Tvůj útok na krále byl neuvěřitelně pošetilý. " +
+                            "Dřív než jsi stačil zasadit ránu, král si všiml " +
+                            "tvé řeči těla a zavolal stráž. Byl jsi okamžitě zpacifikován " +
+                            "a odvlečen na popraviště. Tvůj osud byl zpečetěn. Prohrál jsi, " +
+                            "snad příště zvolíš moudřeji.\n");
+        }
+
+        @Test
         public void utecHlavniBranou() {
             // 24. krok hry NASAD SI žalářníkův_úbor
             assertEquals(hra.zpracujPrikaz("nasaď si žalářníkův_úbor"),
@@ -742,6 +777,73 @@ public class HraTest {
             // 33. krok hry JDI nádvoří
             assertEquals(hra.zpracujPrikaz("jdi nádvoří"),
                     "Proklouzl jsi hlavní bránou. Za zády se zvedá chaos – možná kvůli prázdné cele, možná kvůli králi. Ty už ale mizíš v dálce. Utekl jsi. Gratulace!\n");
+        }
+
+        @Test
+        public void limitBatohu() {
+            // 24. krok hry NASAD SI žalářníkův_úbor
+            assertEquals(hra.zpracujPrikaz("nasaď si žalářníkův_úbor"),
+                    "Jsi v jižním koridoru žaláře\n" +
+                            "Máš na sobě: žalářníkův_úbor\n" +
+                            "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy\n" +
+                            "Seznam věcí v místnosti: dveře_celi_3\n" +
+                            "Východy: střední_koridor_žaláře, hlavní_koridor_hradu");
+
+            // 25. krok hry JDI hlavní_koridor_hradu
+            assertEquals(hra.zpracujPrikaz("jdi hlavní_koridor_hradu"),
+                    "Jsi v hlavním koridoru hradu\n" +
+                            "Máš na sobě: žalářníkův_úbor\n" +
+                            "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy\n" +
+                            "Seznam věcí v místnosti: stráž, hlavní_brána\n" +
+                            "Východy: jižní_koridor_žaláře, koruní_sál, králova_komnata, strážní_stanice");
+
+            // 26. krok hry JDI koruní_sál
+            assertEquals(hra.zpracujPrikaz("jdi koruní_sál"),
+                    "Jsi v koruním sálu\n" +
+                            "Máš na sobě: žalářníkův_úbor\n" +
+                            "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy\n" +
+                            "Seznam věcí v místnosti: král\n" +
+                            "Východy: hlavní_koridor_hradu");
+
+            // 27. krok hry REKNI AshBourne
+            assertEquals(hra.zpracujPrikaz("řekni Bojiště AshBourne a nějáký další text!"),
+                    "Řekl jsi: \"Bojiště AshBourne a nějáký další text!\"\n" +
+                            "Král zbledl, jako by ho zasáhl blesk.\n" +
+                            "\"Ashbourne... ne... ne znovu...\"\n" +
+                            "Otřásl se, oči se mu zaleskly hrůzou a vzápětí se bezvládně sesunul na trůn.\n" +
+                            "Král omdlel!\nJsi v koruním sálu\n" +
+                            "Máš na sobě: žalářníkův_úbor\n" +
+                            "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy\n" +
+                            "Seznam věcí v místnosti: královo_tělo\n" +
+                            "Východy: hlavní_koridor_hradu");
+
+            // 28. krok hry PROZKOUMEJ královo_tělo
+            assertEquals(hra.zpracujPrikaz("prozkoumej královo_tělo"),
+                    "Prozkoumáváš královo_tělo\n" +
+                            "Máš na sobě: žalářníkův_úbor\n" +
+                            "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy\n" +
+                            "Poznatky:\n" +
+                            "Obsahuje: klíč_od_hlavní_brány, koruna\n" +
+                            "Východy: koruní_sál");
+
+            // 29. krok hry SEBER klíč_od_hlavní_brány
+            assertEquals(hra.zpracujPrikaz("seber klíč_od_hlavní_brány"),
+                    "Prozkoumáváš královo_tělo\n" +
+                            "Máš na sobě: žalářníkův_úbor\n" +
+                            "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy, klíč_od_hlavní_brány\n" +
+                            "Poznatky:\n" +
+                            "Obsahuje: koruna\n" +
+                            "Východy: koruní_sál");
+
+            // 30. krok hry SEBER koruna
+            assertEquals(hra.zpracujPrikaz("seber koruna"),
+                    "koruna se ti do batohu nevejde, musíš je prvně vyprázdnit\n" +
+                            "Prozkoumáváš královo_tělo\n" +
+                            "Máš na sobě: žalářníkův_úbor\n" +
+                            "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, okovy, klíč_od_hlavní_brány\n" +
+                            "Poznatky:\n" +
+                            "Obsahuje:\n" +
+                            "Východy: koruní_sál");
         }
     }
 
