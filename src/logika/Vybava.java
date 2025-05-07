@@ -3,6 +3,13 @@ package logika;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  Třída Vybava implementuje pro hru výbavu a její správu.
+ *  Tato třída je součástí jednoduché textové hry.
+ *
+ *@author     Jan Jurka
+ *@version    pro školní rok 2024/2025
+ */
 public class Vybava {
 
     private List<Vec> seznamVeci;

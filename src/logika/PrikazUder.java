@@ -1,5 +1,15 @@
 package logika;
 
+/**
+ *  Třída PrikazUder implementuje pro hru příkaz udeř.
+ *  Tato třída je součástí jednoduché textové hry.
+ *
+ *  Příkaz udeř se pokusí udeřit věc
+ *  v závislosti na obsah batohu a věc kterou se hráč snaží udeřit může vést k následkům
+ *  
+ *@author     Jan Jurka
+ *@version    pro školní rok 2024/2025
+ */
 public class PrikazUder implements IPrikaz {
     private static final String NAZEV = "udeř";
     private HerniPlan herniPlan;

@@ -107,11 +107,17 @@ public class Prostor {
         return nazev;       
     }
 
+    /**
+     * Vrací popis prostoru (byl zadán při vytváření prostoru jako parametr
+     * konstruktoru)
+     *
+     * @return popis prostoru
+     */
     public String getPopis() { return popis; }
 
     /**
      * Vrací textový řetězec, který popisuje sousední východy, například:
-     * "vychody: hala ".
+     * "Vychody: hala ".
      *
      * @return Popis východů - názvů sousedních prostorů
      */
@@ -119,6 +125,12 @@ public class Prostor {
         return "Východy:" + seznamVychody();
     }
 
+    /**
+     * Vrací textový řetězec, který je prostým seznamem sousedních východů delimetrovaný ", "
+     * Například: "hala, chodba, předsíň "
+     *
+     * @return Popis východů - názvů sousedních prostorů
+     */
     public String seznamVychody() {
         String vracenyText = "";
         for (Prostor sousedni : vychody) {
@@ -188,7 +200,7 @@ public class Prostor {
     /**
      * Odebere predmet ze seznamu veci jeli prenesitelny a vrati ho
      * @param nazev
-     * @return
+     * @return Vec
      */
     public Vec vyberVec(String nazev) {
         Vec vybranaVec = null;
@@ -207,6 +219,11 @@ public class Prostor {
         return vybranaVec;
     }
 
+    /**
+     * Odebere predmet ze seznamu veci
+     * @param nazev
+     * @return
+     */
     public void odeberVec(String nazev) {
         for (Vec vec : seznamVeci) {
             if (vec.getNazev().equals(nazev)) {
@@ -216,6 +233,11 @@ public class Prostor {
         }
     }
 
+    /**
+     * Vrátí predmet ze seznamu veci aniž by jej odstranila
+     * @param nazev
+     * @return Vec
+     */
     public Vec peekVec(String nazev) {
         Vec vybranaVec = null;
         for (Vec vec : seznamVeci) {
@@ -226,6 +248,10 @@ public class Prostor {
         return vybranaVec;
     }
 
+    /**
+     * Vrati seznam veci ze seznamVeci předepsaný stringem "Seznam věcí v místnosti:"
+     * @return
+     */
     public String seznamVeciDlouhy() {
         return "Seznam věcí v místnosti:" + seznamVeci();
     }

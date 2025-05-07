@@ -1,5 +1,14 @@
 package logika;
 
+/**
+ *  Třída PrikazSeber implementuje pro hru příkaz seber.
+ *  Tato třída je součástí jednoduché textové hry.
+ *
+ *  Příkaz seber přesune věc z prostoru do batohu
+ *
+ *@author     Jan Jurka
+ *@version    pro školní rok 2024/2025
+ */
 public class PrikazSeber implements IPrikaz {
 
     private static final String NAZEV = "seber";

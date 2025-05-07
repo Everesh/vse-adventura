@@ -2,6 +2,16 @@ package logika;
 
 import java.util.Arrays;
 
+/**
+ *  Třída PrikazRekni implementuje pro hru příkaz řekni.
+ *  Tato třída je součástí jednoduché textové hry.
+ *
+ *  Příkaz řekni vrátí parametry předepsané stringem "Řekl si: "
+ *  Vyslovení konkrétního slova v konkrétním prostoru může mít další následky
+ *  
+ *@author     Jan Jurka
+ *@version    pro školní rok 2024/2025
+ */
 public class PrikazRekni implements IPrikaz {
     private static final String NAZEV = "řekni";
     private HerniPlan herniPlan;

@@ -1,5 +1,14 @@
 package logika;
 
+/**
+ *  Třída PrikazPoloz implementuje pro hru příkaz polož.
+ *  Tato třída je součástí jednoduché textové hry.
+ *
+ *  Příkaz polož přesouvá věci z batohu do prostoru
+ *  
+ *@author     Jan Jurka
+ *@version    pro školní rok 2024/2025
+ */
 public class PrikazPoloz implements IPrikaz {
 
     private static final String NAZEV = "polož";

@@ -2,6 +2,15 @@ package logika;
 
 import java.util.Objects;
 
+/**
+ *  Třída Vec implementuje pro hru věc a její parametry.
+ *  Tato třída je součástí jednoduché textové hry.
+ *
+ *  Třída definuje interakce mezi věcmi pro příkaz použij
+ *
+ *@author     Jan Jurka
+ *@version    pro školní rok 2024/2025
+ */
 public class Vec {
     private String nazev;
     private boolean prenositelnost;

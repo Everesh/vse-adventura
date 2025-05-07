@@ -1,5 +1,14 @@
 package logika;
 
+/**
+ *  Třída PrikazPouzij implementuje pro hru příkaz použij.
+ *  Tato třída je součástí jednoduché textové hry.
+ *
+ *  Příkaz spravuje párovaní věcí pro metodu třídy Vec, pouzij
+ *
+ *@author     Jan Jurka
+ *@version    pro školní rok 2024/2025
+ */
 public class PrikazPouzij implements IPrikaz{
     private static final String NAZEV = "použij";
     private HerniPlan herniPlan;

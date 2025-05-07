@@ -1,5 +1,15 @@
 package logika;
 
+/**
+ *  Třída PrikazProzkoumej implementuje pro hru příkaz prozkoumej.
+ *  Tato třída je součástí jednoduché textové hry.
+ *
+ *  Příkaz přesune hráče do pseudoProstoru třídy Vec, existujeli
+ *      * pseudoProstor je prostor s názvem "" (prázdný řeťezec)
+ *
+ *@author     Jan Jurka
+ *@version    pro školní rok 2024/2025
+ */
 public class PrikazProzkoumej implements IPrikaz {
     private static final String NAZEV = "prozkoumej";
     private HerniPlan herniPlan;

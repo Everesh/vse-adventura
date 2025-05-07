@@ -1,5 +1,14 @@
 package logika;
 
+/**
+ *  Třída PrikazNasadSi implementuje pro hru příkaz nasaď si.
+ *  Tato třída je součástí jednoduché textové hry.
+ *
+ *  Nasad si přesouvá věci z batohu do výbavy
+ *
+ *@author     Jan Jurka
+ *@version    pro školní rok 2024/2025
+ */
 public class PrikazNasadSi implements IPrikaz {
 
     private static final String NAZEV = "nasaď si";

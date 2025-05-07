@@ -2,6 +2,15 @@ package logika;
 
 import java.util.Objects;
 
+/**
+ *  Třída PrikazSundejSi implementuje pro hru příkaz sundej si.
+ *  Tato třída je součástí jednoduché textové hry.
+ *
+ *  Příkaz sundej si přesune věc z výbavy do batohu
+ *
+ *@author     Jan Jurka
+ *@version    pro školní rok 2024/2025
+ */
 public class PrikazSundejSi implements IPrikaz {
     private static final String NAZEV = "sundej si";
     private HerniPlan herniPlan;
