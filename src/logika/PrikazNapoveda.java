@@ -28,7 +28,8 @@ public class PrikazNapoveda implements IPrikaz {
     /**
      *  Vrací základní nápovědu po zadání příkazu "napoveda". Nyní se vypisuje
      *  vcelku primitivní zpráva a seznam dostupných příkazů.
-     *  
+     *
+     *  @param parametry ignorovany
      *  @return napoveda ke hre
      */
     @Override
