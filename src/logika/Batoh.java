@@ -17,7 +17,7 @@ public class Batoh {
 
     /**
      *  Vytvoří nový batoh s definovanou velikostí
-     * @param omezeniBatohu
+     * @param omezeniBatohu - kapacita batohu
      * @return this
      */
     public Batoh(int omezeniBatohu) {
@@ -48,7 +48,7 @@ public class Batoh {
 
     /**
      * Vlozi věc do batohu máli volné místo a vrátí bool zda se operace povedla
-     * @param vec
+     * @param Vec - Vec ktera bude vlozena do batohu
      * @return boolean
      */
     public boolean vlozDoBatohu(Vec vec) {
@@ -61,7 +61,7 @@ public class Batoh {
 
     /**
      * Odebere predmet ze seznamu veci a vrati ho existujeli
-     * @param nazev
+     * @param nazev - nazev veci v batohu
      * @return Vec
      */
     public Vec odeberZBatohu(String nazev) {
@@ -76,7 +76,7 @@ public class Batoh {
 
     /**
      * Vrátí predmet ze seznamu veci aniž by jej odstranila
-     * @param nazev
+     * @param nazev - nazev veci v batohu
      * @return Vec
      */
     public Vec peekDoBatohu(String nazev) {
@@ -90,7 +90,7 @@ public class Batoh {
 
     /**
      * Vrátí bool informujici zda je predmet v batohu
-     * @param nazev
+     * @param nazev - nazev veci v batohu
      * @return boolean
      */
     public boolean obsahujeVec(String nazev) {

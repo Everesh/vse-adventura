@@ -70,7 +70,7 @@ public class Hra implements IHra {
      * Z důvodu mé krátkozrakosti je vyžadována metoda s parametrem mým původním testovacím scénářem
      * v reálné produkci by byla depreciated
      *
-     * @param _epilog
+     * @param _epilog - irelevantní, pouze pro kompatibilitu
      * @return String
      */
     public String vratEpilog(String _epilog) {
@@ -78,7 +78,7 @@ public class Hra implements IHra {
     }
     /**
      * Moznost upravit epilog hry
-     * @param epilog
+     * @param epilog - nový řetězec epilogu
      */
     public void setEpilog(String epilog) {
         this.epilog = epilog;

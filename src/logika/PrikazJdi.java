@@ -29,6 +29,12 @@ public class PrikazJdi implements IPrikaz {
      *  existuje, vstoupí se do nového prostoru. Pokud zadaný sousední prostor
      *  (východ) není, vypíše se chybové hlášení.
      *
+     *  Zároveň zaštiťuje logiku omezení dostupnosti prostorů v závislosti
+     *  na stav hráčových okovů (nesmí se vzdálit na více jak 3 místnosti od své
+     *  celi, jeli v okovech)
+     *
+     *  Zároveň zaštiťuje některé konce hry
+     *
      *@param parametry - jako  parametr obsahuje jméno prostoru (východu),
      *                         do kterého se má jít.
      *@return zpráva, kterou vypíše hra hráči
