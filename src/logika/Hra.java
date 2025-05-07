@@ -15,10 +15,12 @@ import java.util.Arrays;
  */
 
 public class Hra implements IHra {
-    private SeznamPrikazu platnePrikazy;    // obsahuje seznam přípustných příkazů
+    // obsahuje seznam přípustných příkazů
+    private SeznamPrikazu platnePrikazy;
     private HerniPlan herniPlan;
     private boolean konecHry = false;
-    private String epilog = "Dík, že jste si zahráli.  Ahoj.";
+    // Default fallback epilog, měl by být přepsán v závislosti na způsob zakončení hry
+    private String epilog = "Hra končí. Dík, že jste si zahráli.";
 
     /**
      *  Vytváří hru a inicializuje místnosti (prostřednictvím třídy HerniPlan) a seznam platných příkazů.
@@ -41,6 +43,7 @@ public class Hra implements IHra {
 
     /**
      *  Vrátí úvodní zprávu pro hráče.
+     *  @return String
      */
     public String vratUvitani() {
         return "Tělo žálářníka se přestalo vzpírat a nehybné se svalilo z tvých rukou k zemi.\n" +
@@ -55,12 +58,21 @@ public class Hra implements IHra {
     
     /**
      *  Vrátí závěrečnou zprávu pro hráče.
+     *  @return String
      */
     public String vratEpilog() {
         return epilog;
     }
 
-
+    /**
+     * Vrátí závěrečnou zprávu pro hráče.
+     *
+     * Z důvodu mé krátkozrakosti je vyžadována metoda s parametrem mým původním testovacím scénářem
+     * v reálné produkci by byla depreciated
+     *
+     * @param _epilog
+     * @return String
+     */
     public String vratEpilog(String _epilog) {
         return epilog + "\n";
     }
@@ -74,6 +86,7 @@ public class Hra implements IHra {
 
     /** 
      * Vrací true, pokud hra skončila.
+     * @return boolean
      */
      public boolean konecHry() {
         return konecHry;
@@ -83,6 +96,9 @@ public class Hra implements IHra {
      *  Metoda zpracuje řetězec uvedený jako parametr, rozdělí ho na slovo příkazu a další parametry.
      *  Pak otestuje zda příkaz je klíčovým slovem  např. jdi.
      *  Pokud ano spustí samotné provádění příkazu.
+     *
+     *  Zároveň metoda řeší výpis poznatků jednotlivých pseudoProstorů
+     *      * pseudoProstor je prostor s názvem ""(prázdný řetězec)
      *
      *@param  radek  text, který zadal uživatel jako příkaz do hry.
      *@return          vrací se řetězec, který se má vypsat na obrazovku
@@ -110,8 +126,8 @@ public class Hra implements IHra {
             IPrikaz prikaz = platnePrikazy.vratPrikaz(slovoPrikazu);
             textKVypsani = prikaz.provedPrikaz(parametry);
 
-            // Exit reached breakpoint
-            if ((prikaz instanceof PrikazJdi || prikaz instanceof PrikazUder) && konecHry) {
+            // Breakpoint - exit reached
+            if (konecHry) {
                 textKVypsani += vratEpilog() + "\n";
                 return textKVypsani;
             }
@@ -119,6 +135,7 @@ public class Hra implements IHra {
             textKVypsani += herniPlan.getAktualniProstor().getPopis() + "\n";
             textKVypsani += herniPlan.getVybava().dlouhyPopis() + "\n";
             textKVypsani += herniPlan.getBatoh().dlouhyPopis() + "\n";
+            // pseudoProstor handeling
             if (herniPlan.getAktualniProstor().getNazev().equals("")) {
                 textKVypsani += "Poznatky:";
                 switch (herniPlan.getAktualniProstor().getPopis().split(" ")[1]) {
@@ -149,10 +166,9 @@ public class Hra implements IHra {
     
     
      /**
-     *  Nastaví, že je konec hry, metodu využívá třída PrikazKonec,
-     *  mohou ji použít i další implementace rozhraní Prikaz.
+     *  Nastaví, že je konec hry
      *  
-     *  @param  konecHry  hodnota false= konec hry, true = hra pokračuje
+     *  @param  konecHry  hodnota true = konec hry, false = hra pokračuje
      */
     void setKonecHry(boolean konecHry) {
         this.konecHry = konecHry;
