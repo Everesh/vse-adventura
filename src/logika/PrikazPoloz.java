@@ -27,6 +27,8 @@ public class PrikazPoloz implements IPrikaz {
     /**
      * Provede příkaz polož
      *
+     * Přesune věc z batohu do místnosti
+     *
      * @param parametry název předmětu v batohu.
      * @return Error message ("" pokud vše proběhne v pořádku)
      */

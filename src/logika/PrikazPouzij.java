@@ -13,10 +13,23 @@ public class PrikazPouzij implements IPrikaz{
     private static final String NAZEV = "použij";
     private HerniPlan herniPlan;
 
+    /**
+     * Konstruktor třídy
+     * @param herniPlan
+     * @return this
+     */
     public PrikazPouzij(HerniPlan herniPlan) {
         this.herniPlan = herniPlan;
     }
 
+    /**
+     * Provede příkaz použi x na y
+     *
+     * Pokusí se použít věc x na y (logika použití realizována v rámci třídy Vec)
+     *
+     * @param parametry název předmětu v batohu.
+     * @return Error message ("" pokud vše proběhne v pořádku)
+     */
     @Override
     public String provedPrikaz(String... parametry) {
         if (parametry.length != 3) {
@@ -39,7 +52,11 @@ public class PrikazPouzij implements IPrikaz{
         return vec2.pouzij(vec1);
     }
 
-
+    /**
+     *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     *
+     *  @ return nazev prikazu
+     */
     @Override
     public String getNazev() {
         return NAZEV;
