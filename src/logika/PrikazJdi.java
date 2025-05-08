@@ -113,6 +113,7 @@ public class PrikazJdi implements IPrikaz {
         }
         return "";
     }
+    
     /**
      *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
      *  

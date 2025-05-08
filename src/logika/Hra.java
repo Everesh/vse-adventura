@@ -97,9 +97,6 @@ public class Hra implements IHra {
      *  Pak otestuje zda příkaz je klíčovým slovem  např. jdi.
      *  Pokud ano spustí samotné provádění příkazu.
      *
-     *  Zároveň metoda řeší výpis poznatků jednotlivých pseudoProstorů
-     *      * pseudoProstor je prostor s názvem ""(prázdný řetězec)
-     *
      *@param  radek  text, který zadal uživatel jako příkaz do hry.
      *@return          vrací se řetězec, který se má vypsat na obrazovku
      */
@@ -121,7 +118,7 @@ public class Hra implements IHra {
             parametry = Arrays.copyOfRange(parametry, 1, parametry.length);
         }
 
-        String textKVypsani=" .... ";
+        String textKVypsani="";
         if (platnePrikazy.jePlatnyPrikaz(slovoPrikazu)) {
             IPrikaz prikaz = platnePrikazy.vratPrikaz(slovoPrikazu);
             textKVypsani = prikaz.provedPrikaz(parametry);
@@ -135,33 +132,46 @@ public class Hra implements IHra {
             textKVypsani += herniPlan.getAktualniProstor().getPopis() + "\n";
             textKVypsani += herniPlan.getVybava().dlouhyPopis() + "\n";
             textKVypsani += herniPlan.getBatoh().dlouhyPopis() + "\n";
+
             // pseudoProstor handeling
             if (herniPlan.getAktualniProstor().getNazev().equals("")) {
-                textKVypsani += "Poznatky:";
-                switch (herniPlan.getAktualniProstor().getPopis().split(" ")[1]) {
-                    case "myší_díra":
-                        textKVypsani += " - Uvnitř vidíš hromádku různých kovových objektů, nicméně jsou příliš daleko, než aby si je mohl zdvihnout";
-                        break;
-                    case "žalářníkův_diář":
-                        textKVypsani += " - Soužití žalářníka a myší v žaláři se nedávno zhoršilo kvůli jejich nově vznikající tendenci krást drobné kovové předměty\n";
-                        textKVypsani += "          - Před dvěma dny král z paranoie odvolal většinu členů stráže, nová stráž se stále seznamuje s poddanými sloužícími v prostorech hradu";
-                        break;
-                    case "králův_diář":
-                        textKVypsani += " - Král se chvěje při pouhém vyslovení \"Ashbourne.\" Je to jméno prokletého bojiště, kde přišel o své syny. ";
-                        break;
-                    default:
-                        textKVypsani += "";
-                }
-                textKVypsani += "\nObsahuje:" + herniPlan.getAktualniProstor().seznamVeci() + "\n";
+                textKVypsani += getPseudoProstorTextace();
             } else {
                 textKVypsani += herniPlan.getAktualniProstor().seznamVeciDlouhy() + "\n";
             }
+
             textKVypsani += herniPlan.getAktualniProstor().seznamVychodyDlouhy();
         }
         else {
             textKVypsani="Nevím co tím myslíš? Tento příkaz neznám. ";
         }
         return textKVypsani;
+    }
+
+    /**
+     *  Řeší výpis poznatků jednotlivých pseudoProstorů
+     *      * pseudoProstor je prostor s názvem ""(prázdný řetězec)
+     *
+     * @return textace konkrétního pseudoProstoru
+     */
+    public String getPseudoProstorTextace() {
+         String textKVypsani="";
+         textKVypsani = "Poznatky:";
+         switch (herniPlan.getAktualniProstor().getPopis().split(" ")[1]) {
+             case "myší_díra":
+                 textKVypsani += " - Uvnitř vidíš hromádku různých kovových objektů, nicméně jsou příliš daleko, než aby si je mohl zdvihnout";
+                 break;
+             case "žalářníkův_diář":
+                 textKVypsani += " - Soužití žalářníka a myší v žaláři se nedávno zhoršilo kvůli jejich nově vznikající tendenci krást drobné kovové předměty\n";
+                 textKVypsani += "          - Před dvěma dny král z paranoie odvolal většinu členů stráže, nová stráž se stále seznamuje s poddanými sloužícími v prostorech hradu";
+                 break;
+             case "králův_diář":
+                 textKVypsani += " - Král se chvěje při pouhém vyslovení \"Ashbourne.\" Je to jméno prokletého bojiště, kde přišel o své syny. ";
+                 break;
+             default:
+                 textKVypsani += "";
+         }
+        return textKVypsani + "\nObsahuje:" + herniPlan.getAktualniProstor().seznamVeci() + "\n";
     }
     
     
