@@ -110,7 +110,7 @@ public class Hra implements IHra {
         String slovoPrikazu = slova[0];
 
         // Alias pro nápovědu
-        if (slovoPrikazu.equals("pomoc")) {
+        if ("pomoc".equals(slovoPrikazu)) {
             slovoPrikazu = "nápověda";
         }
 
@@ -118,7 +118,7 @@ public class Hra implements IHra {
         System.arraycopy(slova, 1, parametry, 0, parametry.length);
 
         // Extrakce zvratného 'si'
-        if (parametry.length > 0 && parametry[0].equals("si")) {
+        if (parametry.length > 0 && "si".equals(parametry[0])) {
             slovoPrikazu += " si";
             parametry = Arrays.copyOfRange(parametry, 1, parametry.length);
         }
@@ -139,7 +139,7 @@ public class Hra implements IHra {
             textKVypsani += herniPlan.getBatoh().dlouhyPopis() + "\n";
 
             // pseudoProstor handeling
-            if (herniPlan.getAktualniProstor().getNazev().equals("")) {
+            if ("".equals(herniPlan.getAktualniProstor().getNazev())) {
                 textKVypsani += getPseudoProstorTextace();
             } else {
                 textKVypsani += herniPlan.getAktualniProstor().seznamVeciDlouhy() + "\n";

@@ -67,7 +67,7 @@ public class PrikazJdi implements IPrikaz {
      * @return true pokud je hráč omezen okovy, jinak false
      */
     private boolean jeOmezenyOkovy(String smer) {
-        return (smer.equals("cela_3") || smer.equals("hlavní_koridor_hradu") || smer.equals("?"))
+        return ("cela_3".equals(smer) || "hlavní_koridor_hradu".equals(smer) || "?".equals(smer))
                 && plan.getProstor("moje_cela").obsahujeVec("zámek_okovů");
     }
 
@@ -97,17 +97,17 @@ public class PrikazJdi implements IPrikaz {
     private String zkontrolujKonecHry(Prostor novyProstor) {
         String nazevProstoru = novyProstor.getNazev();
 
-        if (nazevProstoru.equals("slanit_se_po_okovech_na_straně_hradu")) {
+        if ("slanit_se_po_okovech_na_straně_hradu".equals(nazevProstoru)) {
             hra.setEpilog("Slanil si se po řetězech na straně hradu. Srdce ti buší, ruce krvácí, ale jsi na svobodě. Podařilo se ti uniknout! Gratulace!");
             hra.setKonecHry(true);
-        } else if (nazevProstoru.equals("nádvoří")) {
+        } else if ("nádvoří".equals(nazevProstoru)) {
             hra.setEpilog("Proklouzl jsi hlavní bránou. Za zády se zvedá chaos – možná kvůli prázdné cele, možná kvůli králi. Ty už ale mizíš v dálce. Utekl jsi. Gratulace!");
             hra.setKonecHry(true);
-        } else if (nazevProstoru.equals("hlavní_koridor_hradu") &&
+        } else if ("hlavní_koridor_hradu".equals(nazevProstoru) &&
                 (plan.getVybava().masNaSobe("okovy") || !plan.getVybava().masNaSobe("žalářníkův_úbor"))) {
             hra.setEpilog("Narazil jsi na hradní stráž. Podle tvého vzhledu v tobě okamžitě rozpoznali uprchlého vězně. Prohrál jsi. Více štěstí příště!");
             hra.setKonecHry(true);
-        } else if (nazevProstoru.equals("strážní_stanice")) {
+        } else if ("strážní_stanice".equals(nazevProstoru)) {
             hra.setEpilog("Ve strážní stanici jsi narazil na strážného, který tě ihned rozpoznal jako uprchlého vězně. Prohrál jsi. Hodně štěstí příště!");
             hra.setKonecHry(true);
         }

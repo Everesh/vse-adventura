@@ -39,8 +39,8 @@ public class PrikazRekni implements IPrikaz {
     public String provedPrikaz(String... parametry) {
         if (parametry == null) {
             return "Řekl si: \"\"\n";
-        } else if (herniPlan.getAktualniProstor().getNazev().equals("koruní_sál") &&
-                Arrays.stream(parametry).anyMatch(str -> str.equalsIgnoreCase("ashbourne"))) {
+        } else if ("koruní_sál".equals(herniPlan.getAktualniProstor().getNazev()) &&
+                Arrays.stream(parametry).anyMatch(str -> "ashbourne".equalsIgnoreCase(str))) {
             herniPlan.getAktualniProstor().odeberVec("král");
             Prostor prostorKralovoTelo = new Prostor("", "Prozkoumáváš královo_tělo");
             herniPlan.getAktualniProstor().vlozVec(new Vec("královo_tělo", false, false, prostorKralovoTelo, herniPlan));

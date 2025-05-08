@@ -79,7 +79,7 @@ public class Prostor {
         //Vrátí true pro stejné názvy a i v případě, že jsou oba názvy null,
         //jinak vrátí false.
 
-        return (java.util.Objects.equals(this.nazev, druhy.nazev));
+        return java.util.Objects.equals(this.nazev, druhy.nazev);
     }
 
     /**
