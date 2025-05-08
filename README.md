@@ -22,5 +22,6 @@ mi nešel použít kvůli chybové hlášce:
 ```
 použil jsem tudíž defaultní ruleset pro pmd 7.13.0
 
+- PMD hlásí problémy se switchem ve třídě Vec, nicméně fallthrough jednotlivých case statmentů je zde úmyslný
 - vytvořeno za použití JDK ms-17.0.15
   - otestováno s JDK jbr-21 a openjdk-23.0.2
