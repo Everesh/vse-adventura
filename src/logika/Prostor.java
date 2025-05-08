@@ -1,6 +1,9 @@
 package logika;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -17,17 +20,17 @@ import java.util.stream.Collectors;
  */
 public class Prostor {
 
-    private String nazev;
-    private String popis;
-    private List<Prostor> vychody;   // obsahuje sousední místnosti
-    private List<Vec> seznamVeci;
+    private final String nazev;
+    private final String popis;
+    private final List<Prostor> vychody;   // obsahuje sousední místnosti
+    private final List<Vec> seznamVeci;
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
      * před domem"
      *
      * @param nazev nazev prostoru, jednoznačný identifikátor, jedno slovo nebo
-     * víceslovný název bez mezer.
+     *              víceslovný název bez mezer.
      * @param popis Popis prostoru.
      */
     public Prostor(String nazev, String popis) {
@@ -45,7 +48,6 @@ public class Prostor {
      * žádné chybové hlášení). Lze zadat též cestu ze do sebe sama.
      *
      * @param vedlejsi prostor, který sousedi s aktualnim prostorem.
-     *
      */
     public void setVychod(Prostor vedlejsi) {
         vychody.add(vedlejsi);
@@ -60,25 +62,24 @@ public class Prostor {
      *
      * @param o object, který se má porovnávat s aktuálním
      * @return hodnotu true, pokud má zadaný prostor stejný název, jinak false
-     */  
-      @Override
+     */
+    @Override
     public boolean equals(Object o) {
         // porovnáváme zda se nejedná o dva odkazy na stejnou instanci
         if (this == o) {
             return true;
         }
         // porovnáváme jakého typu je parametr 
-        if (!(o instanceof Prostor)) {
+        if (!(o instanceof Prostor druhy)) {
             return false;    // pokud parametr není typu Prostor, vrátíme false
         }
-        // přetypujeme parametr na typ Prostor 
-        Prostor druhy = (Prostor) o;
+        // přetypujeme parametr na typ Prostor
 
         //metoda equals třídy java.util.Objects porovná hodnoty obou názvů. 
         //Vrátí true pro stejné názvy a i v případě, že jsou oba názvy null,
         //jinak vrátí false.
 
-       return (java.util.Objects.equals(this.nazev, druhy.nazev));       
+        return (java.util.Objects.equals(this.nazev, druhy.nazev));
     }
 
     /**
@@ -95,7 +96,7 @@ public class Prostor {
         vysledek = 37 * vysledek + hashNazvu;
         return vysledek;
     }
-      
+
 
     /**
      * Vrací název prostoru (byl zadán při vytváření prostoru jako parametr
@@ -104,7 +105,7 @@ public class Prostor {
      * @return název prostoru
      */
     public String getNazev() {
-        return nazev;       
+        return nazev;
     }
 
     /**
@@ -113,7 +114,9 @@ public class Prostor {
      *
      * @return popis prostoru
      */
-    public String getPopis() { return popis; }
+    public String getPopis() {
+        return popis;
+    }
 
     /**
      * Vrací textový řetězec, který popisuje sousední východy, například:
@@ -149,14 +152,13 @@ public class Prostor {
      * null, pokud prostor zadaného jména není sousedem.
      */
     public Prostor vratSousedniProstor(String nazevSouseda) {
-        List<Prostor>hledaneProstory = 
-            vychody.stream()
-                   .filter(sousedni -> sousedni.getNazev().equals(nazevSouseda))
-                   .collect(Collectors.toList());
-        if(hledaneProstory.isEmpty()){
+        List<Prostor> hledaneProstory =
+                vychody.stream()
+                        .filter(sousedni -> sousedni.getNazev().equals(nazevSouseda))
+                        .collect(Collectors.toList());
+        if (hledaneProstory.isEmpty()) {
             return null;
-        }
-        else {
+        } else {
             return hledaneProstory.get(0);
         }
     }
@@ -176,6 +178,7 @@ public class Prostor {
 
     /**
      * Prida vec do seznamu veci
+     *
      * @param neco
      */
     public void vlozVec(Vec neco) {
@@ -184,10 +187,11 @@ public class Prostor {
 
     /**
      * Zkontroluje zda je v seznamu konkretni vec
+     *
      * @param nazev
      * @return
      */
-    public boolean obsahujeVec(String nazev){
+    public boolean obsahujeVec(String nazev) {
         for (Vec vec : seznamVeci) {
             if (vec.getNazev().equals(nazev)) {
                 return true;
@@ -199,6 +203,7 @@ public class Prostor {
 
     /**
      * Odebere predmet ze seznamu veci jeli prenesitelny a vrati ho
+     *
      * @param nazev
      * @return Vec
      */
@@ -221,6 +226,7 @@ public class Prostor {
 
     /**
      * Odebere predmet ze seznamu veci
+     *
      * @param nazev
      * @return
      */
@@ -235,6 +241,7 @@ public class Prostor {
 
     /**
      * Vrátí predmet ze seznamu veci aniž by jej odstranila
+     *
      * @param nazev
      * @return Vec
      */
@@ -250,6 +257,7 @@ public class Prostor {
 
     /**
      * Vrati seznam veci ze seznamVeci předepsaný stringem "Seznam věcí v místnosti:"
+     *
      * @return
      */
     public String seznamVeciDlouhy() {
@@ -258,6 +266,7 @@ public class Prostor {
 
     /**
      * Vrati seznam veci ze seznamVeci
+     *
      * @return
      */
     public String seznamVeci() {

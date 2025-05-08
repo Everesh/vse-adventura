@@ -4,19 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  Třída Batoh implementuje pro hru batoh a jeho správu.
- *  Tato třída je součástí jednoduché textové hry.
+ * Třída Batoh implementuje pro hru batoh a jeho správu.
+ * Tato třída je součástí jednoduché textové hry.
  *
- *@author     Jan Jurka
- *@version    pro školní rok 2024/2025
+ * @author Jan Jurka
+ * @version pro školní rok 2024/2025
  */
 public class Batoh {
 
-    private List<Vec> seznamVeci;
-    private int omezeniBatohu;
+    private final List<Vec> seznamVeci;
+    private final int omezeniBatohu;
 
     /**
-     *  Vytvoří nový batoh s definovanou velikostí
+     * Vytvoří nový batoh s definovanou velikostí
+     *
      * @param omezeniBatohu - kapacita batohu
      * @return this
      */
@@ -27,6 +28,7 @@ public class Batoh {
 
     /**
      * Vrati seznam veci ze seznamVeci předepsaný stringem "Seznam věcí v batohu:"
+     *
      * @return seznam věcí v batohu
      */
     public String dlouhyPopis() {
@@ -36,6 +38,7 @@ public class Batoh {
 
     /**
      * Vrati seznam veci ze seznamVeci
+     *
      * @return seznam věcí v batohu
      */
     private String vypisBatohu() {
@@ -48,6 +51,7 @@ public class Batoh {
 
     /**
      * Vlozi věc do batohu máli volné místo a vrátí bool zda se operace povedla
+     *
      * @param Vec - Vec ktera bude vlozena do batohu
      * @return boolean
      */
@@ -61,6 +65,7 @@ public class Batoh {
 
     /**
      * Odebere predmet ze seznamu veci a vrati ho existujeli
+     *
      * @param nazev - nazev veci v batohu
      * @return Vec
      */
@@ -76,6 +81,7 @@ public class Batoh {
 
     /**
      * Vrátí predmet ze seznamu veci aniž by jej odstranila
+     *
      * @param nazev - nazev veci v batohu
      * @return Vec
      */
@@ -90,11 +96,12 @@ public class Batoh {
 
     /**
      * Vrátí bool informujici zda je predmet v batohu
+     *
      * @param nazev - nazev veci v batohu
      * @return boolean
      */
     public boolean obsahujeVec(String nazev) {
-        for(Vec vec : seznamVeci) {
+        for (Vec vec : seznamVeci) {
             if (vec.getNazev().equals(nazev)) {
                 return true;
             }

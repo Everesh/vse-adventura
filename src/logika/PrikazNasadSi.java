@@ -1,22 +1,23 @@
 package logika;
 
 /**
- *  Třída PrikazNasadSi implementuje pro hru příkaz nasaď si.
- *  Tato třída je součástí jednoduché textové hry.
+ * Třída PrikazNasadSi implementuje pro hru příkaz nasaď si.
+ * Tato třída je součástí jednoduché textové hry.
  *
- *  Nasad si přesouvá věci z batohu do výbavy
+ * Nasad si přesouvá věci z batohu do výbavy
  *
- *@author     Jan Jurka
- *@version    pro školní rok 2024/2025
+ * @author Jan Jurka
+ * @version pro školní rok 2024/2025
  */
 public class PrikazNasadSi implements IPrikaz {
 
     private static final String NAZEV = "nasaď si";
-    private HerniPlan herniPlan;
+    private final HerniPlan herniPlan;
 
 
     /**
      * Konstruktor třídy
+     *
      * @param herniPlan
      * @return this
      */
@@ -47,9 +48,9 @@ public class PrikazNasadSi implements IPrikaz {
     }
 
     /**
-     *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     * Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
      *
-     *  @ return nazev prikazu
+     * @ return nazev prikazu
      */
     @Override
     public String getNazev() {

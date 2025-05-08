@@ -1,22 +1,23 @@
 package logika;
 
 /**
- *  Třída PrikazPoloz implementuje pro hru příkaz polož.
- *  Tato třída je součástí jednoduché textové hry.
+ * Třída PrikazPoloz implementuje pro hru příkaz polož.
+ * Tato třída je součástí jednoduché textové hry.
  *
- *  Příkaz polož přesouvá věci z batohu do prostoru
- *  
- *@author     Jan Jurka
- *@version    pro školní rok 2024/2025
+ * Příkaz polož přesouvá věci z batohu do prostoru
+ *
+ * @author Jan Jurka
+ * @version pro školní rok 2024/2025
  */
 public class PrikazPoloz implements IPrikaz {
 
     private static final String NAZEV = "polož";
-    private HerniPlan herniPlan;
+    private final HerniPlan herniPlan;
     private Batoh batoh;
 
     /**
      * Konstruktor třídy
+     *
      * @param herniPlan
      * @return this
      */
@@ -56,9 +57,9 @@ public class PrikazPoloz implements IPrikaz {
     }
 
     /**
-     *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     * Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
      *
-     *  @ return nazev prikazu
+     * @ return nazev prikazu
      */
     @Override
     public String getNazev() {

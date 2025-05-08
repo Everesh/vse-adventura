@@ -1,22 +1,23 @@
 package logika;
 
 /**
- *  Třída PrikazUder implementuje pro hru příkaz udeř.
- *  Tato třída je součástí jednoduché textové hry.
+ * Třída PrikazUder implementuje pro hru příkaz udeř.
+ * Tato třída je součástí jednoduché textové hry.
  *
- *  Příkaz udeř se pokusí udeřit věc
- *  v závislosti na obsah batohu a věc kterou se hráč snaží udeřit může vést k následkům
- *  
- *@author     Jan Jurka
- *@version    pro školní rok 2024/2025
+ * Příkaz udeř se pokusí udeřit věc
+ * v závislosti na obsah batohu a věc kterou se hráč snaží udeřit může vést k následkům
+ *
+ * @author Jan Jurka
+ * @version pro školní rok 2024/2025
  */
 public class PrikazUder implements IPrikaz {
     private static final String NAZEV = "udeř";
-    private HerniPlan herniPlan;
-    private Hra hra;
+    private final HerniPlan herniPlan;
+    private final Hra hra;
 
     /**
      * Konstruktor třídy
+     *
      * @param herniPlan
      * @param hra
      * @return this
@@ -67,9 +68,9 @@ public class PrikazUder implements IPrikaz {
     }
 
     /**
-     *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     * Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
      *
-     *  @ return nazev prikazu
+     * @ return nazev prikazu
      */
     @Override
     public String getNazev() {

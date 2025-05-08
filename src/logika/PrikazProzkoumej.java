@@ -1,21 +1,22 @@
 package logika;
 
 /**
- *  Třída PrikazProzkoumej implementuje pro hru příkaz prozkoumej.
- *  Tato třída je součástí jednoduché textové hry.
+ * Třída PrikazProzkoumej implementuje pro hru příkaz prozkoumej.
+ * Tato třída je součástí jednoduché textové hry.
  *
- *  Příkaz přesune hráče do pseudoProstoru třídy Vec, existujeli
- *      * pseudoProstor je prostor s názvem "" (prázdný řeťezec)
+ * Příkaz přesune hráče do pseudoProstoru třídy Vec, existujeli
+ * * pseudoProstor je prostor s názvem "" (prázdný řeťezec)
  *
- *@author     Jan Jurka
- *@version    pro školní rok 2024/2025
+ * @author Jan Jurka
+ * @version pro školní rok 2024/2025
  */
 public class PrikazProzkoumej implements IPrikaz {
     private static final String NAZEV = "prozkoumej";
-    private HerniPlan herniPlan;
+    private final HerniPlan herniPlan;
 
     /**
      * Konstruktor třídy
+     *
      * @param herniPlan
      * @return this
      */
@@ -46,7 +47,7 @@ public class PrikazProzkoumej implements IPrikaz {
         if (aktualniProstor.obsahujeVec(nazevVeci)) {
             Vec pozadovanaVec = aktualniProstor.peekVec(nazevVeci);
             if (pozadovanaVec.maProstor()) {
-                herniPlan.setAktualniProstor( pozadovanaVec.getProstor() );
+                herniPlan.setAktualniProstor(pozadovanaVec.getProstor());
                 return "";
             } else {
                 return nazevVeci + " nelze prozkoumat!\n";
@@ -57,9 +58,9 @@ public class PrikazProzkoumej implements IPrikaz {
     }
 
     /**
-     *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     * Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
      *
-     *  @ return nazev prikazu
+     * @ return nazev prikazu
      */
     @Override
     public String getNazev() {

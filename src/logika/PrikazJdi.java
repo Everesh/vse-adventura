@@ -3,22 +3,22 @@ package logika;
 import java.util.Objects;
 
 /**
- *  Třída PrikazJdi implementuje pro hru příkaz jdi.
- *  Tato třída je součástí jednoduché textové hry.
- *  
- *@author     Jarmila Pavlickova, Luboš Pavlíček
- *@version    pro školní rok 2016/2017
+ * Třída PrikazJdi implementuje pro hru příkaz jdi.
+ * Tato třída je součástí jednoduché textové hry.
+ *
+ * @author Jarmila Pavlickova, Luboš Pavlíček
+ * @version pro školní rok 2016/2017
  */
 public class PrikazJdi implements IPrikaz {
     private static final String NAZEV = "jdi";
-    private HerniPlan plan;
-    private Hra hra;
-    
+    private final HerniPlan plan;
+    private final Hra hra;
+
     /**
-    *  Konstruktor třídy
-    *  
-    *  @param plan herní plán, ve kterém se bude ve hře "chodit" 
-    */    
+     * Konstruktor třídy
+     *
+     * @param plan herní plán, ve kterém se bude ve hře "chodit"
+     */
     public PrikazJdi(Hra hra) {
         this.hra = hra;
         this.plan = hra.getHerniPlan();
@@ -113,11 +113,11 @@ public class PrikazJdi implements IPrikaz {
         }
         return "";
     }
-    
+
     /**
-     *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
-     *  
-     *  @ return nazev prikazu
+     * Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     *
+     * @ return nazev prikazu
      */
     @Override
     public String getNazev() {

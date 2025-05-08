@@ -5,25 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  Class HerniPlan - třída představující mapu a stav adventury.
- * 
- *  Tato třída inicializuje prvky ze kterých se hra skládá:
- *  vytváří všechny prostory,
- *  propojuje je vzájemně pomocí východů 
- *  a pamatuje si aktuální prostor, ve kterém se hráč právě nachází.
+ * Class HerniPlan - třída představující mapu a stav adventury.
  *
- *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
- *@version    pro školní rok 2016/2017
+ * Tato třída inicializuje prvky ze kterých se hra skládá:
+ * vytváří všechny prostory,
+ * propojuje je vzájemně pomocí východů
+ * a pamatuje si aktuální prostor, ve kterém se hráč právě nachází.
+ *
+ * @author Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
+ * @version pro školní rok 2016/2017
  */
 public class HerniPlan {
-    
+
     private Prostor aktualniProstor;
-    private List<Prostor> prostory;
-    private Batoh batoh;
-    private Vybava vybava;
-    
-     /**
-     *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
+    private final List<Prostor> prostory;
+    private final Batoh batoh;
+    private final Vybava vybava;
+
+    /**
+     * Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
      */
     public HerniPlan() {
         this.batoh = new Batoh(4);
@@ -31,26 +31,27 @@ public class HerniPlan {
         this.prostory = new ArrayList<>();
         zalozProstoryHry();
     }
+
     /**
-     *  Vytváří jednotlivé prostory, propojuje je pomocí východů
-     *  a vkládá do nich věci. Jako výchozí aktuální prostor nastaví `moje_cela`.
+     * Vytváří jednotlivé prostory, propojuje je pomocí východů
+     * a vkládá do nich věci. Jako výchozí aktuální prostor nastaví `moje_cela`.
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
         Prostor moje_cela = new Prostor("moje_cela", "Jsi ve své cele");
         Prostor severniKoridorZalare = new Prostor("severní_koridor_žaláře",
-                                                    "Jsi v severním koridoru žaláře");
+                "Jsi v severním koridoru žaláře");
         Prostor oubliette = new Prostor("oubliette", "Jsi v oubliette");
         Prostor cela1 = new Prostor("cela_1", "Jsi v první cele");
         Prostor stredniKoridorZalare = new Prostor("střední_koridor_žaláře",
-                                                    "Jsi ve středním koridoru žaláře");
+                "Jsi ve středním koridoru žaláře");
         Prostor cela2 = new Prostor("cela_2", "Jsi ve druhé cele");
         Prostor zalarnikovaStanice = new Prostor("žalářníkova_stanice", "Jsi v žalářníkově stanici");
         Prostor jizniKoridorZalare = new Prostor("jižní_koridor_žaláře", "Jsi v jižním koridoru žaláře");
         Prostor cela3 = new Prostor("cela_3", "Jsi ve třetí cele");
         Prostor koridorHradu = new Prostor("hlavní_koridor_hradu", "Jsi v hlavním koridoru hradu");
         Prostor koruniSal = new Prostor("koruní_sál", "Jsi v koruním sálu");
-        Prostor staniceStraze = new Prostor( "strážní_stanice", "Jsi ve strážní stanici");
+        Prostor staniceStraze = new Prostor("strážní_stanice", "Jsi ve strážní stanici");
         Prostor kralovaKomnata = new Prostor("králova_komnata", "Jsi v Králově komnatě");
         Prostor skrytaCapkaMistnost = new Prostor("?", "ʆรเ √є รкгץтє ςคקкค ๓เรтภ๏รтเ");
 
@@ -114,7 +115,7 @@ public class HerniPlan {
         Vec klic_od_cel = new Vec("klíč_od_cel", true, false, null, this);
         prostorTeloZalarnika.vlozVec(klic_od_cel);
 
-        
+
         // přiřazují se průchody mezi prostory (sousedící prostory)
         moje_cela.setVychod(severniKoridorZalare);
         severniKoridorZalare.setVychod(moje_cela);
@@ -145,7 +146,7 @@ public class HerniPlan {
         prostorZalarnikuvDiar.setVychod(zalarnikovaStanice);
         prostorMysiDira.setVychod(cela1);
         prostorKraluvDiar.setVychod(kralovaKomnata);
-        
+
         // index prostorů
         prostory.add(moje_cela);
         prostory.add(severniKoridorZalare);
@@ -166,30 +167,31 @@ public class HerniPlan {
 
         aktualniProstor = moje_cela;  // hra začíná v mojí cele
     }
-    
+
     /**
-     *  Metoda vrací odkaz na aktuální prostor, ve ktetém se hráč právě nachází.
+     * Metoda vrací odkaz na aktuální prostor, ve ktetém se hráč právě nachází.
      *
-     *@return     aktuální prostor
+     * @return aktuální prostor
      */
-    
+
     public Prostor getAktualniProstor() {
         return aktualniProstor;
     }
 
 
     /**
-     *  Metoda nastaví aktuální prostor, používá se nejčastěji při přechodu mezi prostory
+     * Metoda nastaví aktuální prostor, používá se nejčastěji při přechodu mezi prostory
      *
-     *@param  prostor nový aktuální prostor
+     * @param prostor nový aktuální prostor
      */
     public void setAktualniProstor(Prostor prostor) {
-       aktualniProstor = prostor;
+        aktualniProstor = prostor;
     }
 
 
     /**
-     *  Metoda vrátí instanci batohu spojenou s tímto herním plánem
+     * Metoda vrátí instanci batohu spojenou s tímto herním plánem
+     *
      * @return Batoh
      */
     public Batoh getBatoh() {
@@ -197,16 +199,19 @@ public class HerniPlan {
     }
 
     /**
-     *  Metoda vrátí instanci výbavy spojenou s tímto herním plánem
+     * Metoda vrátí instanci výbavy spojenou s tímto herním plánem
+     *
      * @return Vybava
      */
-    public Vybava getVybava() {return vybava;}
+    public Vybava getVybava() {
+        return vybava;
+    }
 
     /**
-     *  Metoda vrátí instanci prostoru s požadovaným názvem
-     *
-     *  Používá se, potřebujeli metoda přístup do jiného prostoru
-     *  nežli je prostor aktuální
+     * Metoda vrátí instanci prostoru s požadovaným názvem
+     * <p>
+     * Používá se, potřebujeli metoda přístup do jiného prostoru
+     * nežli je prostor aktuální
      *
      * @return Prostor
      */

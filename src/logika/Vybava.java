@@ -4,18 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  Třída Vybava implementuje pro hru výbavu a její správu.
- *  Tato třída je součástí jednoduché textové hry.
+ * Třída Vybava implementuje pro hru výbavu a její správu.
+ * Tato třída je součástí jednoduché textové hry.
  *
- *@author     Jan Jurka
- *@version    pro školní rok 2024/2025
+ * @author Jan Jurka
+ * @version pro školní rok 2024/2025
  */
 public class Vybava {
 
-    private List<Vec> seznamVeci;
+    private final List<Vec> seznamVeci;
 
     /**
-     *  Vytvoří novou výbavu s definovanou velikostí
+     * Vytvoří novou výbavu s definovanou velikostí
+     *
      * @return this
      */
     public Vybava() {
@@ -24,6 +25,7 @@ public class Vybava {
 
     /**
      * Vrati seznam veci ze seznamVeci předepsaný stringem "Máš na sobě:"
+     *
      * @return seznam vybavených věcé
      */
     public String dlouhyPopis() {
@@ -32,6 +34,7 @@ public class Vybava {
 
     /**
      * Vrati seznam veci ze seznamVeci
+     *
      * @return seznam vybavených věcé
      */
     private String vypisVybavy() {
@@ -44,6 +47,7 @@ public class Vybava {
 
     /**
      * Pokusí se vybavit věc jeli nositelná
+     *
      * @param vec věc kterou se metoda pokusí vybavit
      * @return bool zda se nasazení povedlo
      */
@@ -57,6 +61,7 @@ public class Vybava {
 
     /**
      * Pokusí se sundat věc z vybavebí
+     *
      * @param nazev nazev věci kterou se pokusí metoda sundat
      * @return bool zda se sundání povedlo
      */
@@ -72,6 +77,7 @@ public class Vybava {
 
     /**
      * Vrátí informaci zda je věc vybavená
+     *
      * @param nazev nazev věci jejíž nasazenost se testuje
      * @return bool
      */

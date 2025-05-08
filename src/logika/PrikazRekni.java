@@ -3,21 +3,22 @@ package logika;
 import java.util.Arrays;
 
 /**
- *  Třída PrikazRekni implementuje pro hru příkaz řekni.
- *  Tato třída je součástí jednoduché textové hry.
+ * Třída PrikazRekni implementuje pro hru příkaz řekni.
+ * Tato třída je součástí jednoduché textové hry.
  *
- *  Příkaz řekni vrátí parametry předepsané stringem "Řekl si: "
- *  Vyslovení konkrétního slova v konkrétním prostoru může mít další následky
- *  
- *@author     Jan Jurka
- *@version    pro školní rok 2024/2025
+ * Příkaz řekni vrátí parametry předepsané stringem "Řekl si: "
+ * Vyslovení konkrétního slova v konkrétním prostoru může mít další následky
+ *
+ * @author Jan Jurka
+ * @version pro školní rok 2024/2025
  */
 public class PrikazRekni implements IPrikaz {
     private static final String NAZEV = "řekni";
-    private HerniPlan herniPlan;
+    private final HerniPlan herniPlan;
 
     /**
      * Konstruktor třídy
+     *
      * @param herniPlan
      * @return this
      */
@@ -29,7 +30,7 @@ public class PrikazRekni implements IPrikaz {
      * Provede příkaz rekni
      *
      * Vrátí parametry předepsané stringem "Řekl si: "
-     *  Vyslovení konkrétního slova v konkrétním prostoru může mít další následky
+     * Vyslovení konkrétního slova v konkrétním prostoru může mít další následky
      *
      * @param parametry string co hráč pronese.
      * @return Error message ("" pokud vše proběhne v pořádku)
@@ -39,7 +40,7 @@ public class PrikazRekni implements IPrikaz {
         if (parametry == null) {
             return "Řekl si: \"\"\n";
         } else if (herniPlan.getAktualniProstor().getNazev().equals("koruní_sál") &&
-                Arrays.stream(parametry).anyMatch(str -> str.toLowerCase().equals("ashbourne"))) {
+                Arrays.stream(parametry).anyMatch(str -> str.equalsIgnoreCase("ashbourne"))) {
             herniPlan.getAktualniProstor().odeberVec("král");
             Prostor prostorKralovoTelo = new Prostor("", "Prozkoumáváš královo_tělo");
             herniPlan.getAktualniProstor().vlozVec(new Vec("královo_tělo", false, false, prostorKralovoTelo, herniPlan));
@@ -58,9 +59,9 @@ public class PrikazRekni implements IPrikaz {
     }
 
     /**
-     *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     * Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
      *
-     *  @ return nazev prikazu
+     * @ return nazev prikazu
      */
     @Override
     public String getNazev() {

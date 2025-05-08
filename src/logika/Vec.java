@@ -3,28 +3,29 @@ package logika;
 import java.util.Objects;
 
 /**
- *  Třída Vec implementuje pro hru věc a její parametry.
- *  Tato třída je součástí jednoduché textové hry.
+ * Třída Vec implementuje pro hru věc a její parametry.
+ * Tato třída je součástí jednoduché textové hry.
  *
- *  Třída definuje interakce mezi věcmi pro příkaz použij
+ * Třída definuje interakce mezi věcmi pro příkaz použij
  *
- *@author     Jan Jurka
- *@version    pro školní rok 2024/2025
+ * @author Jan Jurka
+ * @version pro školní rok 2024/2025
  */
 public class Vec {
-    private String nazev;
-    private boolean prenositelnost;
-    private boolean nositelnost;
-    private Prostor prozkoumej;
-    private HerniPlan herniPlan;
+    private final String nazev;
+    private final boolean prenositelnost;
+    private final boolean nositelnost;
+    private final Prostor prozkoumej;
+    private final HerniPlan herniPlan;
 
     /**
      * Vytvoří předmět se zadaným názvem a přenositelnostní
-     * @param nazev Jméno věci jednoznačný identifikátor
+     *
+     * @param nazev          Jméno věci jednoznačný identifikátor
      * @param prenositelnost Určuje zda se dá věc odnést z místnosti
-     * @param nositelnost Určuje zda se dá věc bléct
-     * @param prozkoumej pseudoProstor předmětu (většinou null)
-     * @param herniPlan reference na herniPlan
+     * @param nositelnost    Určuje zda se dá věc bléct
+     * @param prozkoumej     pseudoProstor předmětu (většinou null)
+     * @param herniPlan      reference na herniPlan
      */
     public Vec(String nazev, boolean prenositelnost, boolean nositelnost, Prostor prozkoumej, HerniPlan herniPlan) {
         this.nazev = nazev;
@@ -36,6 +37,7 @@ public class Vec {
 
     /**
      * Vrátí název předmětu
+     *
      * @return název
      */
     public String getNazev() {
@@ -44,6 +46,7 @@ public class Vec {
 
     /**
      * Vrátí boolean s informací o přenositelnosti
+     *
      * @return bool
      */
     public boolean jePrenositelna() {
@@ -52,6 +55,7 @@ public class Vec {
 
     /**
      * Vrátí boolean s informací o nositelnosti
+     *
      * @return bool
      */
     public boolean jeNositelna() {
@@ -60,6 +64,7 @@ public class Vec {
 
     /**
      * Vrátí boolean s informací o existenci pseudoProstoru
+     *
      * @return bool
      */
     public boolean maProstor() {
@@ -68,6 +73,7 @@ public class Vec {
 
     /**
      * Vrátí pseudoProstor věci
+     *
      * @return Prostor
      */
     public Prostor getProstor() {
