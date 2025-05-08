@@ -2,7 +2,7 @@
 
 Jednoduchá textová adventura, ve které se hráč ujímá role vězně uvězněného v hradním žaláři.
 
-Hra probíhá v textovém prostředí – hráč zadává příkazy pomocí klávesnice a reaguje na popisy místností a událostí.
+Hra probíhá v textovém prostředí, hráč zadává příkazy pomocí klávesnice a reaguje na popisy místností a událostí.
 
 Úkolem hráče je uprchnout z vězení pomocí nalezených předmětů, interakcí s prostředím a postavami.
 
@@ -23,5 +23,6 @@ mi nešel použít kvůli chybové hlášce:
 použil jsem tudíž defaultní ruleset pro pmd 7.13.0
 
 - PMD hlásí problémy se switchem ve třídě Vec, nicméně fallthrough jednotlivých case statmentů je zde úmyslný
+- Pořadí parametrů v testovacích assertech je vědomě prohozeno, aby odpovídalo dříve odevzdanému zadání
 - vytvořeno za použití JDK ms-17.0.15
   - otestováno s JDK jbr-21 a openjdk-23.0.2
