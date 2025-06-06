@@ -169,6 +169,8 @@ public class HerniPlan {
 
         // Zkouška místnosti
         Prostor prostor_abrakadabra = new Prostor("abrakadabra", "Ocitl si se na cimbuří veže nevýdané výšky");
+        Vec carokneznik = new Vec("čarokněžník", false, false, null, this);
+        prostor_abrakadabra.vlozVec(carokneznik);
         prostory.add(prostor_abrakadabra);
 
 
