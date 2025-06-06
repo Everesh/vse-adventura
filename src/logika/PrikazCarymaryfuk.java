@@ -33,10 +33,10 @@ public class PrikazCarymaryfuk implements IPrikaz {
             return "Příkaz carymaryfuk příjmá přesně jeden parametr!";
         }
 
-        if (herniPlan.getAktualniProstor().getNazev().equals("abrakadabra")) {
+        if ("abrakadabra".equals(herniPlan.getAktualniProstor().getNazev())) {
             herniPlan.setAktualniProstor(herniPlan.getProstor("okraj reality"));
             return "Hwazaaaaa... Teleportuješ se\n";
-        } else if (herniPlan.getAktualniProstor().getNazev().equals("okraj reality")) {
+        } else if ("okraj reality".equals(herniPlan.getAktualniProstor().getNazev())) {
             herniPlan.setAktualniProstor(herniPlan.getPreMagicOrigin());
             return "Hwazaaaaa... Teleportuješ se\n";
         }

@@ -36,12 +36,12 @@ public class PrikazAbrakadabra implements IPrikaz {
             return "Příkaz abrakadabra nepříjmá žádné parametry!\n";
         }
 
-        if (herniPlan.getAktualniProstor().getNazev().equals("abrakadabra")) {
+        if ("abrakadabra".equals(herniPlan.getAktualniProstor().getNazev())) {
             herniPlan.setAktualniProstor(herniPlan.getPreMagicOrigin());
             return "";
         }
 
-        if (herniPlan.getAktualniProstor().getNazev().equals("okraj reality")) {
+        if ("okraj reality".equals(herniPlan.getAktualniProstor().getNazev())) {
             herniPlan.setAktualniProstor(prostor_abrakadabra);
             return "Eoeoeoeeeee... teleportuješ se zpět!\n";
         }

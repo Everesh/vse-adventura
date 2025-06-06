@@ -36,7 +36,7 @@ public class PrikazMluvS implements IPrikaz {
             return "Příkaz mluv s příjmá přesně jeden parametr!";
         }
 
-        if (parametry[0].equals("čarokněžník") && herniPlan.getAktualniProstor().obsahujeVec("čarokněžník")) {
+        if ("čarokněžník".equals(parametry[0]) && herniPlan.getAktualniProstor().obsahujeVec("čarokněžník")) {
             if (herniPlan.getBatoh().obsahujeVec("tabula_rasa")) {
                 hra.setEpilog("Čarokněžník s jiskrou v oku nadšeně převezme tabulu rasu. Na oplátku tě vezme jako svého učedníka!\n" +
                               "Vyhrál si! Dobrá práce!\n");
@@ -49,7 +49,7 @@ public class PrikazMluvS implements IPrikaz {
             }
         }
 
-        if (parametry[0].equals("sfinga") && herniPlan.getAktualniProstor().obsahujeVec("sfinga")) {
+        if ("sfinga".equals(parametry[0]) && herniPlan.getAktualniProstor().obsahujeVec("sfinga")) {
             return "Hmm, ten starý blázen našel dalšího nešťastníka a přesvědčil jej pokoušet osud.\n" +
                    "Nuže dobrá, chceš-li tabulu rasu, řekni mi génie, kolike je 2 + 2?\n";
         }
