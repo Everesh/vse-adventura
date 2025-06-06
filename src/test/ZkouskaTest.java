@@ -1,4 +1,5 @@
 import logika.Hra;
+import logika.Vec;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -348,6 +349,51 @@ public class ZkouskaTest {
         assertEquals("Jsi v místnosti z bílého mramoru\n" +
                 "Máš na sobě: okovy\n" +
                 "Seznam věcí v batohu: tabula_rasa\n" +
+                "Seznam věcí v místnosti: sfinga\n" +
+                "Východy:", hra.zpracujPrikaz("seber tabula_rasa"));
+    }
+
+    @Test
+    public void tabulaRasaNelzeSebratJeliPlnyBatoh() {
+        assertEquals("Ocitl si se na cimbuří veže nevýdané výšky\n" +
+                "Máš na sobě: okovy\n" +
+                "Seznam věcí v batohu:\n" +
+                "Seznam věcí v místnosti: čarokněžník\n" +
+                "Východy:", hra.zpracujPrikaz("abrakadabra"));
+
+        assertEquals("Hwazaaaaa... Teleportuješ se\n" +
+                "Jsi v místnosti z bílého mramoru\n" +
+                "Máš na sobě: okovy\n" +
+                "Seznam věcí v batohu:\n" +
+                "Seznam věcí v místnosti: sfinga\n" +
+                "Východy:", hra.zpracujPrikaz("carymaryfuk"));
+
+        assertEquals("Řekl jsi: \"4\"\n" +
+                "Sfinga se na tebe udiveně podíva s obdivem na tváři. Takové ohromení je hodno odměny!\n" +
+                "Sfinga před tebe položí tabulu rasu!\n" +
+                "Jsi v místnosti z bílého mramoru\n" +
+                "Máš na sobě: okovy\n" +
+                "Seznam věcí v batohu:\n" +
+                "Seznam věcí v místnosti: sfinga, tabula_rasa\n" +
+                "Východy:", hra.zpracujPrikaz("řekni 4"));
+
+        hra.getHerniPlan().getBatoh().vlozDoBatohu(
+                new Vec("blocker1", true, false, null, hra.getHerniPlan())
+        );
+        hra.getHerniPlan().getBatoh().vlozDoBatohu(
+                new Vec("blocker2", true, false, null, hra.getHerniPlan())
+        );
+        hra.getHerniPlan().getBatoh().vlozDoBatohu(
+                new Vec("blocker3", true, false, null, hra.getHerniPlan())
+        );
+        hra.getHerniPlan().getBatoh().vlozDoBatohu(
+                new Vec("blocker4", true, false, null, hra.getHerniPlan())
+        );
+
+        assertEquals("tabula_rasa se ti do batohu nevejde, musíš je prvně vyprázdnit\n" +
+                "Jsi v místnosti z bílého mramoru\n" +
+                "Máš na sobě: okovy\n" +
+                "Seznam věcí v batohu: blocker1, blocker2, blocker3, blocker4\n" +
                 "Seznam věcí v místnosti: sfinga\n" +
                 "Východy:", hra.zpracujPrikaz("seber tabula_rasa"));
     }
