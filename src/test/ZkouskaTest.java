@@ -27,6 +27,8 @@ public class ZkouskaTest {
                               "Seznam věcí v batohu:\n" +
                               "Seznam věcí v místnosti: čarokněžník\n" +
                               "Východy:", hra.zpracujPrikaz("abrakadabra"));
+
+        assertEquals("abrakadabra", hra.getHerniPlan().getAktualniProstor().getNazev());
     }
 
     @Test
@@ -48,11 +50,15 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: čarokněžník\n" +
                 "Východy:", hra.zpracujPrikaz("abrakadabra"));
 
+        assertEquals("abrakadabra", hra.getHerniPlan().getAktualniProstor().getNazev());
+
         assertEquals("Jsi ve své cele\n" +
                 "Máš na sobě: okovy\n" +
                 "Seznam věcí v batohu:\n" +
                 "Seznam věcí v místnosti: tělo_žalářníka, zámek_okovů\n" +
                 "Východy: severní_koridor_žaláře", hra.zpracujPrikaz("abrakadabra"));
+
+        assertEquals("moje_cela", hra.getHerniPlan().getAktualniProstor().getNazev());
     }
 
     @Test
@@ -63,17 +69,23 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: dveře_celi_1\n" +
                 "Východy: moje_cela, oubliette, střední_koridor_žaláře", hra.zpracujPrikaz("jdi severní_koridor_žaláře"));
 
+        assertEquals("severní_koridor_žaláře", hra.getHerniPlan().getAktualniProstor().getNazev());
+
         assertEquals("Ocitl si se na cimbuří veže nevýdané výšky\n" +
                 "Máš na sobě: okovy\n" +
                 "Seznam věcí v batohu:\n" +
                 "Seznam věcí v místnosti: čarokněžník\n" +
                 "Východy:", hra.zpracujPrikaz("abrakadabra"));
 
+        assertEquals("abrakadabra", hra.getHerniPlan().getAktualniProstor().getNazev());
+
         assertEquals("Jsi v severním koridoru žaláře\n" +
                 "Máš na sobě: okovy\n" +
                 "Seznam věcí v batohu:\n" +
                 "Seznam věcí v místnosti: dveře_celi_1\n" +
                 "Východy: moje_cela, oubliette, střední_koridor_žaláře", hra.zpracujPrikaz("abrakadabra"));
+
+        assertEquals("severní_koridor_žaláře", hra.getHerniPlan().getAktualniProstor().getNazev());
     }
 
     @Test
@@ -124,12 +136,16 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: čarokněžník\n" +
                 "Východy:", hra.zpracujPrikaz("abrakadabra"));
 
+        assertEquals("abrakadabra", hra.getHerniPlan().getAktualniProstor().getNazev());
+
         assertEquals("Hwazaaaaa... Teleportuješ se\n" +
                 "Jsi v místnosti z bílého mramoru\n" +
                 "Máš na sobě: okovy\n" +
                 "Seznam věcí v batohu:\n" +
                 "Seznam věcí v místnosti: sfinga\n" +
                 "Východy:", hra.zpracujPrikaz("carymaryfuk"));
+
+        assertEquals("okraj reality", hra.getHerniPlan().getAktualniProstor().getNazev());
     }
 
     @Test
@@ -182,6 +198,8 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: čarokněžník\n" +
                 "Východy:", hra.zpracujPrikaz("abrakadabra"));
 
+        assertEquals("abrakadabra", hra.getHerniPlan().getAktualniProstor().getNazev());
+
         assertEquals("Hwazaaaaa... Teleportuješ se\n" +
                 "Jsi v místnosti z bílého mramoru\n" +
                 "Máš na sobě: okovy\n" +
@@ -189,12 +207,16 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: sfinga\n" +
                 "Východy:", hra.zpracujPrikaz("carymaryfuk"));
 
+        assertEquals("okraj reality", hra.getHerniPlan().getAktualniProstor().getNazev());
+
         assertEquals("Hwazaaaaa... Teleportuješ se\n" +
                 "Jsi ve své cele\n" +
                 "Máš na sobě: okovy\n" +
                 "Seznam věcí v batohu:\n" +
                 "Seznam věcí v místnosti: tělo_žalářníka, zámek_okovů\n" +
                 "Východy: severní_koridor_žaláře", hra.zpracujPrikaz("carymaryfuk"));
+
+        assertEquals("moje_cela", hra.getHerniPlan().getAktualniProstor().getNazev());
     }
 
     @Test
@@ -205,11 +227,15 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: dveře_celi_1\n" +
                 "Východy: moje_cela, oubliette, střední_koridor_žaláře", hra.zpracujPrikaz("jdi severní_koridor_žaláře"));
 
+        assertEquals("severní_koridor_žaláře", hra.getHerniPlan().getAktualniProstor().getNazev());
+
         assertEquals("Ocitl si se na cimbuří veže nevýdané výšky\n" +
                 "Máš na sobě: okovy\n" +
                 "Seznam věcí v batohu:\n" +
                 "Seznam věcí v místnosti: čarokněžník\n" +
                 "Východy:", hra.zpracujPrikaz("abrakadabra"));
+
+        assertEquals("abrakadabra", hra.getHerniPlan().getAktualniProstor().getNazev());
 
         assertEquals("Hwazaaaaa... Teleportuješ se\n" +
                 "Jsi v místnosti z bílého mramoru\n" +
@@ -218,12 +244,16 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: sfinga\n" +
                 "Východy:", hra.zpracujPrikaz("carymaryfuk"));
 
+        assertEquals("okraj reality", hra.getHerniPlan().getAktualniProstor().getNazev());
+
         assertEquals("Hwazaaaaa... Teleportuješ se\n" +
                 "Jsi v severním koridoru žaláře\n" +
                 "Máš na sobě: okovy\n" +
                 "Seznam věcí v batohu:\n" +
                 "Seznam věcí v místnosti: dveře_celi_1\n" +
                 "Východy: moje_cela, oubliette, střední_koridor_žaláře", hra.zpracujPrikaz("carymaryfuk"));
+
+        assertEquals("severní_koridor_žaláře", hra.getHerniPlan().getAktualniProstor().getNazev());
     }
 
     @Test
@@ -234,6 +264,8 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: čarokněžník\n" +
                 "Východy:", hra.zpracujPrikaz("abrakadabra"));
 
+        assertEquals("abrakadabra", hra.getHerniPlan().getAktualniProstor().getNazev());
+
         assertEquals("Hwazaaaaa... Teleportuješ se\n" +
                 "Jsi v místnosti z bílého mramoru\n" +
                 "Máš na sobě: okovy\n" +
@@ -241,12 +273,16 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: sfinga\n" +
                 "Východy:", hra.zpracujPrikaz("carymaryfuk"));
 
+        assertEquals("okraj reality", hra.getHerniPlan().getAktualniProstor().getNazev());
+
         assertEquals("Eoeoeoeeeee... teleportuješ se zpět!\n" +
                 "Ocitl si se na cimbuří veže nevýdané výšky\n" +
                 "Máš na sobě: okovy\n" +
                 "Seznam věcí v batohu:\n" +
                 "Seznam věcí v místnosti: čarokněžník\n" +
                 "Východy:", hra.zpracujPrikaz("abrakadabra"));
+
+        assertEquals("abrakadabra", hra.getHerniPlan().getAktualniProstor().getNazev());
     }
 
     @Test
@@ -319,6 +355,8 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: sfinga, tabula_rasa\n" +
                 "Východy:",  hra.zpracujPrikaz("řekni 4"));
 
+        assertTrue(hra.getHerniPlan().getAktualniProstor().obsahujeVec("tabula_rasa"));
+
         assertFalse(hra.konecHry());
     }
 
@@ -346,11 +384,17 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: sfinga, tabula_rasa\n" +
                 "Východy:", hra.zpracujPrikaz("řekni 4"));
 
+        assertTrue(hra.getHerniPlan().getAktualniProstor().obsahujeVec("tabula_rasa"));
+
         assertEquals("Jsi v místnosti z bílého mramoru\n" +
                 "Máš na sobě: okovy\n" +
                 "Seznam věcí v batohu: tabula_rasa\n" +
                 "Seznam věcí v místnosti: sfinga\n" +
                 "Východy:", hra.zpracujPrikaz("seber tabula_rasa"));
+
+        assertFalse(hra.getHerniPlan().getAktualniProstor().obsahujeVec("tabula_rasa"));
+
+        assertTrue(hra.getHerniPlan().getBatoh().obsahujeVec("tabula_rasa"));
     }
 
     @Test
