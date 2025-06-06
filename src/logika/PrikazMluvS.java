@@ -3,9 +3,11 @@ package logika;
 public class PrikazMluvS implements IPrikaz {
     private static final String NAZEV = "mluv s";
     private final HerniPlan herniPlan;
+    private final Hra hra;
 
-    public PrikazMluvS(HerniPlan herniPlan) {
+    public PrikazMluvS(HerniPlan herniPlan, Hra hra) {
         this.herniPlan = herniPlan;
+        this.hra = hra;
     }
 
     @Override
@@ -16,7 +18,10 @@ public class PrikazMluvS implements IPrikaz {
 
         if (parametry[0].equals("čarokněžník") && herniPlan.getAktualniProstor().obsahujeVec("čarokněžník")) {
             if (herniPlan.getBatoh().obsahujeVec("tabula_rasa")) {
-                // TODO vyhra
+                hra.setEpilog("Čarokněžník s jiskrou v oku nadšeně převezme tabulu rasu. Na oplátku tě vezme jako svého učedníka!\n" +
+                              "Vyhrál si! Dobrá práce!\n");
+                hra.setKonecHry(true);
+                return "";
             } else {
                 return "Výtej vyzivateli, vyvoláním prastaré kledby A-brak-A-da-BRA si splnil první z testů pro\n" +
                        "osvojení mutidimenzionální teleportace. Nicméně druhý bude namáhavější. Použí kledbu\n" +
@@ -25,7 +30,7 @@ public class PrikazMluvS implements IPrikaz {
         }
 
         if (parametry[0].equals("sfinga") && herniPlan.getAktualniProstor().obsahujeVec("sfinga")) {
-            return "Hmm, ten starý blázen našel dalšího blázna pokoušet osud.\n" +
+            return "Hmm, ten starý blázen našel dalšího nešťastníka a přesvědčil jej pokoušet osud.\n" +
                    "Nuže dobrá, chceš-li tabulu rasu, řekni mi génie, kolike je 2 + 2?\n";
         }
 

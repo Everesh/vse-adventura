@@ -16,12 +16,17 @@ public class PrikazAbrakadabra implements IPrikaz {
     @Override
     public String provedPrikaz(String... parametry) {
         if (parametry.length > 0) {
-            return "Příkaz abrakadabra nepříjmá žádné parametry!";
+            return "Příkaz abrakadabra nepříjmá žádné parametry!\n";
         }
 
         if (herniPlan.getAktualniProstor().getNazev().equals("abrakadabra")) {
             herniPlan.setAktualniProstor(puvod);
             return "";
+        }
+
+        if (herniPlan.getAktualniProstor().getNazev().equals("okraj reality")) {
+            herniPlan.setAktualniProstor(prostor_abrakadabra);
+            return "Eoeoeoeeeee... teleportuješ se zpět!\n";
         }
 
         this.puvod = herniPlan.getAktualniProstor();

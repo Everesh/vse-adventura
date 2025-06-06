@@ -57,7 +57,7 @@ public class PrikazRekni implements IPrikaz {
                     "Otřásl se, oči se mu zaleskly hrůzou a vzápětí se bezvládně sesunul na trůn.\n" +
                     "Král omdlel!\n";
         } else if ("okraj reality".equals(herniPlan.getAktualniProstor().getNazev())) {
-            System.out.println("Řekl jsi: \"" + String.join(" ", parametry) + "\"\n");
+            System.out.println("Řekl jsi: \"" + String.join(" ", parametry) + "\"");
             if (Arrays.stream(parametry).anyMatch(str -> "4".equalsIgnoreCase(str))) {
                 Vec tabulaRasa = new Vec("tabula_rasa", true, false, null, herniPlan);
                 herniPlan.getAktualniProstor().vlozVec(tabulaRasa);
@@ -67,6 +67,7 @@ public class PrikazRekni implements IPrikaz {
                 hra.setEpilog("Sfinga na tebe vrhne opovrhavý pohled. Nádech, povzdech a spálí tě na uhel svým pohledem.\n" +
                               "Prohrál si! Výce štěstí příště!\n");
                 hra.setKonecHry(true);
+                return "";
             }
         }
         return "Řekl si: \"" + String.join(" ", parametry) + "\"\n";
