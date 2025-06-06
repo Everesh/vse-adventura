@@ -237,10 +237,18 @@ public class HerniPlan {
         return null;
     }
 
+    /**
+     * Metoda nastavý prostor do kterého se bude abrakadabra a carymaryfuk vracet
+     * @param preMagicOrigin
+     */
     public void setPreMagicOrigin(Prostor preMagicOrigin) {
         this.preMagicOrigin = preMagicOrigin;
     }
 
+    /**
+     * Metoda vrati prostor do kterého se má abrakadabra a carymaryfuk vracet
+     * @return Prostor
+     */
     public Prostor getPreMagicOrigin() {
         return preMagicOrigin;
     }

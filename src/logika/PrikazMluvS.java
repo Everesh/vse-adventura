@@ -1,15 +1,35 @@
 package logika;
 
+/**
+ * Třída PrikazMluvS implementuje pro hru příkaz mluv s.
+ * Tato třída je součástí jednoduché textové hry.
+ *
+ * Příkaz mluv s se pokusí promluvit s věcí
+ * v závislosti na obsah batohu a může vést k odlišným výsledkům
+ *
+ * @author Jan Jurka
+ * @version pro školní rok 2024/2025
+ */
 public class PrikazMluvS implements IPrikaz {
     private static final String NAZEV = "mluv s";
     private final HerniPlan herniPlan;
     private final Hra hra;
 
+    /**
+     * Konstruktor třídy
+     * @param herniPlan
+     * @return this
+     */
     public PrikazMluvS(HerniPlan herniPlan, Hra hra) {
         this.herniPlan = herniPlan;
         this.hra = hra;
     }
 
+    /**
+     * Metoda provede příkaz mluv s
+     * @param parametry počet parametrů závisí na konkrétním příkazu.
+     * @return String
+     */
     @Override
     public String provedPrikaz(String... parametry) {
         if (parametry.length != 1) {
@@ -37,6 +57,10 @@ public class PrikazMluvS implements IPrikaz {
         return "S " + parametry[0] + " se nedá mluvit!";
     }
 
+    /**
+     * Metoda vrátí nazev příkazu
+     * @return String
+     */
     @Override
     public String getNazev() {
         return NAZEV;

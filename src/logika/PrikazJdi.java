@@ -18,6 +18,7 @@ public class PrikazJdi implements IPrikaz {
      * Konstruktor třídy
      *
      * @param plan herní plán, ve kterém se bude ve hře "chodit"
+     * @return this
      */
     public PrikazJdi(Hra hra) {
         this.hra = hra;
