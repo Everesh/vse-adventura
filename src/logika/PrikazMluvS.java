@@ -8,6 +8,7 @@ public class PrikazMluvS implements IPrikaz {
         this.herniPlan = herniPlan;
     }
 
+    @Override
     public String provedPrikaz(String... parametry) {
         if (parametry.length != 1) {
             return "Příkaz mluv s příjmá přesně jeden parametr!";
@@ -17,9 +18,9 @@ public class PrikazMluvS implements IPrikaz {
             if (herniPlan.getBatoh().obsahujeVec("tabula_rasa")) {
                 // TODO vyhra
             } else {
-                return "Výtej vyzivateli, vyvoláním prastaré kledby A-brak-A-da-BRA si splnil první z testů pro" +
-                       " osvojení mutidimenzionální teleportace. Nicméně druhý bude namáhavější. Použí kledbu" +
-                       " carymary-fUk a zjiskej pro mě tabulu rasu, incarnaci originální magie of incarnace osudu!";
+                return "Výtej vyzivateli, vyvoláním prastaré kledby A-brak-A-da-BRA si splnil první z testů pro\n" +
+                       "osvojení mutidimenzionální teleportace. Nicméně druhý bude namáhavější. Použí kledbu\n" +
+                       "čA--Rym-ARy-fuk a zjiskej pro mě tabulu rasu, incarnaci originální magie of incarnace osudu!\n";
             }
         }
 

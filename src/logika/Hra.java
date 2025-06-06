@@ -40,6 +40,7 @@ public class Hra implements IHra {
         platnePrikazy.vlozPrikaz(new PrikazNasadSi(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazSundejSi(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazAbrakadabra(herniPlan));
+        platnePrikazy.vlozPrikaz(new PrikazMluvS(herniPlan));
     }
 
     /**
@@ -121,6 +122,12 @@ public class Hra implements IHra {
         // Extrakce zvratného 'si'
         if (parametry.length > 0 && "si".equals(parametry[0])) {
             slovoPrikazu += " si";
+            parametry = Arrays.copyOfRange(parametry, 1, parametry.length);
+        }
+
+        // Extrakce spojky 's'
+        if (parametry.length > 0 && "s".equals(parametry[0])) {
+            slovoPrikazu += " s";
             parametry = Arrays.copyOfRange(parametry, 1, parametry.length);
         }
 
