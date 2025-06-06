@@ -24,6 +24,11 @@ public class PrikazMluvS implements IPrikaz {
             }
         }
 
+        if (parametry[0].equals("sfinga") && herniPlan.getAktualniProstor().obsahujeVec("sfinga")) {
+            return "Hmm, ten starý blázen našel dalšího blázna pokoušet osud.\n" +
+                   "Nuže dobrá, chceš-li tabulu rasu, řekni mi génie, kolike je 2 + 2?\n";
+        }
+
         return "S " + parametry[0] + " se nedá mluvit!";
     }
 
