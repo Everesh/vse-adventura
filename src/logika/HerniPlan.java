@@ -166,6 +166,13 @@ public class HerniPlan {
         prostory.add(prostorZalarnikuvDiar);
 
         aktualniProstor = mojeCela;  // hra začíná v mojí cele
+
+        // Zkouška místnosti
+        Prostor prostor_abrakadabra = new Prostor("abrakadabra", "Ocitl si se na cimbuří veže nevýdané výšky");
+        prostory.add(prostor_abrakadabra);
+
+
+
     }
 
     /**
