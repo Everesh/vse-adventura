@@ -287,7 +287,8 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: sfinga\n" +
                 "Východy:", hra.zpracujPrikaz("carymaryfuk"));
 
-        assertEquals("Sfinga na tebe vrhne opovrhavý pohled. Nádech, povzdech a spálí tě na uhel svým pohledem.\n" +
+        assertEquals("Řekl jsi: \"1\"\n" +
+                "Sfinga na tebe vrhne opovrhavý pohled. Nádech, povzdech a spálí tě na uhel svým pohledem.\n" +
                 "Prohrál si! Výce štěstí příště!\n\n",  hra.zpracujPrikaz("řekni 1"));
 
         assertTrue(hra.konecHry());
@@ -308,7 +309,8 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: sfinga\n" +
                 "Východy:", hra.zpracujPrikaz("carymaryfuk"));
 
-        assertEquals("Sfinga se na tebe udiveně podíva s obdivem na tváři. Takové ohromení je hodno odměny!\n" +
+        assertEquals("Řekl jsi: \"4\"\n" +
+                "Sfinga se na tebe udiveně podíva s obdivem na tváři. Takové ohromení je hodno odměny!\n" +
                 "Sfinga před tebe položí tabulu rasu!\n" +
                 "Jsi v místnosti z bílého mramoru\n" +
                 "Máš na sobě: okovy\n" +
@@ -334,7 +336,8 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: sfinga\n" +
                 "Východy:", hra.zpracujPrikaz("carymaryfuk"));
 
-        assertEquals("Sfinga se na tebe udiveně podíva s obdivem na tváři. Takové ohromení je hodno odměny!\n" +
+        assertEquals("Řekl jsi: \"4\"\n" +
+                "Sfinga se na tebe udiveně podíva s obdivem na tváři. Takové ohromení je hodno odměny!\n" +
                 "Sfinga před tebe položí tabulu rasu!\n" +
                 "Jsi v místnosti z bílého mramoru\n" +
                 "Máš na sobě: okovy\n" +
@@ -364,7 +367,8 @@ public class ZkouskaTest {
                 "Seznam věcí v místnosti: sfinga\n" +
                 "Východy:", hra.zpracujPrikaz("carymaryfuk"));
 
-        assertEquals("Sfinga se na tebe udiveně podíva s obdivem na tváři. Takové ohromení je hodno odměny!\n" +
+        assertEquals("Řekl jsi: \"4\"\n" +
+                "Sfinga se na tebe udiveně podíva s obdivem na tváři. Takové ohromení je hodno odměny!\n" +
                 "Sfinga před tebe položí tabulu rasu!\n" +
                 "Jsi v místnosti z bílého mramoru\n" +
                 "Máš na sobě: okovy\n" +
