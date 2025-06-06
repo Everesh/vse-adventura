@@ -6,10 +6,10 @@ public class PrikazAbrakadabra implements IPrikaz {
     private Prostor puvod;
     private final Prostor prostor_abrakadabra;
 
-    public PrikazAbrakadabra(HerniPlan herniPlan, Prostor puvod) {
+    public PrikazAbrakadabra(HerniPlan herniPlan) {
 
         this.herniPlan = herniPlan;
-        this.puvod = puvod;
+        this.puvod = null;
         this.prostor_abrakadabra = herniPlan.getProstor("abrakadabra");
     }
 
@@ -17,6 +17,11 @@ public class PrikazAbrakadabra implements IPrikaz {
     public String provedPrikaz(String... parametry) {
         if (parametry.length > 0) {
             return "Příkaz abrakadabra nepříjmá žádné parametry!";
+        }
+
+        if (herniPlan.getAktualniProstor().getNazev().equals("abrakadabra")) {
+            herniPlan.setAktualniProstor(puvod);
+            return "";
         }
 
         this.puvod = herniPlan.getAktualniProstor();
