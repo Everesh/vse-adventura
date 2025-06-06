@@ -124,6 +124,26 @@ public class ZkouskaTest {
     }
 
     @Test
+    public void carokneznikNelzeSebrat() {
+        assertEquals("Ocitl si se na cimbuří veže nevýdané výšky\n" +
+                "Máš na sobě: okovy\n" +
+                "Seznam věcí v batohu:\n" +
+                "Seznam věcí v místnosti: čarokněžník\n" +
+                "Východy:", hra.zpracujPrikaz("abrakadabra"));
+
+        assertEquals("čarokněžník se nedá přenést!\n" +
+                "Ocitl si se na cimbuří veže nevýdané výšky\n" +
+                "Máš na sobě: okovy\n" +
+                "Seznam věcí v batohu:\n" +
+                "Seznam věcí v místnosti: čarokněžník\n" +
+                "Východy:", hra.zpracujPrikaz("seber čarokněžník"));
+
+        assertTrue(hra.getHerniPlan().getAktualniProstor().obsahujeVec("čarokněžník"));
+
+        assertFalse(hra.getHerniPlan().getBatoh().obsahujeVec("čarokněžník"));
+    }
+
+    @Test
     public void carymaryfukThrowsErrorFromOutsideAbrakadabraSpace() {
         assertThrows(RuntimeException.class, () -> hra.zpracujPrikaz("carymaryfuk"));
     }
@@ -307,6 +327,33 @@ public class ZkouskaTest {
                 "Seznam věcí v batohu:\n" +
                 "Seznam věcí v místnosti: sfinga\n" +
                 "Východy:",  hra.zpracujPrikaz("mluv s sfinga"));
+    }
+
+    @Test
+    public void sfingaNelzeSebrat() {
+        assertEquals("Ocitl si se na cimbuří veže nevýdané výšky\n" +
+                "Máš na sobě: okovy\n" +
+                "Seznam věcí v batohu:\n" +
+                "Seznam věcí v místnosti: čarokněžník\n" +
+                "Východy:", hra.zpracujPrikaz("abrakadabra"));
+
+        assertEquals("Hwazaaaaa... Teleportuješ se\n" +
+                "Jsi v místnosti z bílého mramoru\n" +
+                "Máš na sobě: okovy\n" +
+                "Seznam věcí v batohu:\n" +
+                "Seznam věcí v místnosti: sfinga\n" +
+                "Východy:", hra.zpracujPrikaz("carymaryfuk"));
+
+        assertEquals("sfinga se nedá přenést!\n" +
+                "Jsi v místnosti z bílého mramoru\n" +
+                "Máš na sobě: okovy\n" +
+                "Seznam věcí v batohu:\n" +
+                "Seznam věcí v místnosti: sfinga\n" +
+                "Východy:",  hra.zpracujPrikaz("seber sfinga"));
+
+        assertTrue(hra.getHerniPlan().getAktualniProstor().obsahujeVec("sfinga"));
+
+        assertFalse(hra.getHerniPlan().getBatoh().obsahujeVec("sfinga"));
     }
 
     @Test
