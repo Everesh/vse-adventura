@@ -21,6 +21,7 @@ public class HerniPlan {
     private final List<Prostor> prostory;
     private final Batoh batoh;
     private final Vybava vybava;
+    private Prostor preMagicOrigin;
 
     /**
      * Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -236,4 +237,11 @@ public class HerniPlan {
         return null;
     }
 
+    public void setPreMagicOrigin(Prostor preMagicOrigin) {
+        this.preMagicOrigin = preMagicOrigin;
+    }
+
+    public Prostor getPreMagicOrigin() {
+        return preMagicOrigin;
+    }
 }

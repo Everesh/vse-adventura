@@ -18,7 +18,7 @@ public class PrikazCarymaryfuk implements IPrikaz {
             herniPlan.setAktualniProstor(herniPlan.getProstor("okraj reality"));
             return "Hwazaaaaa... Teleportuješ se\n";
         } else if (herniPlan.getAktualniProstor().getNazev().equals("okraj reality")) {
-            herniPlan.setAktualniProstor(herniPlan.getProstor("abrakadabra"));
+            herniPlan.setAktualniProstor(herniPlan.getPreMagicOrigin());
             return "Hwazaaaaa... Teleportuješ se\n";
         }
 

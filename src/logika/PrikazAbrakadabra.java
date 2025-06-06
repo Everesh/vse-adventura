@@ -3,13 +3,11 @@ package logika;
 public class PrikazAbrakadabra implements IPrikaz {
     private static final String NAZEV = "abrakadabra";
     private final HerniPlan herniPlan;
-    private Prostor puvod;
     private final Prostor prostor_abrakadabra;
 
     public PrikazAbrakadabra(HerniPlan herniPlan) {
 
         this.herniPlan = herniPlan;
-        this.puvod = null;
         this.prostor_abrakadabra = herniPlan.getProstor("abrakadabra");
     }
 
@@ -20,7 +18,7 @@ public class PrikazAbrakadabra implements IPrikaz {
         }
 
         if (herniPlan.getAktualniProstor().getNazev().equals("abrakadabra")) {
-            herniPlan.setAktualniProstor(puvod);
+            herniPlan.setAktualniProstor(herniPlan.getPreMagicOrigin());
             return "";
         }
 
@@ -29,7 +27,7 @@ public class PrikazAbrakadabra implements IPrikaz {
             return "Eoeoeoeeeee... teleportuješ se zpět!\n";
         }
 
-        this.puvod = herniPlan.getAktualniProstor();
+        herniPlan.setPreMagicOrigin(herniPlan.getAktualniProstor());
         herniPlan.setAktualniProstor(prostor_abrakadabra);
         return "";
     }
