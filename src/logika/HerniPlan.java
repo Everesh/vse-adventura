@@ -168,12 +168,15 @@ public class HerniPlan {
         aktualniProstor = mojeCela;  // hra začíná v mojí cele
 
         // Zkouška místnosti
-        Prostor prostor_abrakadabra = new Prostor("abrakadabra", "Ocitl si se na cimbuří veže nevýdané výšky");
+        Prostor prostorAbrakadabra = new Prostor("abrakadabra", "Ocitl si se na cimbuří veže nevýdané výšky");
         Vec carokneznik = new Vec("čarokněžník", false, false, null, this);
-        prostor_abrakadabra.vlozVec(carokneznik);
-        prostory.add(prostor_abrakadabra);
+        prostorAbrakadabra.vlozVec(carokneznik);
+        prostory.add(prostorAbrakadabra);
 
-
+        Prostor prostorOkrajReality = new Prostor("okraj reality", "Jsi v místnosti z bílého mramoru");
+        Vec sfinga = new Vec("sfinga", false, false, null, this);
+        prostorOkrajReality.vlozVec(sfinga);
+        prostory.add(prostorOkrajReality);
 
     }
 
