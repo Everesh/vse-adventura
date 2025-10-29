@@ -5,9 +5,9 @@ import cz.vse.jurj16_jfx_adv.logika.IHra;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import java.util.Optional;
 
 public class MainController {
     @FXML
@@ -42,6 +42,14 @@ public class MainController {
         if (hra.konecHry()) {
             vstup.setDisable(true);
             tlacitkoOdesly.setDisable(true);
+        }
+    }
+
+    public void ukoncitHru(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Skutečně si přejete ukončit hru?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Platform.exit();
         }
     }
 }
