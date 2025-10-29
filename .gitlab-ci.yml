@@ -1,4 +1,4 @@
-image: maven:4.0.0-rc-4-sapmachine-25
+image: maven:3.9-eclipse-temurin-23
 
 sestaveni:
   script:
@@ -7,4 +7,4 @@ sestaveni:
       paths:
         - "target/*.zip"
   only:
-    - master
+    - main
