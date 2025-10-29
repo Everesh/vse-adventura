@@ -5,10 +5,14 @@ import cz.vse.jurj16_jfx_adv.logika.IHra;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class MainController {
+    @FXML
+    private Button tlacitkoOdesly;
+
     @FXML
     private TextArea vystup;
 
@@ -34,5 +38,10 @@ public class MainController {
         String vysledek = hra.zpracujPrikaz(prikaz);
         vystup.appendText(vysledek + "\n\n");
         vstup.clear();
+
+        if (hra.konecHry()) {
+            vstup.setDisable(true);
+            tlacitkoOdesly.setDisable(true);
+        }
     }
 }
