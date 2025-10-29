@@ -2,7 +2,6 @@
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package cz.vse.jurj16_jfx_adv.main;
 
-import cz.vse.jurj16_jfx_adv.HelloApplication;
 import cz.vse.jurj16_jfx_adv.logika.*;
 import cz.vse.jurj16_jfx_adv.uiText.TextoveRozhrani;
 import javafx.application.Application;
@@ -10,7 +9,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /*******************************************************************************
