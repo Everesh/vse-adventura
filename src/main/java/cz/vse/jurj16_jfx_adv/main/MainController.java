@@ -29,7 +29,7 @@ public class MainController {
     }
 
     public void odesliVstup(ActionEvent actionEvent) {
-        String prikaz = vystup.getText();
+        String prikaz = vstup.getText();
         vystup.appendText("> " + vstup.getText() + '\n');
         String vysledek = hra.zpracujPrikaz(prikaz);
         vystup.appendText(vysledek + "\n\n");
