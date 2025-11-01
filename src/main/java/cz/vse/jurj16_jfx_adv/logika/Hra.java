@@ -1,6 +1,10 @@
 package cz.vse.jurj16_jfx_adv.logika;
 
-import java.util.Arrays;
+import cz.vse.jurj16_jfx_adv.main.Pozorovatel;
+import cz.vse.jurj16_jfx_adv.main.PredmetPozorovani;
+import cz.vse.jurj16_jfx_adv.main.ZmenaHry;
+
+import java.util.*;
 
 /**
  * Třída Hra - třída představující logiku adventury.
@@ -22,6 +26,8 @@ public class Hra implements IHra {
     // Default fallback epilog, měl by být přepsán v závislosti na způsob zakončení hry
     private String epilog = "Hra končí. Dík, že jste si zahráli.";
 
+    private Map<ZmenaHry, Set<Pozorovatel>> seznamPozorovatelu = new HashMap<>();
+
     /**
      * Vytváří hru a inicializuje místnosti (prostřednictvím třídy HerniPlan) a seznam platných příkazů.
      */
@@ -42,6 +48,10 @@ public class Hra implements IHra {
         platnePrikazy.vlozPrikaz(new PrikazAbrakadabra(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazMluvS(herniPlan, this));
         platnePrikazy.vlozPrikaz(new PrikazCarymaryfuk(herniPlan));
+
+        for (ZmenaHry zmenaHry : ZmenaHry.values()) {
+            seznamPozorovatelu.put(zmenaHry, new HashSet<>());
+        }
     }
 
     /**
@@ -195,6 +205,7 @@ public class Hra implements IHra {
      */
     void setKonecHry(boolean konecHry) {
         this.konecHry = konecHry;
+        upozorniPozorovatele(ZmenaHry.KONEC_HRY);
     }
 
     /**
@@ -207,4 +218,14 @@ public class Hra implements IHra {
         return herniPlan;
     }
 
+    @Override
+    public void registruj(ZmenaHry zmenaHry, Pozorovatel pozorovatel) {
+        seznamPozorovatelu.get(zmenaHry).add(pozorovatel);
+    }
+
+    private void upozorniPozorovatele(ZmenaHry zmenaHry) {
+        for(Pozorovatel pozorovatel : seznamPozorovatelu.get(zmenaHry)) {
+            pozorovatel.aktualizuj();
+        }
+    }
 }

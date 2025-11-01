@@ -1,6 +1,10 @@
 package cz.vse.jurj16_jfx_adv.logika;
 
-import java.util.Objects;
+import cz.vse.jurj16_jfx_adv.main.Pozorovatel;
+import cz.vse.jurj16_jfx_adv.main.PredmetPozorovani;
+import cz.vse.jurj16_jfx_adv.main.ZmenaHry;
+
+import java.util.*;
 
 /**
  * Třída Vec implementuje pro hru věc a její parametry.
@@ -93,6 +97,7 @@ public class Vec {
                     herniPlan.getAktualniProstor().odeberVec("dveře_celi_1");
                     Prostor cela1 = herniPlan.getProstor("cela_1");
                     herniPlan.getAktualniProstor().setVychod(cela1);
+                    herniPlan.setAktualniProstor(herniPlan.getAktualniProstor());
                     break;
                 }
             case "dveře_celi_2":
@@ -100,6 +105,7 @@ public class Vec {
                     herniPlan.getAktualniProstor().odeberVec("dveře_celi_2");
                     Prostor cela2 = herniPlan.getProstor("cela_2");
                     herniPlan.getAktualniProstor().setVychod(cela2);
+                    herniPlan.setAktualniProstor(herniPlan.getAktualniProstor());
                     break;
                 }
             case "dveře_celi_3":
@@ -107,6 +113,7 @@ public class Vec {
                     herniPlan.getAktualniProstor().odeberVec("dveře_celi_3");
                     Prostor cela3 = herniPlan.getProstor("cela_3");
                     herniPlan.getAktualniProstor().setVychod(cela3);
+                    herniPlan.setAktualniProstor(herniPlan.getAktualniProstor());
                     break;
                 }
             case "zámek_okovů":
@@ -117,14 +124,18 @@ public class Vec {
             case "díra_ve_stěně":
                 if (Objects.equals(vec.getNazev(), "okovy")) {
                     herniPlan.getBatoh().odeberZBatohu("okovy");
-                    herniPlan.getAktualniProstor().setVychod(new Prostor("slanit_se_po_okovech_na_straně_hradu", ""));
+                    Prostor slanitSe = herniPlan.getProstor("slanit_se_po_okovech_na_straně_hradu");
+                    herniPlan.getAktualniProstor().setVychod(slanitSe);
+                    herniPlan.setAktualniProstor(herniPlan.getAktualniProstor());
                     break;
                 }
             case "hlavní_brána":
                 if (Objects.equals(vec.getNazev(), "klíč_od_hlavní_brány")) {
                     herniPlan.getBatoh().odeberZBatohu("klíč_od_hlavní_brány");
                     herniPlan.getAktualniProstor().odeberVec("hlavní_brána");
-                    herniPlan.getAktualniProstor().setVychod(new Prostor("nádvoří", ""));
+                    Prostor nadvori = herniPlan.getProstor("nádvoří");
+                    herniPlan.getAktualniProstor().setVychod(nadvori);
+                    herniPlan.setAktualniProstor(herniPlan.getAktualniProstor());
                     break;
                 }
             default:

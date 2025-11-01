@@ -1,9 +1,6 @@
 package cz.vse.jurj16_jfx_adv.main;
 
-import cz.vse.jurj16_jfx_adv.logika.Hra;
-import cz.vse.jurj16_jfx_adv.logika.IHra;
-import cz.vse.jurj16_jfx_adv.logika.PrikazJdi;
-import cz.vse.jurj16_jfx_adv.logika.Prostor;
+import cz.vse.jurj16_jfx_adv.logika.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,7 +33,10 @@ public class MainController implements Pozorovatel {
         vystup.appendText(hra.vratUvitani() + "\n\n");
         Platform.runLater(() -> vstup.requestFocus());
         panelVychodu.setItems(seznamVychodu);
-        hra.getHerniPlan().registruj(this);
+
+        hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> aktualizujSeznamVychodu());
+        hra.registruj(ZmenaHry.KONEC_HRY, () -> aktualizujKonecHry());
+
         aktualizujSeznamVychodu();
     }
 
@@ -44,6 +44,14 @@ public class MainController implements Pozorovatel {
     private void aktualizujSeznamVychodu() {
         seznamVychodu.clear();
         seznamVychodu.addAll(hra.getHerniPlan().getAktualniProstor().getVychody());
+    }
+
+    private void aktualizujKonecHry() {
+        if (hra.konecHry()) {
+            vstup.setDisable(true);
+            tlacitkoOdesly.setDisable(true);
+            panelVychodu.setDisable(true);
+        }
     }
 
     public void odesliVstup(ActionEvent actionEvent) {
@@ -56,11 +64,6 @@ public class MainController implements Pozorovatel {
         vystup.appendText("> " + prikaz + '\n');
         String vysledek = hra.zpracujPrikaz(prikaz);
         vystup.appendText(vysledek + "\n\n");
-
-        if (hra.konecHry()) {
-            vstup.setDisable(true);
-            tlacitkoOdesly.setDisable(true);
-        }
     }
 
     public void ukoncitHru(ActionEvent actionEvent) {
@@ -72,9 +75,7 @@ public class MainController implements Pozorovatel {
     }
 
     @Override
-    public void aktualizuj() {
-        aktualizujSeznamVychodu();
-    }
+    public void aktualizuj() {}
 
     @FXML
     private void klikPanelVychodu(MouseEvent mouseEvent) {

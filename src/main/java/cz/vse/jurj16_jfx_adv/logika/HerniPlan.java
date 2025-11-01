@@ -3,11 +3,9 @@ package cz.vse.jurj16_jfx_adv.logika;
 
 import cz.vse.jurj16_jfx_adv.main.Pozorovatel;
 import cz.vse.jurj16_jfx_adv.main.PredmetPozorovani;
+import cz.vse.jurj16_jfx_adv.main.ZmenaHry;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Class HerniPlan - třída představující mapu a stav adventury.
@@ -23,11 +21,11 @@ import java.util.Set;
 public class HerniPlan implements PredmetPozorovani {
 
     private Prostor aktualniProstor;
-    private final List<Prostor> prostory;
+    public final List<Prostor> prostory;
     private final Batoh batoh;
     private final Vybava vybava;
     private Prostor preMagicOrigin;
-    private Set<Pozorovatel> seznamPozorovatelu = new HashSet<>();
+    private Map<ZmenaHry,Set<Pozorovatel>> seznamPozorovatelu = new HashMap<>();
 
     /**
      * Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -37,6 +35,9 @@ public class HerniPlan implements PredmetPozorovani {
         this.vybava = new Vybava();
         this.prostory = new ArrayList<>();
         zalozProstoryHry();
+        for(ZmenaHry zmenaHry : ZmenaHry.values()) {
+            seznamPozorovatelu.put(zmenaHry, new HashSet<>());
+        }
     }
 
     /**
@@ -67,6 +68,10 @@ public class HerniPlan implements PredmetPozorovani {
         Prostor prostorZalarnikuvDiar = new Prostor("", "Prozkoumáváš žalářníkův_diář");
         Prostor prostorMysiDira = new Prostor("", "Prozkoumáváš myší_díra");
         Prostor prostorKraluvDiar = new Prostor("", "Prozkoumáváš králův_diář");
+
+        // Vychody
+        Prostor slanitSe = new Prostor("slanit_se_po_okovech_na_straně_hradu", "");
+        Prostor nadvori = new Prostor("nádvoří", "");
 
         // VECI woooo hoooo https://www.youtube.com/watch?v=f8mL0_4GeV0
         // startovni vybava
@@ -172,6 +177,9 @@ public class HerniPlan implements PredmetPozorovani {
         prostory.add(prostorTeloZalarnika);
         prostory.add(prostorZalarnikuvDiar);
 
+        prostory.add(slanitSe);
+        prostory.add(nadvori);
+
         aktualniProstor = mojeCela;  // hra začíná v mojí cele
 
         // Zkouška místnosti
@@ -205,7 +213,7 @@ public class HerniPlan implements PredmetPozorovani {
      */
     public void setAktualniProstor(Prostor prostor) {
         aktualniProstor = prostor;
-        upozorniPozorovatele();
+        upozorniPozorovatele(ZmenaHry.ZMENA_MISTNOSTI);
     }
 
 
@@ -261,12 +269,12 @@ public class HerniPlan implements PredmetPozorovani {
     }
 
     @Override
-    public void registruj(Pozorovatel pozorovatel) {
-        seznamPozorovatelu.add(pozorovatel);
+    public void registruj(ZmenaHry zmenaHry, Pozorovatel pozorovatel) {
+        seznamPozorovatelu.get(zmenaHry).add(pozorovatel);
     }
 
-    private void upozorniPozorovatele() {
-        for(Pozorovatel pozorovatel : seznamPozorovatelu) {
+    private void upozorniPozorovatele(ZmenaHry zmenaHry) {
+        for(Pozorovatel pozorovatel : seznamPozorovatelu.get(zmenaHry)) {
             pozorovatel.aktualizuj();
         }
     }

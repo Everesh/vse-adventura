@@ -23,7 +23,7 @@ public class Prostor {
     private final String nazev;
     private final String popis;
     private final List<Prostor> vychody;   // obsahuje sousední místnosti
-    private final List<Vec> seznamVeci;
+    public final List<Vec> seznamVeci;
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
