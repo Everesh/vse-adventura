@@ -10,7 +10,7 @@ import java.util.Objects;
  * @version pro školní rok 2016/2017
  */
 public class PrikazJdi implements IPrikaz {
-    private static final String NAZEV = "jdi";
+    public static final String NAZEV = "jdi";
     private final HerniPlan plan;
     private final Hra hra;
 

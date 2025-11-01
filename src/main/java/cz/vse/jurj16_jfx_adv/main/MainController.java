@@ -2,6 +2,7 @@ package cz.vse.jurj16_jfx_adv.main;
 
 import cz.vse.jurj16_jfx_adv.logika.Hra;
 import cz.vse.jurj16_jfx_adv.logika.IHra;
+import cz.vse.jurj16_jfx_adv.logika.PrikazJdi;
 import cz.vse.jurj16_jfx_adv.logika.Prostor;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -9,12 +10,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.util.Optional;
 
 public class MainController implements Pozorovatel {
     @FXML
-    private ListView panelVychodu;
+    private ListView<Prostor> panelVychodu;
 
     @FXML
     private Button tlacitkoOdesly;
@@ -46,10 +48,14 @@ public class MainController implements Pozorovatel {
 
     public void odesliVstup(ActionEvent actionEvent) {
         String prikaz = vstup.getText();
-        vystup.appendText("> " + vstup.getText() + '\n');
+        vstup.clear();
+        zpracujPrikaz(prikaz);
+    }
+
+    private void zpracujPrikaz(String prikaz) {
+        vystup.appendText("> " + prikaz + '\n');
         String vysledek = hra.zpracujPrikaz(prikaz);
         vystup.appendText(vysledek + "\n\n");
-        vstup.clear();
 
         if (hra.konecHry()) {
             vstup.setDisable(true);
@@ -68,5 +74,14 @@ public class MainController implements Pozorovatel {
     @Override
     public void aktualizuj() {
         aktualizujSeznamVychodu();
+    }
+
+    @FXML
+    private void klikPanelVychodu(MouseEvent mouseEvent) {
+        Prostor cil = panelVychodu.getSelectionModel().getSelectedItem();
+        if(cil == null) return;
+
+        String prikaz = PrikazJdi.NAZEV + " " + cil;
+        zpracujPrikaz(prikaz);
     }
 }
