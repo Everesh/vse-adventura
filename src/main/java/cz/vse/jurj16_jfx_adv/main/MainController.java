@@ -2,7 +2,10 @@ package cz.vse.jurj16_jfx_adv.main;
 
 import cz.vse.jurj16_jfx_adv.logika.Hra;
 import cz.vse.jurj16_jfx_adv.logika.IHra;
+import cz.vse.jurj16_jfx_adv.logika.Prostor;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,6 +13,9 @@ import javafx.scene.control.*;
 import java.util.Optional;
 
 public class MainController {
+    @FXML
+    private ListView panelVychodu;
+
     @FXML
     private Button tlacitkoOdesly;
 
@@ -21,15 +27,19 @@ public class MainController {
 
     private IHra hra = new Hra();
 
+    private ObservableList<Prostor> seznamVychodu = FXCollections.observableArrayList();
+
     @FXML
     private void initialize() {
         vystup.appendText(hra.vratUvitani() + "\n\n");
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                vstup.requestFocus();
-            }
-        });
+        Platform.runLater(() -> vstup.requestFocus());
+        panelVychodu.setItems(seznamVychodu);
+    }
+
+    @FXML
+    private void aktualizujSeznamVychodu() {
+        seznamVychodu.clear();
+        seznamVychodu.addAll(hra.getHerniPlan().getAktualniProstor().getVychody());
     }
 
     public void odesliVstup(ActionEvent actionEvent) {

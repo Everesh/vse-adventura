@@ -6,7 +6,7 @@
 
     <groupId>cz.vse</groupId>
     <artifactId>jurj16_jfx_adv</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0-snapshot</version>
     <name>jurj16_jfx_adv</name>
 
     <properties>
