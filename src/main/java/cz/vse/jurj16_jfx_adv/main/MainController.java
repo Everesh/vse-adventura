@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 
 import java.util.Optional;
 
-public class MainController {
+public class MainController implements Pozorovatel {
     @FXML
     private ListView panelVychodu;
 
@@ -34,6 +34,8 @@ public class MainController {
         vystup.appendText(hra.vratUvitani() + "\n\n");
         Platform.runLater(() -> vstup.requestFocus());
         panelVychodu.setItems(seznamVychodu);
+        hra.getHerniPlan().registruj(this);
+        aktualizujSeznamVychodu();
     }
 
     @FXML
@@ -61,5 +63,10 @@ public class MainController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             Platform.exit();
         }
+    }
+
+    @Override
+    public void aktualizuj() {
+        aktualizujSeznamVychodu();
     }
 }

@@ -1,8 +1,13 @@
 package cz.vse.jurj16_jfx_adv.logika;
 
 
+import cz.vse.jurj16_jfx_adv.main.Pozorovatel;
+import cz.vse.jurj16_jfx_adv.main.PredmetPozorovani;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Class HerniPlan - třída představující mapu a stav adventury.
@@ -15,13 +20,14 @@ import java.util.List;
  * @author Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
  * @version pro školní rok 2016/2017
  */
-public class HerniPlan {
+public class HerniPlan implements PredmetPozorovani {
 
     private Prostor aktualniProstor;
     private final List<Prostor> prostory;
     private final Batoh batoh;
     private final Vybava vybava;
     private Prostor preMagicOrigin;
+    private Set<Pozorovatel> seznamPozorovatelu = new HashSet<>();
 
     /**
      * Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -199,6 +205,7 @@ public class HerniPlan {
      */
     public void setAktualniProstor(Prostor prostor) {
         aktualniProstor = prostor;
+        upozorniPozorovatele();
     }
 
 
@@ -251,5 +258,16 @@ public class HerniPlan {
      */
     public Prostor getPreMagicOrigin() {
         return preMagicOrigin;
+    }
+
+    @Override
+    public void registruj(Pozorovatel pozorovatel) {
+        seznamPozorovatelu.add(pozorovatel);
+    }
+
+    private void upozorniPozorovatele() {
+        for(Pozorovatel pozorovatel : seznamPozorovatelu) {
+            pozorovatel.aktualizuj();
+        }
     }
 }
