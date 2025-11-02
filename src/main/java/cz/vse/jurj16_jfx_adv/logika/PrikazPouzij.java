@@ -10,7 +10,7 @@ package cz.vse.jurj16_jfx_adv.logika;
  * @version pro školní rok 2024/2025
  */
 public class PrikazPouzij implements IPrikaz {
-    private static final String NAZEV = "použij";
+    public static final String NAZEV = "použij";
     private final HerniPlan herniPlan;
 
     /**

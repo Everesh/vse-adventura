@@ -20,6 +20,10 @@ import java.util.Optional;
 
 public class MainController implements Pozorovatel {
     @FXML
+    private ListView<Vec> veciKPouziti;
+    private Vec firstSelectedItem;
+
+    @FXML
     private ListView<Vec> veciKNasazeni;
 
     @FXML
@@ -75,6 +79,8 @@ public class MainController implements Pozorovatel {
         veciKUdereni.setItems(seznamVeciVMistnosti);
         veciKSundani.setItems(seznamVeciNaHraci);
         veciKNasazeni.setItems(seznamVeciVBatohu);
+        veciKPouziti.setItems(seznamVeciVBatohu);
+        firstSelectedItem = null;
 
         hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> {
             aktualizujSeznamVychodu();
@@ -107,6 +113,7 @@ public class MainController implements Pozorovatel {
         veciKUdereni.setCellFactory(param -> new ListCellVec(vecImg));
         veciKSundani.setCellFactory(param -> new ListCellVec(vecImg));
         veciKNasazeni.setCellFactory(param -> new ListCellVec(vecImg));
+        veciKPouziti.setCellFactory(param -> new ListCellVec(vecImg));
     }
 
     private void initPlayerPositions() {
@@ -163,6 +170,7 @@ public class MainController implements Pozorovatel {
         vecImg.put("žalářníkův_úbor", getClass().getResource("veci/zalarnikuvUbor.png").toExternalForm());
         vecImg.put("klíč_od_cel", getClass().getResource("veci/klic.png").toExternalForm());
         vecImg.put("klíč_od_okovů", getClass().getResource("veci/klic.png").toExternalForm());
+        vecImg.put("Zpět", getClass().getResource("veci/back.png").toExternalForm());
     }
 
     @FXML
@@ -299,5 +307,33 @@ public class MainController implements Pozorovatel {
 
         String prikaz = PrikazNasadSi.NAZEV + " " + vec.getNazev();
         zpracujPrikaz(prikaz);
+    }
+
+    @FXML
+    private void pouzi(MouseEvent mouseEvent) {
+        if (firstSelectedItem == null) {
+            Vec vec = veciKPouziti.getSelectionModel().getSelectedItem();
+            if (vec == null) return;
+
+            firstSelectedItem = vec;
+
+            ObservableList<Vec> itemsWithBack = FXCollections.observableArrayList(seznamVeciVMistnosti);
+            itemsWithBack.addFirst(new Vec("Zpět", false, false, null, hra.getHerniPlan()));
+            veciKPouziti.setItems(itemsWithBack);
+        } else {
+            Vec vec =  veciKPouziti.getSelectionModel().getSelectedItem();
+            if (vec == null) return;
+
+            if (vec.getNazev().equals("Zpět")) {
+                firstSelectedItem = null;
+                veciKPouziti.setItems(seznamVeciVBatohu);
+                return;
+            }
+
+            String prikaz = PrikazPouzij.NAZEV + " " + firstSelectedItem.getNazev() + " na " + vec.getNazev();
+            firstSelectedItem = null;
+            veciKPouziti.setItems(seznamVeciVBatohu);
+            zpracujPrikaz(prikaz);
+        }
     }
 }
