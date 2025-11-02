@@ -273,7 +273,7 @@ public class HerniPlan implements PredmetPozorovani {
         seznamPozorovatelu.get(zmenaHry).add(pozorovatel);
     }
 
-    private void upozorniPozorovatele(ZmenaHry zmenaHry) {
+    protected void upozorniPozorovatele(ZmenaHry zmenaHry) {
         for(Pozorovatel pozorovatel : seznamPozorovatelu.get(zmenaHry)) {
             pozorovatel.aktualizuj();
         }

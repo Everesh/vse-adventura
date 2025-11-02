@@ -20,6 +20,9 @@ import java.util.Optional;
 
 public class MainController implements Pozorovatel {
     @FXML
+    private ListView<Vec> batoh;
+
+    @FXML
     private ImageView hrac;
 
     @FXML
@@ -37,25 +40,35 @@ public class MainController implements Pozorovatel {
     private IHra hra = new Hra();
 
     private ObservableList<Prostor> seznamVychodu = FXCollections.observableArrayList();
+    private ObservableList<Vec> seznamVeciVBatohu = FXCollections.observableArrayList();
 
     private Map<String, Point2D> souradniceProstoru = new HashMap<>();
     private Map<String, String> prostorImg = new HashMap<>();
+    private Map<String, String> vecImg = new HashMap<>();
 
     @FXML
     private void initialize() {
         vystup.appendText(hra.vratUvitani() + "\n\n");
         Platform.runLater(() -> vstup.requestFocus());
         panelVychodu.setItems(seznamVychodu);
+        batoh.setItems(seznamVeciVBatohu);
 
         hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> {
             aktualizujSeznamVychodu();
             aktualizujPolohuHrace();
         });
+        hra.getHerniPlan().registruj(ZmenaHry.ZMENA_BATOHU, () -> aktualizujSeznamVeciVBatohu());
         hra.registruj(ZmenaHry.KONEC_HRY, () -> aktualizujKonecHry());
+
         aktualizujSeznamVychodu();
+        aktualizujSeznamVeciVBatohu();
+
         initPlayerPositions();
         initProstorImg();
+        initVecImg();
+
         panelVychodu.setCellFactory(param -> new ListCellProstor(prostorImg));
+        batoh.setCellFactory(param -> new ListCellVec(vecImg) );
     }
 
     private void initPlayerPositions() {
@@ -94,10 +107,36 @@ public class MainController implements Pozorovatel {
         prostorImg.put("nádvoří", getClass().getResource("prostory/win.png").toExternalForm());
     }
 
+    private void initVecImg() {
+        vecImg.put("okovy", getClass().getResource("veci/okovy.png").toExternalForm());
+        vecImg.put("tělo_žalářníka", getClass().getResource("veci/zalarnik.png").toExternalForm());
+        vecImg.put("zámek_okovů", getClass().getResource("veci/zamek.png").toExternalForm());
+        vecImg.put("dveře_celi_1", getClass().getResource("veci/dvere.png").toExternalForm());
+        vecImg.put("dveře_celi_2", getClass().getResource("veci/dvere.png").toExternalForm());
+        vecImg.put("dveře_celi_3", getClass().getResource("veci/dvere.png").toExternalForm());
+        vecImg.put("žalářníkův_diář", getClass().getResource("veci/diar.png").toExternalForm());
+        vecImg.put("sýr", getClass().getResource("veci/syr.png").toExternalForm());
+        vecImg.put("myší_díra", getClass().getResource("veci/mouseHole.png").toExternalForm());
+        vecImg.put("čapka", getClass().getResource("veci/capka.png").toExternalForm());
+        vecImg.put("palice", getClass().getResource("veci/palice.png").toExternalForm());
+        vecImg.put("nestabilní_stěna", getClass().getResource("veci/nestabilniStena.png").toExternalForm());
+        vecImg.put("králův_diář", getClass().getResource("veci/diar.png").toExternalForm());
+        vecImg.put("král", getClass().getResource("veci/king.png").toExternalForm());
+        vecImg.put("žalářníkův_úbor", getClass().getResource("veci/zalarnikuvUbor.png").toExternalForm());
+        vecImg.put("klíč_od_cel", getClass().getResource("veci/klic.png").toExternalForm());
+        vecImg.put("klíč_od_okovů", getClass().getResource("veci/klic.png").toExternalForm());
+    }
+
     @FXML
     private void aktualizujSeznamVychodu() {
         seznamVychodu.clear();
         seznamVychodu.addAll(hra.getHerniPlan().getAktualniProstor().getVychody());
+    }
+
+    @FXML
+    private void aktualizujSeznamVeciVBatohu() {
+        seznamVeciVBatohu.clear();
+        seznamVeciVBatohu.addAll(hra.getHerniPlan().getBatoh().getSeznamVeci());
     }
 
     private void aktualizujPolohuHrace() {
@@ -156,5 +195,14 @@ public class MainController implements Pozorovatel {
         napovedaStage.setScene(napovedaScena);
         napovedaStage.show();
         wv.getEngine().load(getClass().getResource("napoveda.html").toExternalForm());
+    }
+
+    @FXML
+    private void poloz(MouseEvent mouseEvent) {
+        Vec vec = batoh.getSelectionModel().getSelectedItem();
+        if(vec == null) return;
+
+        String prikaz = PrikazPoloz.NAZEV + " " + vec.getNazev();
+        zpracujPrikaz(prikaz);
     }
 }

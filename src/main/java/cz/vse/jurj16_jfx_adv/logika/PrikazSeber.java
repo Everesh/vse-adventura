@@ -1,5 +1,7 @@
 package cz.vse.jurj16_jfx_adv.logika;
 
+import cz.vse.jurj16_jfx_adv.main.ZmenaHry;
+
 /**
  * Třída PrikazSeber implementuje pro hru příkaz seber.
  * Tato třída je součástí jednoduché textové hry.
@@ -54,6 +56,7 @@ public class PrikazSeber implements IPrikaz {
             } else {
                 boolean povedloSeVlozit = herniPlan.getBatoh().vlozDoBatohu(pozadovanaVec);
                 if (povedloSeVlozit) {
+                    herniPlan.upozorniPozorovatele(ZmenaHry.ZMENA_BATOHU);
                     return "";
                 } else {
                     return nazevVeci + " se ti do batohu nevejde, musíš je prvně vyprázdnit\n";

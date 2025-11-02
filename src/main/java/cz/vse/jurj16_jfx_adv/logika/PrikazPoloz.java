@@ -1,5 +1,7 @@
 package cz.vse.jurj16_jfx_adv.logika;
 
+import cz.vse.jurj16_jfx_adv.main.ZmenaHry;
+
 /**
  * Třída PrikazPoloz implementuje pro hru příkaz polož.
  * Tato třída je součástí jednoduché textové hry.
@@ -11,7 +13,7 @@ package cz.vse.jurj16_jfx_adv.logika;
  */
 public class PrikazPoloz implements IPrikaz {
 
-    private static final String NAZEV = "polož";
+    public static final String NAZEV = "polož";
     private final HerniPlan herniPlan;
     private Batoh batoh;
 
@@ -53,6 +55,7 @@ public class PrikazPoloz implements IPrikaz {
         Vec pozadovanaVec = batoh.odeberZBatohu(nazevVeci);
         Prostor aktualniProstor = herniPlan.getAktualniProstor();
         aktualniProstor.vlozVec(pozadovanaVec);
+        herniPlan.upozorniPozorovatele(ZmenaHry.ZMENA_BATOHU);
         return "";
     }
 

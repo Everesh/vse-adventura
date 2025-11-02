@@ -36,6 +36,10 @@ public class Batoh {
 
     }
 
+    public List<Vec> getSeznamVeci() {
+       return seznamVeci;
+    }
+
     /**
      * Vrati seznam veci ze seznamVeci
      *
