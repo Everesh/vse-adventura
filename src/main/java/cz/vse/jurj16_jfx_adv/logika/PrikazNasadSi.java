@@ -1,5 +1,7 @@
 package cz.vse.jurj16_jfx_adv.logika;
 
+import cz.vse.jurj16_jfx_adv.main.ZmenaHry;
+
 /**
  * Třída PrikazNasadSi implementuje pro hru příkaz nasaď si.
  * Tato třída je součástí jednoduché textové hry.
@@ -11,7 +13,7 @@ package cz.vse.jurj16_jfx_adv.logika;
  */
 public class PrikazNasadSi implements IPrikaz {
 
-    private static final String NAZEV = "nasaď si";
+    public static final String NAZEV = "nasaď si";
     private final HerniPlan herniPlan;
 
 
@@ -44,6 +46,7 @@ public class PrikazNasadSi implements IPrikaz {
 
         Vec vec = herniPlan.getBatoh().odeberZBatohu(parametry[0]);
         herniPlan.getVybava().nasadSi(vec);
+        herniPlan.upozorniPozorovatele(ZmenaHry.ZMENA_VYBAVY);
         return "";
     }
 
