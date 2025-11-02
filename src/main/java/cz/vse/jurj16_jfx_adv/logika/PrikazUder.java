@@ -1,5 +1,7 @@
 package cz.vse.jurj16_jfx_adv.logika;
 
+import cz.vse.jurj16_jfx_adv.main.ZmenaHry;
+
 /**
  * Třída PrikazUder implementuje pro hru příkaz udeř.
  * Tato třída je součástí jednoduché textové hry.
@@ -64,6 +66,7 @@ public class PrikazUder implements IPrikaz {
             default:
                 return parametry[0] + " je odolný úderům\n";
         }
+        herniPlan.upozorniPozorovatele(ZmenaHry.ZMENA_MISTNOSTI);
         return "";
     }
 

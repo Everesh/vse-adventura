@@ -89,4 +89,8 @@ public class Vybava {
         }
         return false;
     }
+
+    public List<Vec> getVybaveni() {
+        return seznamVeci;
+    }
 }

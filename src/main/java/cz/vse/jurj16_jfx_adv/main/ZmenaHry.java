@@ -4,4 +4,5 @@ public enum ZmenaHry {
     ZMENA_MISTNOSTI,
     KONEC_HRY,
     ZMENA_BATOHU,
+    ZMENA_VYBAVY,
 }

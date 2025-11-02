@@ -1,5 +1,7 @@
 package cz.vse.jurj16_jfx_adv.logika;
 
+import cz.vse.jurj16_jfx_adv.main.ZmenaHry;
+
 import java.util.Objects;
 
 /**
@@ -12,7 +14,7 @@ import java.util.Objects;
  * @version pro školní rok 2024/2025
  */
 public class PrikazSundejSi implements IPrikaz {
-    private static final String NAZEV = "sundej si";
+    public static final String NAZEV = "sundej si";
     private final HerniPlan herniPlan;
 
     /**
@@ -46,6 +48,7 @@ public class PrikazSundejSi implements IPrikaz {
         }
 
         herniPlan.getBatoh().vlozDoBatohu(herniPlan.getVybava().sundejSi(parametry[0]));
+        herniPlan.upozorniPozorovatele(ZmenaHry.ZMENA_VYBAVY);
         return "";
     }
 
