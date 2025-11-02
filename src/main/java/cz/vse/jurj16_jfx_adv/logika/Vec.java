@@ -125,6 +125,7 @@ public class Vec {
             case "díra_ve_stěně":
                 if (Objects.equals(vec.getNazev(), "okovy")) {
                     herniPlan.getBatoh().odeberZBatohu("okovy");
+                    herniPlan.getAktualniProstor().odeberVec("díra_ve_stěně");
                     Prostor slanitSe = herniPlan.getProstor("slanit_se_po_okovech_na_straně_hradu");
                     herniPlan.getAktualniProstor().setVychod(slanitSe);
                     herniPlan.upozorniPozorovatele(ZmenaHry.ZMENA_MISTNOSTI);

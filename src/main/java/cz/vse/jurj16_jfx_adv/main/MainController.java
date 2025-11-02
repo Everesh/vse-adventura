@@ -86,6 +86,7 @@ public class MainController implements Pozorovatel {
             aktualizujSeznamVychodu();
             aktualizujPolohuHrace();
             aktualizujSeznamVeciVMisnosti();
+            aktualizujVecKPouziti();
         });
         hra.getHerniPlan().registruj(ZmenaHry.ZMENA_BATOHU, () -> {
             aktualizujSeznamVeciVBatohu();
@@ -171,6 +172,11 @@ public class MainController implements Pozorovatel {
         vecImg.put("klíč_od_cel", getClass().getResource("veci/klic.png").toExternalForm());
         vecImg.put("klíč_od_okovů", getClass().getResource("veci/klic.png").toExternalForm());
         vecImg.put("díra_ve_stěně", getClass().getResource("veci/diraVeStene.png").toExternalForm());
+        vecImg.put("stráž", getClass().getResource("veci/straz.png").toExternalForm());
+        vecImg.put("hlavní_brána", getClass().getResource("veci/mainGate.png").toExternalForm());
+        vecImg.put("královo_tělo", getClass().getResource("veci/teloKrale.png").toExternalForm());
+        vecImg.put("koruna", getClass().getResource("veci/koruna.png").toExternalForm());
+        vecImg.put("klíč_od_hlavní_brány", getClass().getResource("veci/klic.png").toExternalForm());
         vecImg.put("Zpět", getClass().getResource("veci/back.png").toExternalForm());
     }
 
@@ -211,6 +217,13 @@ public class MainController implements Pozorovatel {
             vstup.setDisable(true);
             tlacitkoOdesly.setDisable(true);
             panelVychodu.setDisable(true);
+            batoh.setDisable(true);
+            veciVMistonsti.setDisable(true);
+            veciKProzkoumani.setDisable(true);
+            veciKUdereni.setDisable(true);
+            veciKSundani.setDisable(true);
+            veciKNasazeni.setDisable(true);
+            veciKPouziti.setDisable(true);
         }
     }
 
@@ -326,15 +339,19 @@ public class MainController implements Pozorovatel {
             if (vec == null) return;
 
             if (vec.getNazev().equals("Zpět")) {
-                firstSelectedItem = null;
-                veciKPouziti.setItems(seznamVeciVBatohu);
+                aktualizujVecKPouziti();
                 return;
             }
 
             String prikaz = PrikazPouzij.NAZEV + " " + firstSelectedItem.getNazev() + " na " + vec.getNazev();
-            firstSelectedItem = null;
-            veciKPouziti.setItems(seznamVeciVBatohu);
+            aktualizujVecKPouziti();
             zpracujPrikaz(prikaz);
         }
+    }
+
+
+    private void aktualizujVecKPouziti() {
+        firstSelectedItem = null;
+        veciKPouziti.setItems(seznamVeciVBatohu);
     }
 }

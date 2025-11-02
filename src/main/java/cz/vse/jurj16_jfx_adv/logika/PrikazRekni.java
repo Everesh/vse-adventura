@@ -1,5 +1,7 @@
 package cz.vse.jurj16_jfx_adv.logika;
 
+import cz.vse.jurj16_jfx_adv.main.ZmenaHry;
+
 import java.util.Arrays;
 
 /**
@@ -51,6 +53,7 @@ public class PrikazRekni implements IPrikaz {
             prostorKralovoTelo.vlozVec(klicOdBrany);
             Vec koruna = new Vec("koruna", true, true, null, herniPlan);
             prostorKralovoTelo.vlozVec(koruna);
+            herniPlan.upozorniPozorovatele(ZmenaHry.ZMENA_MISTNOSTI);
             return "Řekl jsi: \"" + String.join(" ", parametry) + "\"\n" +
                     "Král zbledl, jako by ho zasáhl blesk.\n" +
                     "\"Ashbourne... ne... ne znovu...\"\n" +
