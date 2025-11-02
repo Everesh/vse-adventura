@@ -10,6 +10,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Callback;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +37,7 @@ public class MainController implements Pozorovatel {
     private ObservableList<Prostor> seznamVychodu = FXCollections.observableArrayList();
 
     private Map<String, Point2D> souradniceProstoru = new HashMap<>();
+    private Map<String, String> prostorImg = new HashMap<>();
 
     @FXML
     private void initialize() {
@@ -48,10 +50,10 @@ public class MainController implements Pozorovatel {
             aktualizujPolohuHrace();
         });
         hra.registruj(ZmenaHry.KONEC_HRY, () -> aktualizujKonecHry());
-
         aktualizujSeznamVychodu();
-
         initPlayerPositions();
+        initProstorImg();
+        panelVychodu.setCellFactory(param -> new ListCellProstor(prostorImg));
     }
 
     private void initPlayerPositions() {
@@ -69,6 +71,23 @@ public class MainController implements Pozorovatel {
         souradniceProstoru.put("koruní_sál", new Point2D(320, 140));
         souradniceProstoru.put("strážní_stanice", new Point2D(340, 260));
         souradniceProstoru.put("králova_komnata", new Point2D(275, 260));
+    }
+
+    private void initProstorImg() {
+        prostorImg.put("moje_cela", getClass().getResource("prostory/cela.png").toExternalForm());
+        prostorImg.put("severní_koridor_žaláře",getClass().getResource("prostory/koridor.png").toExternalForm());
+        prostorImg.put("oubliette", getClass().getResource("prostory/oubliette.png").toExternalForm());
+        prostorImg.put("cela_1", getClass().getResource("prostory/cela.png").toExternalForm());
+        prostorImg.put("střední_koridor_žaláře", getClass().getResource("prostory/koridor.png").toExternalForm());
+        prostorImg.put("cela_2", getClass().getResource("prostory/cela.png").toExternalForm());
+        prostorImg.put("žalářníkova_stanice", getClass().getResource("prostory/satanice.png").toExternalForm());
+        prostorImg.put("?", getClass().getResource("prostory/questionmark.png").toExternalForm());
+        prostorImg.put("jižní_koridor_žaláře", getClass().getResource("prostory/koridor.png").toExternalForm());
+        prostorImg.put("cela_3", getClass().getResource("prostory/cela.png").toExternalForm());
+        prostorImg.put("hlavní_koridor_hradu", getClass().getResource("prostory/koridor_hradu.png").toExternalForm());
+        prostorImg.put("koruní_sál", getClass().getResource("prostory/KoruniSal.png").toExternalForm());
+        prostorImg.put("strážní_stanice", getClass().getResource("prostory/satanice.png").toExternalForm());
+        prostorImg.put("králova_komnata", getClass().getResource("prostory/komnata.png").toExternalForm());
     }
 
     @FXML
@@ -121,7 +140,7 @@ public class MainController implements Pozorovatel {
         Prostor cil = panelVychodu.getSelectionModel().getSelectedItem();
         if(cil == null) return;
 
-        String prikaz = PrikazJdi.NAZEV + " " + cil;
+        String prikaz = PrikazJdi.NAZEV + " " + cil.getNazev();
         zpracujPrikaz(prikaz);
     }
 }
