@@ -20,6 +20,9 @@ import java.util.Optional;
 
 public class MainController implements Pozorovatel {
     @FXML
+    private ListView<Vec> veciVMistonsti;
+
+    @FXML
     private ListView<Vec> batoh;
 
     @FXML
@@ -41,6 +44,7 @@ public class MainController implements Pozorovatel {
 
     private ObservableList<Prostor> seznamVychodu = FXCollections.observableArrayList();
     private ObservableList<Vec> seznamVeciVBatohu = FXCollections.observableArrayList();
+    private ObservableList<Vec> seznamVeciVMistnosti = FXCollections.observableArrayList();
 
     private Map<String, Point2D> souradniceProstoru = new HashMap<>();
     private Map<String, String> prostorImg = new HashMap<>();
@@ -50,17 +54,24 @@ public class MainController implements Pozorovatel {
     private void initialize() {
         vystup.appendText(hra.vratUvitani() + "\n\n");
         Platform.runLater(() -> vstup.requestFocus());
+
         panelVychodu.setItems(seznamVychodu);
         batoh.setItems(seznamVeciVBatohu);
+        veciVMistonsti.setItems(seznamVeciVMistnosti);
 
         hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> {
             aktualizujSeznamVychodu();
             aktualizujPolohuHrace();
+            aktualizujSeznamVeciVMisnosti();
         });
-        hra.getHerniPlan().registruj(ZmenaHry.ZMENA_BATOHU, () -> aktualizujSeznamVeciVBatohu());
+        hra.getHerniPlan().registruj(ZmenaHry.ZMENA_BATOHU, () -> {
+            aktualizujSeznamVeciVBatohu();
+            aktualizujSeznamVeciVMisnosti();
+        });
         hra.registruj(ZmenaHry.KONEC_HRY, () -> aktualizujKonecHry());
 
         aktualizujSeznamVychodu();
+        aktualizujSeznamVeciVMisnosti();
         aktualizujSeznamVeciVBatohu();
 
         initPlayerPositions();
@@ -69,6 +80,7 @@ public class MainController implements Pozorovatel {
 
         panelVychodu.setCellFactory(param -> new ListCellProstor(prostorImg));
         batoh.setCellFactory(param -> new ListCellVec(vecImg) );
+        veciVMistonsti.setCellFactory(param -> new ListCellVec(vecImg) );
     }
 
     private void initPlayerPositions() {
@@ -139,6 +151,12 @@ public class MainController implements Pozorovatel {
         seznamVeciVBatohu.addAll(hra.getHerniPlan().getBatoh().getSeznamVeci());
     }
 
+    @FXML
+    private void aktualizujSeznamVeciVMisnosti() {
+        seznamVeciVMistnosti.clear();
+        seznamVeciVMistnosti.addAll(hra.getHerniPlan().getAktualniProstor().getVeci());
+    }
+
     private void aktualizujPolohuHrace() {
         String prostor = hra.getHerniPlan().getAktualniProstor().getNazev();
         if (!souradniceProstoru.containsKey(prostor)) return;
@@ -203,6 +221,15 @@ public class MainController implements Pozorovatel {
         if(vec == null) return;
 
         String prikaz = PrikazPoloz.NAZEV + " " + vec.getNazev();
+        zpracujPrikaz(prikaz);
+    }
+
+    @FXML
+    private void seber(MouseEvent mouseEvent) {
+        Vec vec = veciVMistonsti.getSelectionModel().getSelectedItem();
+        if(vec == null) return;
+
+        String prikaz = PrikazSeber.NAZEV + " " + vec.getNazev();
         zpracujPrikaz(prikaz);
     }
 }

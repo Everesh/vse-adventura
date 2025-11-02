@@ -13,7 +13,7 @@ import cz.vse.jurj16_jfx_adv.main.ZmenaHry;
  */
 public class PrikazSeber implements IPrikaz {
 
-    private static final String NAZEV = "seber";
+    public static final String NAZEV = "seber";
 
     private final HerniPlan herniPlan;
 

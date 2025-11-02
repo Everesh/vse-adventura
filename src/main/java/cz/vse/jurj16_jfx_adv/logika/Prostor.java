@@ -276,4 +276,8 @@ public class Prostor {
         }
         return seznam;
     }
+
+    public List<Vec> getVeci() {
+        return seznamVeci;
+    }
 }
