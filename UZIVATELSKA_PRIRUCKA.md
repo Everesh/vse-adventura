@@ -6,7 +6,7 @@ Tvým úkolem je uniknout z žaláře a dostat se ven z hradu.
 
 ## Quick Start
 ```sh
-java -jar jurj16_adventura.jar
+java -jar jurj16_jfx_adv.jar
 ```
 
 ## Herní Mechaniky

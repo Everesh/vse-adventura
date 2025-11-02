@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: cz.vse.jurj16_jfx_adv.main.Start
+
