@@ -20,6 +20,9 @@ import java.util.Optional;
 
 public class MainController implements Pozorovatel {
     @FXML
+    private ListView<Vec> veciKUdereni;
+
+    @FXML
     private ListView<Vec> veciKProzkoumani;
 
     @FXML
@@ -62,6 +65,7 @@ public class MainController implements Pozorovatel {
         batoh.setItems(seznamVeciVBatohu);
         veciVMistonsti.setItems(seznamVeciVMistnosti);
         veciKProzkoumani.setItems(seznamVeciVMistnosti);
+        veciKUdereni.setItems(seznamVeciVMistnosti);
 
         hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> {
             aktualizujSeznamVychodu();
@@ -86,6 +90,7 @@ public class MainController implements Pozorovatel {
         batoh.setCellFactory(param -> new ListCellVec(vecImg) );
         veciVMistonsti.setCellFactory(param -> new ListCellVec(vecImg) );
         veciKProzkoumani.setCellFactory(param -> new ListCellVec(vecImg));
+        veciKUdereni.setCellFactory(param -> new ListCellVec(vecImg));
     }
 
     private void initPlayerPositions() {
@@ -244,6 +249,15 @@ public class MainController implements Pozorovatel {
         if(vec == null) return;
 
         String prikaz = PrikazProzkoumej.NAZEV + " " + vec.getNazev();
+        zpracujPrikaz(prikaz);
+    }
+
+    @FXML
+    private void uder(MouseEvent mouseEvent) {
+        Vec vec = veciKUdereni.getSelectionModel().getSelectedItem();
+        if(vec == null) return;
+
+        String prikaz = PrikazUder.NAZEV + " " + vec.getNazev();
         zpracujPrikaz(prikaz);
     }
 }

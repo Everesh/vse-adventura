@@ -11,7 +11,7 @@ package cz.vse.jurj16_jfx_adv.logika;
  * @version pro školní rok 2024/2025
  */
 public class PrikazUder implements IPrikaz {
-    private static final String NAZEV = "udeř";
+    public static final String NAZEV = "udeř";
     private final HerniPlan herniPlan;
     private final Hra hra;
 
