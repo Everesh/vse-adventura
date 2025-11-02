@@ -275,7 +275,7 @@ public class HraTest {
                 "Jsi v oubliette\n" +
                         "Máš na sobě:\n" +
                         "Seznam věcí v batohu: klíč_od_cel, klíč_od_okovů, palice\n" +
-                        "Seznam věcí v místnosti: díra_ve_stěně\n" +
+                        "Seznam věcí v místnosti:\n" +
                         "Východy: severní_koridor_žaláře, slanit_se_po_okovech_na_straně_hradu");
 
         // 32. krok hry JDI slanit_se_po_okovech_na_straně_hradu

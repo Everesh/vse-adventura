@@ -45,9 +45,6 @@ public class Hra implements IHra {
         platnePrikazy.vlozPrikaz(new PrikazUder(herniPlan, this));
         platnePrikazy.vlozPrikaz(new PrikazNasadSi(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazSundejSi(herniPlan));
-        platnePrikazy.vlozPrikaz(new PrikazAbrakadabra(herniPlan));
-        platnePrikazy.vlozPrikaz(new PrikazMluvS(herniPlan, this));
-        platnePrikazy.vlozPrikaz(new PrikazCarymaryfuk(herniPlan));
 
         for (ZmenaHry zmenaHry : ZmenaHry.values()) {
             seznamPozorovatelu.put(zmenaHry, new HashSet<>());

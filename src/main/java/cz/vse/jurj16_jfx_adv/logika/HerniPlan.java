@@ -24,7 +24,6 @@ public class HerniPlan implements PredmetPozorovani {
     public final List<Prostor> prostory;
     private final Batoh batoh;
     private final Vybava vybava;
-    private Prostor preMagicOrigin;
     private Map<ZmenaHry,Set<Pozorovatel>> seznamPozorovatelu = new HashMap<>();
 
     /**
@@ -182,17 +181,6 @@ public class HerniPlan implements PredmetPozorovani {
 
         aktualniProstor = mojeCela;  // hra začíná v mojí cele
 
-        // Zkouška místnosti
-        Prostor prostorAbrakadabra = new Prostor("abrakadabra", "Ocitl si se na cimbuří veže nevýdané výšky");
-        Vec carokneznik = new Vec("čarokněžník", false, false, null, this);
-        prostorAbrakadabra.vlozVec(carokneznik);
-        prostory.add(prostorAbrakadabra);
-
-        Prostor prostorOkrajReality = new Prostor("okraj reality", "Jsi v místnosti z bílého mramoru");
-        Vec sfinga = new Vec("sfinga", false, false, null, this);
-        prostorOkrajReality.vlozVec(sfinga);
-        prostory.add(prostorOkrajReality);
-
     }
 
     /**
@@ -250,22 +238,6 @@ public class HerniPlan implements PredmetPozorovani {
             }
         }
         return null;
-    }
-
-    /**
-     * Metoda nastavý prostor do kterého se bude abrakadabra a carymaryfuk vracet
-     * @param preMagicOrigin
-     */
-    public void setPreMagicOrigin(Prostor preMagicOrigin) {
-        this.preMagicOrigin = preMagicOrigin;
-    }
-
-    /**
-     * Metoda vrati prostor do kterého se má abrakadabra a carymaryfuk vracet
-     * @return Prostor
-     */
-    public Prostor getPreMagicOrigin() {
-        return preMagicOrigin;
     }
 
     @Override
