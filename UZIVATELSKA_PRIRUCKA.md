@@ -22,7 +22,7 @@ java -jar jurj16_adventura.jar
 | `použij <věc> na <věc>` | Kombinace objektů              |
 | `udeř <věc/osoba>`      | Útok                           |
 | `nasaď si <věc>`        | Obleče si věc                  |
-| `undej si <věc>`        | Sundá vybavení                 |
+| `sundej si <věc>`       | Sundá vybavení                 |
 | `řekni <text>`          | Komunikace s NPC               |
 | `pomoc` / `nápověda`    | Zobrazí nápovědu               |
 | `konec`                 | Ukončí hru                     |
