@@ -354,4 +354,47 @@ public class MainController implements Pozorovatel {
         firstSelectedItem = null;
         veciKPouziti.setItems(seznamVeciVBatohu);
     }
+
+    @FXML
+    private void reset(ActionEvent actionEvent) {
+        hra = new Hra();
+        vystup.clear();
+        vystup.appendText(hra.vratUvitani() + "\n\n");
+
+        vstup.setDisable(false);
+        vstup.clear();
+        tlacitkoOdesly.setDisable(false);
+        panelVychodu.setDisable(false);
+        batoh.setDisable(false);
+        veciVMistonsti.setDisable(false);
+        veciKProzkoumani.setDisable(false);
+        veciKUdereni.setDisable(false);
+        veciKSundani.setDisable(false);
+        veciKNasazeni.setDisable(false);
+        veciKPouziti.setDisable(false);
+        firstSelectedItem = null;
+
+        veciKPouziti.setItems(seznamVeciVBatohu);
+
+        hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> {
+            aktualizujSeznamVychodu();
+            aktualizujPolohuHrace();
+            aktualizujSeznamVeciVMisnosti();
+        });
+        hra.getHerniPlan().registruj(ZmenaHry.ZMENA_BATOHU, () -> {
+            aktualizujSeznamVeciVBatohu();
+            aktualizujSeznamVeciVMisnosti();
+        });
+        hra.getHerniPlan().registruj(ZmenaHry.ZMENA_VYBAVY, () -> {
+            aktualizujSeznamVeciVBatohu();
+            aktualizujSeznamVeciNaHraci();
+        });
+        hra.registruj(ZmenaHry.KONEC_HRY, () -> aktualizujKonecHry());
+
+        aktualizujSeznamVychodu();
+        aktualizujSeznamVeciVMisnosti();
+        aktualizujSeznamVeciVBatohu();
+        aktualizujSeznamVeciNaHraci();
+        aktualizujPolohuHrace();
+    }
 }
