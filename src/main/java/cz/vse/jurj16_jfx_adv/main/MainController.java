@@ -6,12 +6,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 public class MainController implements Pozorovatel {
+    @FXML
+    private ImageView hrac;
+
     @FXML
     private ListView<Prostor> panelVychodu;
 
@@ -28,22 +35,54 @@ public class MainController implements Pozorovatel {
 
     private ObservableList<Prostor> seznamVychodu = FXCollections.observableArrayList();
 
+    private Map<String, Point2D> souradniceProstoru = new HashMap<>();
+
     @FXML
     private void initialize() {
         vystup.appendText(hra.vratUvitani() + "\n\n");
         Platform.runLater(() -> vstup.requestFocus());
         panelVychodu.setItems(seznamVychodu);
 
-        hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> aktualizujSeznamVychodu());
+        hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> {
+            aktualizujSeznamVychodu();
+            aktualizujPolohuHrace();
+        });
         hra.registruj(ZmenaHry.KONEC_HRY, () -> aktualizujKonecHry());
 
         aktualizujSeznamVychodu();
+
+        initPlayerPositions();
+    }
+
+    private void initPlayerPositions() {
+        souradniceProstoru.put("moje_cela", new Point2D(100, 60));
+        souradniceProstoru.put("severní_koridor_žaláře", new Point2D(155, 70));
+        souradniceProstoru.put("oubliette", new Point2D(155, 25));
+        souradniceProstoru.put("cela_1", new Point2D(215, 60));
+        souradniceProstoru.put("střední_koridor_žaláře", new Point2D(155, 130));
+        souradniceProstoru.put("cela_2", new Point2D(100, 120));
+        souradniceProstoru.put("žalářníkova_stanice", new Point2D(215, 120));
+        souradniceProstoru.put("?", new Point2D(53, 134));
+        souradniceProstoru.put("jižní_koridor_žaláře", new Point2D(155, 190));
+        souradniceProstoru.put("cela_3", new Point2D(100, 190));
+        souradniceProstoru.put("hlavní_koridor_hradu", new Point2D(200, 200));
+        souradniceProstoru.put("koruní_sál", new Point2D(320, 140));
+        souradniceProstoru.put("strážní_stanice", new Point2D(340, 260));
+        souradniceProstoru.put("králova_komnata", new Point2D(275, 260));
     }
 
     @FXML
     private void aktualizujSeznamVychodu() {
         seznamVychodu.clear();
         seznamVychodu.addAll(hra.getHerniPlan().getAktualniProstor().getVychody());
+    }
+
+    private void aktualizujPolohuHrace() {
+        String prostor = hra.getHerniPlan().getAktualniProstor().getNazev();
+        if (!souradniceProstoru.containsKey(prostor)) return;
+
+        hrac.setLayoutX(souradniceProstoru.get(prostor).getX());
+        hrac.setLayoutY(souradniceProstoru.get(prostor).getY());
     }
 
     private void aktualizujKonecHry() {
