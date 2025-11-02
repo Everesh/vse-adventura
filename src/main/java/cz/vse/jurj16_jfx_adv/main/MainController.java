@@ -170,6 +170,7 @@ public class MainController implements Pozorovatel {
         vecImg.put("žalářníkův_úbor", getClass().getResource("veci/zalarnikuvUbor.png").toExternalForm());
         vecImg.put("klíč_od_cel", getClass().getResource("veci/klic.png").toExternalForm());
         vecImg.put("klíč_od_okovů", getClass().getResource("veci/klic.png").toExternalForm());
+        vecImg.put("díra_ve_stěně", getClass().getResource("veci/diraVeStene.png").toExternalForm());
         vecImg.put("Zpět", getClass().getResource("veci/back.png").toExternalForm());
     }
 
