@@ -7,10 +7,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.util.Callback;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -88,6 +90,8 @@ public class MainController implements Pozorovatel {
         prostorImg.put("koruní_sál", getClass().getResource("prostory/KoruniSal.png").toExternalForm());
         prostorImg.put("strážní_stanice", getClass().getResource("prostory/satanice.png").toExternalForm());
         prostorImg.put("králova_komnata", getClass().getResource("prostory/komnata.png").toExternalForm());
+        prostorImg.put("slanit_se_po_okovech_na_straně_hradu", getClass().getResource("prostory/win.png").toExternalForm());
+        prostorImg.put("nádvoří", getClass().getResource("prostory/win.png").toExternalForm());
     }
 
     @FXML
@@ -142,5 +146,15 @@ public class MainController implements Pozorovatel {
 
         String prikaz = PrikazJdi.NAZEV + " " + cil.getNazev();
         zpracujPrikaz(prikaz);
+    }
+
+    @FXML
+    private void napovedaKlik(ActionEvent actionEvent) {
+        Stage napovedaStage = new Stage();
+        WebView wv = new WebView();
+        Scene napovedaScena = new Scene(wv);
+        napovedaStage.setScene(napovedaScena);
+        napovedaStage.show();
+        wv.getEngine().load(getClass().getResource("napoveda.html").toExternalForm());
     }
 }
