@@ -380,6 +380,7 @@ public class MainController implements Pozorovatel {
             aktualizujSeznamVychodu();
             aktualizujPolohuHrace();
             aktualizujSeznamVeciVMisnosti();
+            aktualizujVecKPouziti();
         });
         hra.getHerniPlan().registruj(ZmenaHry.ZMENA_BATOHU, () -> {
             aktualizujSeznamVeciVBatohu();
